@@ -1,0 +1,48 @@
+.container .homepage-wrapper .homepage-right {
+  position: absolute;
+  top: 0;
+  left: 300px;
+  right: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  flex: 1;
+  height: 100%;
+  margin-left: 3px;
+  background-color: #121212;
+}
+.container .homepage-wrapper .homepage-right .nav-wrap {
+  justify-content: space-between;
+}
+.container .homepage-wrapper .homepage-right .nav-wrap form {
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+}
+.container .homepage-wrapper .homepage-right .nav-wrap form .search-icon{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 35px;
+    height: 45px;
+    border-radius: 25px 0 0 25px;
+    background-color: #242424;
+    -webkit-border-radius: 25px 0 0 25px;
+    -moz-border-radius: 25px 0 0 25px;
+    -ms-border-radius: 25px 0 0 25px;
+    -o-border-radius: 25px 0 0 25px;
+}
+.container .homepage-wrapper .homepage-right .nav-wrap form input {
+  width: 300px;
+  height: 45px;
+  color: #fff;
+  font-size: 14px;
+  padding: 0 10px;
+  border: none;
+  border-radius: 0px 25px 25px 0;
+  outline: none;
+  background-color: #242424;
+  -webkit-border-radius: 0px 25px 25px 0;
+  -moz-border-radius: 0px 25px 25px 0;
+  -ms-border-radius: 0px 25px 25px 0;
+  -o-border-radius: 0px 25px 25px 0;
+}

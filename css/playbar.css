@@ -1,0 +1,80 @@
+/* 音乐播放栏 */
+.container .playbar {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;  
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #000;
+}
+
+/* 播放栏左侧 */
+.container .playbar .Music-Information{
+  display: flex;
+  align-items: center;
+  width: 300px;
+  height: 100%;
+  /* background-color: red; */
+}
+.container .playbar .Music-Information .cover{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 100%;
+  padding: 10px;
+  /* background-color: greenyellow; */
+}
+.container .playbar .Music-Information .cover img{
+  width: 55px;
+  height: 55px;
+  background-color: rosybrown;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.container .playbar .Music-Information .song-title-singer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+.container .playbar .Music-Information .song-title p{
+  font-size: 14px;
+  color: #fff;
+  font-weight: bold;
+  padding-bottom: 2px;
+}
+.container .playbar .Music-Information .singer p{
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 播放栏中间 */
+.container .playbar .Music-control{
+  position: relative;
+  width: 800px;
+  height: 100%;
+  background-color: #000;
+}
+.container .playbar .Music-control audio{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+}
+.container .playbar .Music-control .playerbtn{
+  width: 100%;
+  height: 50px;
+  background-color: red;
+}
+
+/* 播放栏右侧 */
+.container .playbar .Music-playlist{
+  width: 400px;
+  height: 100%;
+  background-color: red;
+}

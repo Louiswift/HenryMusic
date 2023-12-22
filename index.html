@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Henry Music</title>
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/homepage-left.css">
+    <link rel="stylesheet" href="css/homepage-right.css">
+    <link rel="stylesheet" href="css/playbar.css">
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="css/Recommended-playlists.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="homepage-wrapper">
+            <!-- 俩栏布局 左侧 -->
+            <div class="homepage-left">
+                <div class="left-above radius">
+                    <div class="text-homepage-search">
+                        <a href="index.html" class="homepage-text-font-style">
+                            <div class="icon">
+                                <img src="img/主页.svg" alt="homepage-icon" class="img-icon">
+                            </div>
+                            <div class="text" style="color: #fff;">主页</div>
+                        </a>
+                    </div>
+                    <div class="text-homepage-search">
+                        <a href="search.html" class="homepage-text-font-style">
+                            <div class="icon">
+                                <img src="img/搜索.svg" alt="homepage-icon" class="img-icon">
+                            </div>
+                            <div class="text default-color">搜索</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="left-below radius">
+                  <!-- 音乐库 -->
+                  <div class="wrap-MusicLibrary">
+                    <div class="MusicLibrary">
+                        <div class="icon">
+                            <img src="img/库存.svg" alt="homepage-icon" class="img-icon">
+                        </div>
+                        <div class="text homepage-text-font-style">音乐库</div>
+                        <div class="creatPlaylist">
+                            <button id="addButton">
+                                <img src="img/创建&添加&批量添加.svg" alt="" width="16px" height="16px">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                    <!-- 歌单 -->
+                    <div class="wrap-songsheet">
+                        <ul class="songsheet" id="songsheet">
+                            <li>
+                                <a href="#">
+                                    <div class="icon">
+                                        <img src="img/歌单.svg">
+                                    </div>
+                                    <div class="text-songsheet">
+                                        我的 #1 歌单
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="icon">
+                                        <img src="img/歌单.svg">
+                                    </div>
+                                    <div class="text-songsheet">
+                                        我的 #2 歌单
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 俩栏布局 右侧 -->
+            <div class="homepage-right radius">
+                <div class="nav-wrap">
+                    <div class="nav">探索Premium</div>
+                    <div class="nav" style="background-color: #000; color: #fff;">Vip 用户</div>
+                </div>
+                <div class="Recommended-playlists">
+                    <div class="title">歌单推荐</div>
+                    <ul id="playlists"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="playbar">
+            <div class="Music-Information">
+                <div class="cover">
+                    <img src="http://s4.music.126.net/style/web2/img/default/default_album.jpg" alt="" id="pic">
+                </div>
+                <div class="song-title-singer">
+                    <div class="song-title" id="songname">
+                        <p id="songName"></p>
+                    </div>
+                    <div class="singer" id="singer">
+                        <p id="singerName"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="Music-control">
+                <div class="playerbtn">
+                    <button id="nextSongs" style="color: #000;">下一首</button>
+                </div>
+                <audio id="audio" controls src="">
+                    <source type="audio/mpeg">
+                </audio>
+            </div>
+            <div class="Music-playlist"></div>
+        </div>
+    </div>
+    <script src="js/creatsongsheet.js"></script>
+    <script src="js/request.js"></script>
+    <script src="js/limit.js"></script>
+    <script src="js/newsong.js"></script>
+</body>
+
+</html>

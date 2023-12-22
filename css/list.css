@@ -1,0 +1,44 @@
+.container .homepage-right .songlist{
+    width: 100%;
+    margin-top: 60px;
+    background-color: greenyellow;
+    
+}
+.container .homepage-right .songlist .songTitle{
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    height: 240px;
+    background: linear-gradient(to bottom, #888fa4, #888fa4, #585c69, #4e525e);
+}
+.container .homepage-right .songlist .songTitle .songlist-pic{
+    display: flex;
+    width: 240px;
+    height: 240px;
+    background-color: #000;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+.container .homepage-right .songlist .songTitle .songlist-pic img{
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+.container .homepage-right .songlist .songTitle .text-listname-song{
+    margin-left: 20px;
+}
+.container .homepage-right .songlist .songTitle .text-songlist{
+    margin-top: 40px;
+    font-size: 14px;
+    color: #fff;
+}
+.container .homepage-right .songlist .songTitle .song-list-name{
+    font-size: 80px;
+    font-weight: bold;
+    color: #fff;
+}
