@@ -97,18 +97,26 @@
 
             </div>
         </div>
+        
+        <!-- 播放栏 -->
         <div class="playbar">
             <div class="Music-Information">
                 <div class="cover">
-                    <img src="" alt="" id="pic">
+                    <img src="http://s4.music.126.net/style/web2/img/default/default_album.jpg" alt="" id="pic">
                 </div>
                 <div class="song-title-singer">
-                    <div class="song-title" id="songname"></div>
-                    <div class="singer" id="singer"></div>
+                    <div class="song-title" id="songname">
+                        <p id="songName"></p>
+                    </div>
+                    <div class="singer" id="singer">
+                        <p id="singerName"></p>
+                    </div>
                 </div>
             </div>
             <div class="Music-control">
-                <div class="playerbtn"></div>
+                <div class="playerbtn">
+                    <button id="nextSongs" style="color: #000;">下一首</button>
+                </div>
                 <audio id="audio" controls src="">
                     <source type="audio/mpeg">
                 </audio>
@@ -121,7 +129,6 @@
     <script src="js/request.js"></script>
     <script src="js/limit.js"></script>
     <script src="js/newsong.js"></script>
-    <script src="js/search.js"></script>
 </body>
 
 </html>

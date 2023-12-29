@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="css/playbar.css">
     <link rel="stylesheet" href="css/font.css">
     <link rel="stylesheet" href="css/Recommended-playlists.css">
+    <link rel="stylesheet" href="css/list.css">
 </head>
 
-<body>
+<body style="min-width: 1000px;">
     <div class="container">
         <div class="homepage-wrapper">
             <!-- 俩栏布局 左侧 -->
@@ -37,20 +38,20 @@
                     </div>
                 </div>
                 <div class="left-below radius">
-                  <!-- 音乐库 -->
-                  <div class="wrap-MusicLibrary">
-                    <div class="MusicLibrary">
-                        <div class="icon">
-                            <img src="img/库存.svg" alt="homepage-icon" class="img-icon">
-                        </div>
-                        <div class="text homepage-text-font-style">音乐库</div>
-                        <div class="creatPlaylist">
-                            <button id="addButton">
-                                <img src="img/创建&添加&批量添加.svg" alt="" width="16px" height="16px">
-                            </button>
+                    <!-- 音乐库 -->
+                    <div class="wrap-MusicLibrary">
+                        <div class="MusicLibrary">
+                            <div class="icon">
+                                <img src="img/库存.svg" alt="homepage-icon" class="img-icon">
+                            </div>
+                            <div class="text homepage-text-font-style">音乐库</div>
+                            <div class="creatPlaylist">
+                                <button id="addButton">
+                                    <img src="img/创建&添加&批量添加.svg" alt="" width="16px" height="16px">
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
                     <!-- 歌单 -->
                     <div class="wrap-songsheet">
@@ -91,36 +92,37 @@
                     <ul id="playlists"></ul>
                 </div>
             </div>
-        </div>
-        <div class="playbar">
-            <div class="Music-Information">
-                <div class="cover">
-                    <img src="http://s4.music.126.net/style/web2/img/default/default_album.jpg" alt="" id="pic">
-                </div>
-                <div class="song-title-singer">
-                    <div class="song-title" id="songname">
-                        <p id="songName"></p>
+            <!-- 播放栏 -->
+            <div class="playbar">
+                <div class="Music-Information">
+                    <div class="cover">
+                        <img src="http://s4.music.126.net/style/web2/img/default/default_album.jpg" alt="" id="pic">
                     </div>
-                    <div class="singer" id="singer">
-                        <p id="singerName"></p>
+                    <div class="song-title-singer">
+                        <div class="song-title" id="songname">
+                            <p id="songName"></p>
+                        </div>
+                        <div class="singer" id="singer">
+                            <p id="singerName"></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="Music-control">
-                <div class="playerbtn">
-                    <button id="nextSongs" style="color: #000;">下一首</button>
+                <div class="Music-control">
+                    <div class="playerbtn">
+                        <button id="nextSongs" style="color: #000;">上一首</button>
+                        <button id="nextSongs" style="color: #000;">下一首</button>
+                    </div>
+                    <audio id="audio" controls src="">
+                        <source type="audio/mpeg">
+                    </audio>
                 </div>
-                <audio id="audio" controls src="">
-                    <source type="audio/mpeg">
-                </audio>
+                <div class="Music-playlist"></div>
             </div>
-            <div class="Music-playlist"></div>
         </div>
-    </div>
-    <script src="js/creatsongsheet.js"></script>
-    <script src="js/request.js"></script>
-    <script src="js/limit.js"></script>
-    <script src="js/newsong.js"></script>
+        <script src="js/creatsongsheet.js"></script>
+        <script src="js/request.js"></script>
+        <script src="js/limit.js"></script>
+        <script src="js/newsong.js"></script>
 </body>
 
 </html>
