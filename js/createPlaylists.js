@@ -7,12 +7,7 @@ recommendedPlaylists().then(resp => {
     if (!ul.contains(li)) return;
     const { songId } = li.dataset;
     window.location.href = "list.html?id=" + songId;
-  })
-
-  //   newLi.addEventListener("click", function (event) {
-  //   const { songId } = event.currentTarget.dataset
-  //   window.location.href = "list.html?id=" + songId;
-  // });
+  });
 
   for (let i = 0; i < resp.result.length; i++) {
     const newLi = document.createElement("li");
@@ -27,6 +22,7 @@ recommendedPlaylists().then(resp => {
 
     let songListId = resp.result[i].id;
     newLi.setAttribute("data-song-id", songListId);
+
     newImg.src = resp.result[i].picUrl;
     newDivText.textContent = resp.result[i].name;
 
@@ -36,5 +32,12 @@ recommendedPlaylists().then(resp => {
     newA.appendChild(newDivText);
     ul.appendChild(newLi);
   }
-  console.log(resp);
 });
+
+window.onload = () => {
+  const currentPlaySongOrder = localStorage.getItem('currentPlaySongOrder');
+
+  if (currentPlaySongOrder !== '0' && !currentPlaySongOrder ) {
+    localStorage.setItem('currentPlaySongOrder', 0);
+  }
+}

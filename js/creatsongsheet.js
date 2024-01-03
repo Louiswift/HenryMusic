@@ -5,7 +5,6 @@ if (savedItems) {
   songSheet.innerHTML = savedItems;
 }
 
-
 addButton.addEventListener("click", function () {
   const newLi = document.createElement("li");
   const newA = document.createElement("a");
