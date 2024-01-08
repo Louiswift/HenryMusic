@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/font.css">
     <link rel="stylesheet" href="css/search.css">
     <link rel="stylesheet" href="css/list.css">
+    <link rel="stylesheet" href="css/lyric.css">
 </head>
 
 <body style="min-width: 1200px;">
@@ -94,8 +95,7 @@
                     </div>
                     <div class="nav" style="background-color: #000; color: #fff;">Vip 用户</div>
                 </div>
-                <div class="songlist">
-                    
+                <div class="songlist rightTop">
                     <div class="ListS">
                         <div class="Song-information">
                             <div class="information">#标题</div>
@@ -103,13 +103,14 @@
                             <div class="information">添加日期</div>
                             <div class="information">时长</div>
                         </div>
-
                         <ul id="list"></ul>
                     </div>
                 </div>
+                <div id="lyric-wrap">
+                    <ul class="lyric"></ul>
+                </div>
             </div>
         </div>
-        
         <!-- 播放栏 -->
         <div class="playbar">
             <div class="Music-Information">
@@ -176,21 +177,8 @@
     <script src="js/search.js"></script>
     <script src="js/playbar.js"></script>
     <script src="js/creatList.js"></script>
-    <!-- <script>
-        window.onload = () => {
-            const playStatus = localStorage.getItem('play')
-            if (playStatus === '1') {
-                playMain()
-            } else {
-                const order = localStorage.getItem('currentPlaySongOrder');
-                const playList = JSON.parse(localStorage.getItem('playList'));
-                setSongInfo(playList[order].id)
-            }
-            let playTime = localStorage.getItem('playTime');
-            audio.currentTime = playTime;
-        }
-    </script> -->
     <script src="js/public.js"></script>
+    <script src="js/lyric.js"></script>
 </body>
 
 </html>

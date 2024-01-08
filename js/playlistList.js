@@ -44,7 +44,6 @@ getAllsongsOnThePlaylist(dataId).then(resp => {
 // 生成歌单列表
 async function renderPlayList() {
     const playList = JSON.parse(localStorage.getItem('playList'));
-    console.log(playList)
     const ul = document.querySelector("#list");
 
     // 双击li播放歌曲

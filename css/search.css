@@ -1,21 +1,18 @@
-.container .homepage-wrapper .homepage-right {
-  position: absolute;
-  top: 0;
-  left: 300px;  
-  right: 0;
-  bottom: 0;
-  overflow-y: scroll;
-  flex: 1;
-  height: 100%;
-  margin-left: 3px;
-  background-color: #121212;
-}
 .container .homepage-wrapper .homepage-right .nav-wrap {
+  position: fixed;
+  top: 0;
+  right: 0;
   justify-content: space-between;
+  border-radius: 20px 20px 0 0;
+  margin-right: 4px;
+  background-color: #121212;
+  -webkit-border-radius: 20px 20px 0 0;
+  -moz-border-radius: 20px 20px 0 0;
+  -ms-border-radius: 20px 20px 0 0;
+  -o-border-radius: 20px 20px 0 0;
 }
 .container .homepage-wrapper .homepage-right .nav-wrap div{
   display: flex;
-  align-items: center;
   margin-left: 50px;
 }
 .container .homepage-wrapper .homepage-right .nav-wrap .search-icon{

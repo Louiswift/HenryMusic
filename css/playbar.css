@@ -26,6 +26,9 @@
   padding: 10px;
   /* background-color: greenyellow; */
 }
+.container .playbar .Music-Information .cover:hover{
+  cursor: pointer;
+}
 .container .playbar .Music-Information .cover img{
   width: 55px;
   height: 55px;

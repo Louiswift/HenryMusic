@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/playbar.css">
     <link rel="stylesheet" href="css/font.css">
     <link rel="stylesheet" href="css/list.css">
+    <link rel="stylesheet" href="css/lyric.css">
 </head>
 
 <body style="min-width: 1000px;">
@@ -86,7 +87,7 @@
                     <div class="nav">探索Premium</div>
                     <div class="nav" style="background-color: #000; color: #fff;">Vip 用户</div>
                 </div>
-                <div class="songlist">
+                <div class="songlist rightTop">
                     <div class="songTitle">
                         <div class="songlist-pic">
                             <img src="" alt="">
@@ -107,8 +108,13 @@
                         <ul id="list"></ul>
                     </div>
                 </div>
+                <ul id="lyric-wrap">
+                    <div class="lyric"></div>
+                </ul>
             </div>
         </div>
+       
+        <!-- 播放栏 -->
         <div class="playbar">
             <div class="Music-Information">
                 <div class="cover">
@@ -174,6 +180,7 @@
     <script src="js/playlistList.js"></script>
     <script src="js/playbar.js"></script>
     <script src="js/creatList.js"></script>
+    <script src="js/lyric.js"></script>
 </body>
 
 </html>

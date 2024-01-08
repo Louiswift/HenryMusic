@@ -1,11 +1,14 @@
 const input = document.querySelector('.search');
+const ul = document.querySelector("#list");
 
 input.addEventListener('keydown', (event) => {
     if(event.key == "Enter"){
         search(input.value).then(async resp => {
             const song = resp.result.songs;
-    
-            const ul = document.querySelector("#list");
+            searchSuggestions(input.value).then(async resp =>{
+                console.log(resp)
+            });
+           
             ul.innerHTML = "";
 
             let list = [];
@@ -16,8 +19,19 @@ input.addEventListener('keydown', (event) => {
                 });
             }
             console.log(list)
-            localStorage.setItem('playList', JSON.stringify(song));
+            localStorage.setItem('playList', JSON.stringify(list));
+            const playingList = JSON.parse(localStorage.getItem('playingList') || []);
 
+            if (playingList.length === 0) {
+                localStorage.setItem('playingList', JSON.stringify(list));
+            }
+            const playStatus = localStorage.getItem('play');
+            if (playStatus === '1') {
+                playMain();
+            } else {
+                const songId = playingList[localStorage.getItem('currentPlaySongOrder')].id;
+                setSongInfo(songId);
+            }
             // 双击li播放歌曲
             ul.addEventListener("dblclick", async (event) => {
                 localStorage.setItem('playTime','0')
@@ -27,30 +41,13 @@ input.addEventListener('keydown', (event) => {
                 if (!li) return;
                 if (!ul.contains(li)) return;
 
-                localStorage.setItem('playingList', JSON.stringify(list));
+                let playList = JSON.parse(localStorage.getItem('playList'));
+                localStorage.setItem('playingList', JSON.stringify(playList));
+
                 const { songId, songOrder } = li.dataset;
-    
-                // 设置当前播放的歌曲 
-                song[localStorage.getItem('currentPlaySongOrder')].id
-                setSongInfo(songId);
-                playMain();
                 localStorage.setItem('currentPlaySongOrder', songOrder);
-            })
-           
-
-            const playingList = JSON.parse(localStorage.getItem('playingList') || []);
-
-            if (playingList.length === 0) {
-                localStorage.setItem('playingList', JSON.stringify(list));
-            }
-        
-            const playStatus = localStorage.getItem('play');
-            if (playStatus === '1') {
                 playMain();
-            } else {
-                const songId = playingList[localStorage.getItem('currentPlaySongOrder')].id;
-                setSongInfo(songId);
-            }
+            })     
             creatList(list);
         })
     }

@@ -5,9 +5,14 @@ const suspend = document.querySelector("#suspend");
 const nextSongs = document.querySelector("#nextSongs");
 const audio = document.querySelector("#audio");
 
-audio.addEventListener("timeupdate",() =>{
-    localStorage.setItem('playTime',audio.currentTime);
-})
+const size = {
+    liHeight: 66,
+    containerHeight: 800
+};
+
+audio.addEventListener("timeupdate", () => {
+    localStorage.setItem('playTime', audio.currentTime);
+});
 
 async function playMain() {
     const order = localStorage.getItem('currentPlaySongOrder');
@@ -17,13 +22,56 @@ async function playMain() {
     let playTime = localStorage.getItem('playTime');
     audio.currentTime = playTime;
 
-    localStorage.setItem('play', '1')
+    localStorage.setItem('play', '1');
 
     if (playList[order].id !== Number(songId)) {
         await setSongInfo(playList[order].id);
+        let playingSongId = playList[order].id;
+        await getsongLyric(playingSongId).then(resp => {
+            lyric.innerText = '';
+            let lrc = resp.lrc.lyric;
+            lrcData = lrc
+                .split('\n')
+                .filter((s) => s)
+                .map((s) => {
+                    const parts = s.split(']');
+                    const timeParts = parts[0].replace('[', '').split(':');
+                    return {
+                        time: +timeParts[0] * 60 + +timeParts[1],
+                        words: parts[1],
+                    };
+                });
+            lyric.innerHTML = lrcData.map((lrc) => `<li>${lrc.words}</li>`).join('');
+            audio.addEventListener("timeupdate", () => {
+                setStatus(audio.currentTime);
+            });
+            function setStatus(time) {
+                time += 0.5;
+
+                const activeLi = document.querySelector('.active');
+                activeLi && activeLi.classList.remove('active');
+
+                const index = lrcData.findIndex((lrc) => lrc.time > time) - 1;
+                if (index < 0) {
+                    return;
+                }
+                lyric.children[index].classList.add('active');
+
+                // 滚动
+                let top = size.liHeight * index + size.liHeight / 2 - size.containerHeight / 2;
+                top = -top;
+                if(top > 0){
+                    top = 0;
+                }
+                lyric.style.transform = `translate3d(0, ${top}px, 0)`;
+            }
+        });
     }
     audio.play();
 }
+
+
+
 
 async function setSongInfo(songId) {
     const songName = document.querySelector("#songName");
@@ -57,7 +105,7 @@ updateButton();
 control.addEventListener("click", (event) => {
     const button = event.target.closest("button");
     let currentPlaySongOrder = Number(localStorage.getItem('currentPlaySongOrder'));
-    const playListLen = JSON.parse(localStorage.getItem('playList') || []).length
+    const playListLen = JSON.parse(localStorage.getItem('playingList') || []).length
 
     if (!button) return;
     if (!control.contains(button)) return;
@@ -75,14 +123,24 @@ control.addEventListener("click", (event) => {
         audio.pause();
 
     } else if (button == PreviousSong) {
-        if (currentPlaySongOrder > 0) {
+        if (currentPlaySongOrder >= 0) {
             localStorage.setItem('currentPlaySongOrder', currentPlaySongOrder - 1);
+
+            let len = JSON.parse(localStorage.getItem('playingList')).length - 1;
+            if (currentPlaySongOrder == 0) {
+                localStorage.setItem('currentPlaySongOrder', len);
+            }
             playMain();
         }
 
     } else if (button == nextSongs) {
-        if (currentPlaySongOrder < playListLen - 1) {
+        if (currentPlaySongOrder <= playListLen - 1) {
             localStorage.setItem('currentPlaySongOrder', currentPlaySongOrder + 1);
+
+            let len = JSON.parse(localStorage.getItem('playingList')).length - 1;
+            if (currentPlaySongOrder == len) {
+                localStorage.setItem('currentPlaySongOrder', 0);
+            }
             playMain();
         }
     }

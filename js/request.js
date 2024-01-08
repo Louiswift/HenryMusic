@@ -63,3 +63,25 @@ async function getSongDetails(id){
   const resp = await fetch(`http://localhost:3000/song/detail?ids=${id}`);
   return await resp.json();
 }
+
+
+/*
+  功能: 获取歌曲歌词
+  参数: id: 音乐 id
+  说明: 调用此接口 , 传入音乐 id 可获得对应音乐的歌词 ( 不需要登录 );
+*/
+async function getsongLyric(id){
+  const resp = await fetch(`http://localhost:3000/lyric?id=${id}`);
+  return await resp.json();
+}
+
+/*
+  功能: 搜索建议
+  参数: keywords : 关键词
+  说明: 调用此接口 , 可获取默认搜索关键词;
+*/
+async function searchSuggestions(keywords){
+  const resp = await fetch(`http://localhost:3000/search/suggest?keywords=${keywords}`);
+  return await resp.json();
+}
+

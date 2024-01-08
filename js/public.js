@@ -1,5 +1,5 @@
 window.onload = () => {
-    const playStatus = localStorage.getItem('play')
+    const playStatus = localStorage.getItem('play');
     if (playStatus === '1') {
         playMain()
     } else {

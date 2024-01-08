@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>获取输入框的值</title>
+<style>
+    .highlight {
+        color: red;
+    }
+</style>
 </head>
 <body>
-  <input type="text" id="inputField" placeholder="在这里输入内容">
-  <!-- <button id="submitButton">提交</button> -->
+    <p>
+        <span onmouseover="highlightText(this)" onmouseout="unhighlightText(this)">我</span>
+        <br>
+        ni1 <br>
+        1 <br>
+        3 <br>
+        5 <br>
+        5 <br>
+        我 <br>
+        我 <br>
+        我 <br>
+    </p>
 
-  <script>
-    const inputField = document.getElementById('inputField');
+    <script>
+        function highlightText(element) {
+            element.classList.add("highlight");
+        }
 
-    function handleEnter(event) {
-      if (event.key === 'Enter') {
-        const inputValue = event.target.value;
-        console.log('输入的内容：', inputValue);
-        // 在这里可以对输入的内容进行处理
-      }
-    }
-
-    inputField.addEventListener('keydown', handleEnter);
-    inputField.addEventListener('click', () => {
-      const inputValue = inputField.value;
-      console.log('输入的内容：', inputValue);
-      // 在这里可以对输入的内容进行处理
-    });
-  </script>
+        function unhighlightText(element) {
+            element.classList.remove("highlight");
+        }
+    </script>
 </body>
 </html>
