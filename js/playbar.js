@@ -6,7 +6,7 @@ const nextSongs = document.querySelector("#nextSongs");
 const audio = document.querySelector("#audio");
 
 const size = {
-    liHeight: 66,
+    liHeight: 74,
     containerHeight: 800
 };
 
@@ -70,7 +70,25 @@ async function playMain() {
     audio.play();
 }
 
+// audio.addEventListener('ended',()=>{
+//     alert("成功");
+//         let currentPlaySongOrder = Number(localStorage.getItem('currentPlaySongOrder'));
+//         localStorage.setItem('currentPlaySongOrder', currentPlaySongOrder + 1);
+//         playMain();
+// });
 
+audio.addEventListener('ended', async () => {
+    audio.currentTime = 0;
+    const playList = JSON.parse(localStorage.getItem('playingList'));
+    let currentPlaySongOrder = Number(localStorage.getItem('currentPlaySongOrder'));
+    localStorage.setItem('currentPlaySongOrder', currentPlaySongOrder + 1);
+    if (currentPlaySongOrder + 1 < playList.length) {
+        await setSongInfo(playList[currentPlaySongOrder + 1].id);
+        playMain();
+    } else {
+        console.log('播放列表已经播放完毕');
+    }
+});
 
 
 async function setSongInfo(songId) {
@@ -81,7 +99,9 @@ async function setSongInfo(songId) {
     getSongDetails(songId).then(song => {
         pic.src = song.songs[0].al.picUrl;
         songName.innerText = song.songs[0].name;
-        singer.innerText = song.songs[0].ar[0].name;
+        for(let i = 0; i < song.songs[0].ar.length; i++){
+            singer.innerText = song.songs[0].ar[i].name;
+        }
     });
 
     await getSongUrl(songId).then(resp => {
