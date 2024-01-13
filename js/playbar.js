@@ -7,7 +7,7 @@ const audio = document.querySelector("#audio");
 
 const size = {
     liHeight: 74,
-    containerHeight: 800
+    containerHeight: 1000
 };
 
 audio.addEventListener("timeupdate", () => {
@@ -69,13 +69,6 @@ async function playMain() {
     }
     audio.play();
 }
-
-// audio.addEventListener('ended',()=>{
-//     alert("成功");
-//         let currentPlaySongOrder = Number(localStorage.getItem('currentPlaySongOrder'));
-//         localStorage.setItem('currentPlaySongOrder', currentPlaySongOrder + 1);
-//         playMain();
-// });
 
 audio.addEventListener('ended', async () => {
     audio.currentTime = 0;
