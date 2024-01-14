@@ -2,9 +2,8 @@
   position: fixed;
   top: 0;
   right: 0;
-  justify-content: space-between;
+  justify-content: start;
   border-radius: 20px 20px 0 0;
-  margin-right: 4px;
   background-color: #121212;
   -webkit-border-radius: 20px 20px 0 0;
   -moz-border-radius: 20px 20px 0 0;
@@ -13,7 +12,7 @@
 }
 .container .homepage-wrapper .homepage-right .nav-wrap div{
   display: flex;
-  margin-left: 50px;
+  margin-left: 20px;
 }
 .container .homepage-wrapper .homepage-right .nav-wrap .search-icon{
     display: flex;

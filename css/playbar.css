@@ -97,6 +97,13 @@ audio::-webkit-media-controls-start-playback-button {
   width: 30px;
   height: 30px;
 }
+.container .playbar .Music-control .playerbtn button path{
+  transition: 0.2s;
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -ms-transition: 0.2s;
+  -o-transition: 0.2s;
+}
 .container .playbar .Music-control .playerbtn button:hover path{
   fill: #fff;
 }
