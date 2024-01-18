@@ -6,8 +6,8 @@ const nextSongs = document.querySelector("#nextSongs");
 const audio = document.querySelector("#audio");
 
 const size = {
-    liHeight: 74,
-    containerHeight: 1000
+    liHeight: 4,
+    containerHeight: 50
 };
 
 audio.addEventListener("timeupdate", () => {
@@ -63,7 +63,8 @@ async function playMain() {
                 if(top > 0){
                     top = 0;
                 }
-                lyric.style.transform = `translate3d(0, ${top}px, 0)`;
+                lyric.style.transform = `translate3d(0, ${top}vw, 0)`;
+                lyric.style.transition = `2s`;
             }
         });
     }
@@ -92,6 +93,7 @@ async function setSongInfo(songId) {
     getSongDetails(songId).then(song => {
         pic.src = song.songs[0].al.picUrl;
         songName.innerText = song.songs[0].name;
+        title.innerText = song.songs[0].name;
         for(let i = 0; i < song.songs[0].ar.length; i++){
             singer.innerText = song.songs[0].ar[i].name;
         }

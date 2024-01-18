@@ -4,8 +4,8 @@ window.onload = () => {
         playMain()
     } else {
         const order = localStorage.getItem('currentPlaySongOrder');
-        const playList = JSON.parse(localStorage.getItem('playList'));
-        setSongInfo(playList[order].id)
+        const playList = JSON.parse(localStorage.getItem('playingList'));
+        setSongInfo(playList[order].id);
     }
     let playTime = localStorage.getItem('playTime');
     audio.currentTime = playTime;

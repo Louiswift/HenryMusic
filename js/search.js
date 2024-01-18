@@ -6,7 +6,6 @@ input.addEventListener('keydown', (event) => {
         search(input.value).then(async resp => {
             const song = resp.result.songs;
             searchSuggestions(input.value).then(async resp =>{
-                console.log(resp)
             });
            
             ul.innerHTML = "";
@@ -18,7 +17,6 @@ input.addEventListener('keydown', (event) => {
                     list.push(resp.songs[0]);
                 });
             }
-            console.log(list)
             localStorage.setItem('playList', JSON.stringify(list));
             const playingList = JSON.parse(localStorage.getItem('playingList') || []);
 
@@ -34,7 +32,7 @@ input.addEventListener('keydown', (event) => {
             }
             // 双击li播放歌曲
             ul.addEventListener("dblclick", async (event) => {
-                localStorage.setItem('playTime','0')
+                localStorage.setItem('playTime','0');
                 audio.currentTime = 0;
 
                 let li = event.target.closest("li");

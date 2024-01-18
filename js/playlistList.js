@@ -13,7 +13,6 @@ let dataId = getParameterByName("id");
 getPlaylistsDetail(dataId).then(resp => {
     const listImg = document.querySelector(".songlist-pic img");
     const listName = document.querySelector(".song-list-name");
-    const title = document.querySelector("title");
 
     const { playlist } = resp;
     const { coverImgUrl, name } = playlist || {};
@@ -48,7 +47,7 @@ async function renderPlayList() {
 
     // 双击li播放歌曲
     ul.addEventListener("dblclick", async (event) => {
-        localStorage.setItem('playTime','0')
+        localStorage.setItem('playTime','0');
         audio.currentTime = 0;
 
         let li = event.target.closest("li");
