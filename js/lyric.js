@@ -1,7 +1,6 @@
 const rightTop = document.querySelector(".rightTop");
 const nav = document.querySelector(".nav-wrap");
 const lyricWrap = document.querySelector("#lyric-wrap");
-const lyric = document.querySelector(".lyric");
 
 pic.addEventListener('click', () => {
     if (rightTop.style.display == "block") {

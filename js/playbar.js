@@ -4,11 +4,7 @@ const play = document.querySelector("#play");
 const suspend = document.querySelector("#suspend");
 const nextSongs = document.querySelector("#nextSongs");
 const audio = document.querySelector("#audio");
-
-const size = {
-    liHeight: 4,
-    containerHeight: 50
-};
+const lyric = document.querySelector(".lyric");
 
 audio.addEventListener("timeupdate", () => {
     localStorage.setItem('playTime', audio.currentTime);
@@ -24,49 +20,55 @@ async function playMain() {
 
     localStorage.setItem('play', '1');
 
-    if (playList[order].id !== Number(songId)) {
-        await setSongInfo(playList[order].id);
-        let playingSongId = playList[order].id;
-        await getsongLyric(playingSongId).then(resp => {
-            lyric.innerText = '';
-            let lrc = resp.lrc.lyric;
-            lrcData = lrc
-                .split('\n')
-                .filter((s) => s)
-                .map((s) => {
-                    const parts = s.split(']');
-                    const timeParts = parts[0].replace('[', '').split(':');
-                    return {
-                        time: +timeParts[0] * 60 + +timeParts[1],
-                        words: parts[1],
-                    };
-                });
-            lyric.innerHTML = lrcData.map((lrc) => `<li>${lrc.words}</li>`).join('');
-            audio.addEventListener("timeupdate", () => {
-                setStatus(audio.currentTime);
+    let playingSongId = playList[order].id;
+    await getsongLyric(playingSongId).then(resp => {
+        lyric.innerText = '';
+        let lrc = resp.lrc.lyric;
+        lrcData = lrc
+            .split('\n')
+            .filter((s) => s)
+            .map((s) => {
+                const parts = s.split(']');
+                const timeParts = parts[0].replace('[', '').split(':');
+                return {
+                    time: +timeParts[0] * 60 + +timeParts[1],
+                    words: parts[1],
+                };
             });
-            function setStatus(time) {
-                time += 0.5;
-
-                const activeLi = document.querySelector('.active');
-                activeLi && activeLi.classList.remove('active');
-
-                const index = lrcData.findIndex((lrc) => lrc.time > time) - 1;
-                if (index < 0) {
-                    return;
-                }
-                lyric.children[index].classList.add('active');
-
-                // 滚动
-                let top = size.liHeight * index + size.liHeight / 2 - size.containerHeight / 2;
-                top = -top;
-                if(top > 0){
-                    top = 0;
-                }
-                lyric.style.transform = `translate3d(0, ${top}vw, 0)`;
-                lyric.style.transition = `2s`;
-            }
+        lyric.innerHTML = lrcData.map((lrc) => `<li>${lrc.words}</li>`).join('');
+        audio.addEventListener("timeupdate", () => {
+            setStatus(audio.currentTime);
         });
+        function setStatus(time) {
+            time += 0.5;
+
+            const activeLi = document.querySelector('.active');
+            activeLi && activeLi.classList.remove('active');
+
+            const index = lrcData.findIndex((lrc) => lrc.time > time) - 1;
+            if (index < 0) {
+                return;
+            }
+            lyric.children[index].classList.add('active');
+
+            // 滚动
+            const size = {
+                liHeight: activeLi.offsetHeight,
+                containerHeight: lyric.offsetHeight/activeLi.offsetHeight*17
+            };
+            console.log(lyric.offsetHeight)
+            console.log(activeLi.offsetHeight)
+            let top = size.liHeight * index + size.liHeight / 2 - size.containerHeight / 2;
+            top = -top;
+            if(top > 0){
+                top = 0;
+            }
+            lyric.style.transform = `translate3d(0, ${top}px, 0)`;
+            lyric.style.transition = `2s`;
+        }
+    });
+    if (playingSongId !== Number(songId)) {
+        await setSongInfo(playList[order].id);
     }
     audio.play();
 }
