@@ -56,8 +56,6 @@ async function playMain() {
                 liHeight: activeLi.offsetHeight,
                 containerHeight: lyric.offsetHeight/activeLi.offsetHeight*17
             };
-            console.log(lyric.offsetHeight)
-            console.log(activeLi.offsetHeight)
             let top = size.liHeight * index + size.liHeight / 2 - size.containerHeight / 2;
             top = -top;
             if(top > 0){

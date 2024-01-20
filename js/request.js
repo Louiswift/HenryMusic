@@ -85,3 +85,43 @@ async function searchSuggestions(keywords){
   return await resp.json();
 }
 
+/*
+  功能: 手机登录
+  参数: phone: 手机号码 & password: 密码
+  可选参数：captcha：验证码
+  说明: 调用此接口 , 手机号登录;
+*/
+async function mobileLogin(phone,captcha){
+  const resp = await fetch(`http://localhost:3000/login/cellphone?phone=${phone}&captcha=${captcha}`);
+  return await resp.json();
+}
+
+/*
+  功能: 邮箱登录
+  参数: email: 163 网易邮箱 & password: 密码
+  说明: 调用此接口 , ;
+*/
+async function emailLogin(email,password){
+  const resp = await fetch(`https://wycloudapi.vercel.app/login?email=${email}@163.com&password=${password}`);
+  return await resp.json();
+}
+
+/*
+  功能: 发送验证码
+  参数: phone: 手机号码
+  说明: 调用此接口 ,传入手机号码, 可发送验证码
+*/
+async function sendVerificationCode(phone){
+  const resp = await fetch(`http://localhost:3000/captcha/sent?phone=${phone}`);
+  return await resp.json();
+}
+
+/*
+  功能: 验证验证码
+  参数: phone: 手机号码 captcha：验证码
+  说明: 调用此接口 ,传入手机号码和验证码, 可校验验证码是否正确
+*/
+async function checkCode(phone,captcha){
+  const resp = await fetch(`http://localhost:3000/captcha/verify?phone=${phone}&captcha=${captcha}`);
+  return await resp.json();
+}
