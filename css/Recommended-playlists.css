@@ -7,7 +7,7 @@
 .container .homepage-right .Recommended-playlists ul{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 .container .homepage-right .Recommended-playlists ul li{
     width: 160px;

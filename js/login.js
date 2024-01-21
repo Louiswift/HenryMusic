@@ -6,7 +6,7 @@ console.log(sendCodeBtn);
 
 
 /*
-    手机号登录,由于接口问题, 返回code:-462 使用不了
+    手机号登录
 */
 // sendCodeBtn.addEventListener('click', () => {
 //     sendVerificationCode(txtloginId.value).then(resp => {
@@ -38,9 +38,23 @@ console.log(sendCodeBtn);
 
 
 /*
-    邮箱登录,由于接口问题, 返回code:-462 使用不了
+    邮箱登录
 */
-btn.addEventListener('click', async () => {
-    const resp = await emailLogin(txtloginId, txtloginPwd);
-    console.log(resp);
+// btn.addEventListener('click', async () => {
+//     const resp = await emailLogin("18347156218", "2392228720Wq123");
+    
+//             // window.location.href = 'index.html';
+//     console.log(resp.cookie)
+// });
+
+
+
+/*
+    游客登录
+*/
+btn.addEventListener('click', async () =>{
+    await visitorLogin().then(resp => {
+        document.cookie = JSON.stringify(resp.cookie);
+        window.location.href = "index.html"
+    });
 });

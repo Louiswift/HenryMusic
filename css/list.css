@@ -107,12 +107,25 @@
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
 }
+.container .homepage-right .songlist .ListS  #information .xx{
+    height: 100%;
+}
 .container .homepage-right .songlist .ListS  #information #information-name{
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 60%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     margin-left: 5px;
     color: #fff;
     font-weight: bold;
 }
 .container .homepage-right .songlist .ListS  #information .ar-name{
+    display: flex;
+    align-items: center;
+    height: 40%;
     font-size: 12px;
     margin-left: 5px;
 }
