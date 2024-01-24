@@ -40,21 +40,21 @@ console.log(sendCodeBtn);
 /*
     邮箱登录
 */
-// btn.addEventListener('click', async () => {
-//     const resp = await emailLogin("18347156218", "2392228720Wq123");
+btn.addEventListener('click', async () => {
+    const resp = await emailLogin("18347156218", "2392228720Wq123");
     
-//             // window.location.href = 'index.html';
-//     console.log(resp.cookie)
-// });
+            window.location.href = 'index.html';
+    console.log(resp.cookie)
+});
 
 
 
 /*
     游客登录
 */
-btn.addEventListener('click', async () =>{
-    await visitorLogin().then(resp => {
-        document.cookie = JSON.stringify(resp.cookie);
-        window.location.href = "index.html"
-    });
-});
+// btn.addEventListener('click', async () =>{
+//     await visitorLogin().then(resp => {
+//         document.cookie = JSON.stringify(resp.cookie);
+//         window.location.href = "index.html"
+//     });
+// });
