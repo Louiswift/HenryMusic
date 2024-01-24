@@ -142,13 +142,11 @@ async function consturctServer(moduleDefs) {
   app.use((req, res, next) => {
     if (req.path !== '/' && !req.path.includes('.')) {
       res.set({
-        'Access-Control-Allow-Credentials': true,
         'Access-Control-Allow-Origin':
           CORS_ALLOW_ORIGIN || req.headers.origin || '*',
-        'Access-Control-Allow-Headers': 'X-Requested-With,Content-Type,Authorization,credentials',
+        'Access-Control-Allow-Headers': 'X-Requested-With,Content-Type,Authorization',
         'Access-Control-Allow-Methods': 'PUT,POST,GET,DELETE,OPTIONS',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-        'Access-Control-Allow-Credentials': true
+        'Content-Type': 'application/json; charset=utf-8',
       })
     }
     req.method === 'OPTIONS' ? res.status(204).end() : next()
