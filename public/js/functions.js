@@ -20,16 +20,17 @@ function getParameterByName(name) {
  * @param {固定参数} playMain 播放函数
  * @param {*} list 歌曲列表
  */
-function addDblClickEventListener(ul, audio, playMain, list) {
+async function addDblClickEventListener(ul, audio, playMain, list) {
     // 双击li播放歌曲
     ul.addEventListener("dblclick", async (event) => {
         localStorage.setItem('playTime', '0');
-        audio.currentTime = 0;
 
         let li = event.target.closest("li");
         if (!li) return;
         if (!ul.contains(li)) return;
-
+        if(event.target){
+        audio.currentTime = 0;  
+        }
         let playList = JSON.parse(localStorage.getItem('playList'));
         localStorage.setItem('playingList', JSON.stringify(playList));
 
@@ -48,7 +49,7 @@ function addDblClickEventListener(ul, audio, playMain, list) {
         playMain();
     } else {
         const songId = playingList[localStorage.getItem('currentPlaySongOrder')].id;
-        setSongInfo(songId);
+        await setSongInfo(songId);
     }
 }
 
@@ -145,13 +146,6 @@ function addZero(time) {
  * @param {*} songId 歌曲Id
  */
 async function setSongInfo(songId) {
-    // musicAvailability(songId).then(resp => {
-    //     console.log(resp)
-    //     if(resp.success == true){
-    //     }else{
-    //         alert(resp.message);
-    //     }
-    // })
     const songName = document.querySelector("#songName");
     const singer = document.querySelector("#singerName");
     const pic = document.getElementById("pic");
@@ -168,7 +162,7 @@ async function setSongInfo(songId) {
     });
 
     // 获取歌曲URL
-    getSongUrl(songId).then(resp => {
+    await getSongUrl(songId).then(resp => {
         audio.src = resp.data[0].url;
         audio.dataset.songId = songId
     });
