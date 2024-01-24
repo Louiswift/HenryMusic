@@ -15,7 +15,8 @@ const getNewSong = async () => {
 async function getTheDailyRecommendedSongList(){
   const resp = await fetch(`https://henrywang.xyz/recommend/resource`,{
     headers:{
-      'Authorization': localStorage.getItem('token')
+      'Authorization': localStorage.getItem('token'),
+      credentials: 'include',
     }
   });
   return await resp.json();
