@@ -9,6 +9,7 @@ console.log(sendCodeBtn);
     手机号登录
 */
 sendCodeBtn.addEventListener('click', () => {
+    console.log("手机号获取成功")
     sendVerificationCode(txtloginId.value).then(resp => {
         console.log(resp);
     });
