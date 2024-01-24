@@ -168,7 +168,7 @@ async function setSongInfo(songId) {
     });
 
     // 获取歌曲URL
-    await getSongUrl(songId).then(resp => {
+    getSongUrl(songId).then(resp => {
         audio.src = resp.data[0].url;
         audio.dataset.songId = songId
     });
