@@ -6,7 +6,6 @@
   height: 100%;
   overflow-y: scroll;
   text-align: center;
-  /* background-color: #1db954; */
   background-color: #10875f;
   display: none;
 }
@@ -14,11 +13,19 @@
   margin: auto;
   font-size: 3vw;
   font-weight: bolder;
-
 }
 #lyric-wrap .lyric li {
   color: #000;
 }
 .active{
   color: #fff !important;
+  transition: 2s;
+  -webkit-transition: 2s;
+  -moz-transition: 2s;
+  -ms-transition: 2s;
+  -o-transition: 2s;
 }
+.fade-transition {
+  transition: opacity 0.5s ease;
+}
+

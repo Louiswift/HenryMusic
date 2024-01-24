@@ -145,12 +145,20 @@ function addZero(time) {
  * @param {*} songId 歌曲Id
  */
 async function setSongInfo(songId) {
+    // musicAvailability(songId).then(resp => {
+    //     console.log(resp)
+    //     if(resp.success == true){
+    //     }else{
+    //         alert(resp.message);
+    //     }
+    // })
     const songName = document.querySelector("#songName");
     const singer = document.querySelector("#singerName");
     const pic = document.getElementById("pic");
-    
+
     // 获取歌曲信息
-    getSongDetails(songId).then(song => {
+    await getSongDetails(songId).then(song => {
+        console.log(song)
         pic.src = song.songs[0].al.picUrl;
         songName.innerText = song.songs[0].name;
         title.innerText = song.songs[0].name;
@@ -216,13 +224,15 @@ async function playMain() {
                     liHeight: activeLi.offsetHeight,
                     containerHeight: lyric.offsetHeight / activeLi.offsetHeight * 17
                 };
-                let top = size.liHeight * index + size.liHeight / 2 - size.containerHeight / 2;
-                top = -top;
-                if (top > 0) {
-                    top = 0;
+                if (size.containerHeight !== Infinity) {
+                    let top = size.liHeight * index + size.liHeight / 2 - size.containerHeight / 2;
+                    top = -top;
+                    if (top > 0) {
+                        top = 0;
+                    }
+                    lyric.style.transform = `translate3d(0, ${top}px, 0)`;
+                    lyric.style.transition = `2s`;
                 }
-                lyric.style.transform = `translate3d(0, ${top}px, 0)`;
-                lyric.style.transition = `2s`;
             }
         }
     });

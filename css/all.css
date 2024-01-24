@@ -28,6 +28,7 @@
   color: rgba(255, 255, 255, 0.6);
 }
 .rightTop {
+  display: block;
     width: 100%;
     margin-top: 60px;
 }
