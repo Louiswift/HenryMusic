@@ -13,7 +13,11 @@ const getNewSong = async () => {
  * @returns 对象
  */
 async function getTheDailyRecommendedSongList(){
-  const resp = await fetch(`https://henrywang.xyz/recommend/resource`);
+  const resp = await fetch(`https://henrywang.xyz/recommend/resource`,{
+    headers:{
+      'Authorization': localStorage.getItem('token')
+    }
+  });
   return await resp.json();
 }
 
