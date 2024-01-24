@@ -1,3 +1,5 @@
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 window.onload = () => {
     const playStatus = localStorage.getItem('play');
     if (playStatus === '1') {
