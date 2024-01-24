@@ -17,8 +17,8 @@ console.log(sendCodeBtn);
 btn.addEventListener('click', async () => {
     const resp = await emailLogin("18347156218", "2392228720Wq123");
     // window.location.href = 'index.html';
-    console.log(document.cookie);
     localStorage.setItem('token',resp.token);
+    localStorage.setItem('cookie',resp.cookie);
     console.log(resp)
 });
 

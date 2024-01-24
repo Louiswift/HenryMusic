@@ -17,7 +17,11 @@ async function getTheDailyRecommendedSongList(){
     headers:{
       'Authorization': localStorage.getItem('token'),
       credentials: 'include',
-    }
+    },
+    method: 'post',
+    body: JSON.stringify({
+      cookie: localStorage.getItem('cookie')
+    })
   });
   return await resp.json();
 }
