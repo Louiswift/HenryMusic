@@ -34,9 +34,9 @@ recommendedPlaylists().then(resp => {
   }
 });
 
-// getTheDailyRecommendedSongList().then(resp => {
-//   console.log(resp)
-// });
+getTheDailyRecommendedSongList().then(resp => {
+  console.log(resp)
+});
 
 window.onload = () => {
   const currentPlaySongOrder = localStorage.getItem('currentPlaySongOrder');
