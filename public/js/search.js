@@ -13,7 +13,6 @@ if (!searchValue) {
     });
 }
 
-
 input.addEventListener('keydown', (event) => {
     if (event.key == "Enter") {
         if (input.value !== ' ') {
