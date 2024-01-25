@@ -1,9 +1,9 @@
 .container .homepage-wrapper .homepage-right .nav-wrap {
-  justify-content: start;
+  justify-content: left;
   border-radius: 20px 20px 0 0;
   background-color: #121212;
 }
-.container .homepage-wrapper .homepage-right .nav-wrap div{
+.container .homepage-wrapper .homepage-right .nav-wrap .search-wrap{
   display: flex;
   margin-left: 20px;
 }
@@ -34,4 +34,23 @@
   -moz-border-radius: 0px 25px 25px 0;
   -ms-border-radius: 0px 25px 25px 0;
   -o-border-radius: 0px 25px 25px 0;
+}
+.container .homepage-wrapper .homepage-right .popularSearches-History {
+  display: none;
+  position: absolute;
+  width: 350px;
+  margin-left: 20px;
+  height: 200px;
+  z-index: 2;
+  border-radius: 10px;
+  background-color: rgba(24, 24, 24, 1);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.container .homepage-wrapper .homepage-right .songlist{
+  /* position: relative; */
+  z-index: 1;
 }
