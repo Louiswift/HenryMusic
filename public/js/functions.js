@@ -248,3 +248,16 @@ function updateButton() {
         suspend.style.display = "block";
     }
 }
+
+/**
+ * 生成搜索记录
+ * @param {*} arr 遍历的数组
+ * @param {*} hotHistoryWrap 遍历完添加至该元素
+ */
+function generateSearcHistory(arr,hotHistoryWrap){
+    for (let i = 0; i < arr.length; i++) {
+        let li = document.createElement("li");
+        li.innerText = arr[i].searchWord;
+        hotHistoryWrap.appendChild(li);
+    }
+}
