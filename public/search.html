@@ -93,9 +93,18 @@
                         <input type=" search" class="search" name="" id="search" value="想听什么？"
                             onfocus="if(this.value == '想听什么？'){this.value = ''}"
                             onblur="if(this.value == ''){this.value = '想听什么？'}">
+                            <div class="popularSearches-History">
+                                <div class="searcWrap">
+                                    <div class="search-title">历史搜索：</div>
+                                    <input type="button" class="clearbtn" value="清除">
+                                </div>
+                                <ul class="searchMod" id="searchHistory"></ul>
+                                <div class="search-title">热门搜索：</div>
+                                <ul class="searchMod" id="hotSearch"></ul>
+                            </div>
                     </div>
                 </div>
-                <div class="popularSearches-History"></div>
+           
                 <div class="songlist rightTop">
                     <div class="ListS">
                         <div class="Song-information">
@@ -172,7 +181,7 @@
             <div class="Music-playlist"></div>
         </div>
     </div>
-    
+
     <script src="js/functions.js"></script>
     <script src="js/request.js"></script>
     <script src="js/public.js"></script>
