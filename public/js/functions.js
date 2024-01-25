@@ -119,6 +119,37 @@ function creatList(list) {
 }
 
 /**
+ * DOM生成歌单列表
+ * @param {*} arr 遍历的歌单信息
+ * @param {*} ul 生成至该元素
+ */
+function generatePlaylists(arr,ul){
+    for (let i = 0; i < arr.length; i++) {
+      const newLi = document.createElement("li");
+      const newA = document.createElement("a");
+      const newDivImg = document.createElement("div");
+      const newImg = document.createElement("img");
+      const newDivText = document.createElement("div");
+  
+      newDivImg.classList.add("pic")
+      newImg.classList.add("pic-img")
+      newDivText.classList.add("text-list")
+  
+      let songListId = arr[i].id;
+      newLi.setAttribute("data-song-id", songListId);
+  
+      newImg.src = arr[i].picUrl;
+      newDivText.textContent = arr[i].name;
+  
+      newLi.appendChild(newA);
+      newA.appendChild(newDivImg);
+      newDivImg.appendChild(newImg);
+      newA.appendChild(newDivText);
+      ul.appendChild(newLi);
+    }
+  }
+
+/**
  * 歌曲时长
  * @param {*} time 歌曲信息接口中的dt属性值
  * @returns 
