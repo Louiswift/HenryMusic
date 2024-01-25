@@ -4,23 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Henry Music</title>
+    <title>登录 -HenryMusic</title>
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
     <div class="container">
-        <div class="wrap">
-            <p>
-                <span>手机号：</span><input type="text" id="txtLoginId">
-            </p>
-            <p>
-                <span>验证码：</span><input type="password" id="txtLoginPwd"><span id="sendCode">发送验证码</span>
-            </p>
-            <p style="width: 100%; display: flex; justify-content: center;">
-                <button id="loginBtn">登录</button>
-            </p>
+        <nav class="nav">
+            <div class="logo">
+            </div>
+        </nav>
+        <div class="wrapInfo">
+            <div class="wrap">
+                <h1 class="title">登录到HenryMusic</h1>
+                <ul class="loginMethod">
+                    <li class="email">📫 使用 Email 账户登录</li>
+                    <li class="email">使用 二维码 登录</li>
+                    <li class="email">游客登录</li>
+                </ul>
+                <hr>
+                <ul class="LoginInfo">
+                    <li>电子邮箱</li>
+                    <input type="text" id="txtEmail" placeholder="电子邮箱">
+                    <li>密码</li>
+                    <input type="text" id="txtPassword" placeholder="密码">
+                    <input type="button" value="登录" id="Login">
+                </ul>
+                <hr>
+                <div class="enrollment-Wrap">
+                    <span>没用账户？</span>
+                    <span class="enrollment">注册 HenryMusic</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            本网站已在Vercel部署，并遵守 Vercel 隐私政策和服务条款。
+            <a href="https://henrywang.xyz">https://henrywang.xyz</a>
         </div>
     </div>
 

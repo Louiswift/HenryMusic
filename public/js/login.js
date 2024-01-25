@@ -1,8 +1,7 @@
-const txtloginId = document.querySelector("#txtLoginId");
-const txtloginPwd = document.querySelector("#txtLoginPwd");
-const btn = document.querySelector("#loginBtn");
+const txtEmail = document.querySelector("#txtEmail");
+const txtPassword = document.querySelector("#txtPassword");
+const loginBtn = document.querySelector("#Login");
 const sendCodeBtn = document.querySelector("#sendCode");
-console.log(sendCodeBtn);
 
 
 /*
@@ -14,12 +13,15 @@ console.log(sendCodeBtn);
 /*
     邮箱登录
 */
-btn.addEventListener('click', async () => {
-    const resp = await emailLogin("18347156218", "2392228720Wq123");
-    // window.location.href = 'index.html';
+loginBtn.addEventListener('click', async () => {
+    const email = txtEmail.value;
+    const Password = txtPassword.value;
+    const resp = await emailLogin(email,Password);
     localStorage.setItem('token',resp.token);
     localStorage.setItem('cookie',resp.cookie);
-    console.log(resp)
+    if(resp.code == 200){
+        window.location.href = 'index.html';
+    }
 });
 
 

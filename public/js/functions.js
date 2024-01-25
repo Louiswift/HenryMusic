@@ -94,7 +94,6 @@ function creatList(list) {
         const nameDiv = document.createElement("div");
         const img = document.createElement("img");
         const zj = document.createElement("div");
-        const tjtime = document.createElement("div");
         const playTime = document.createElement("div");
         const xx = document.createElement("div");
         const arName = document.createElement("div");
@@ -103,7 +102,6 @@ function creatList(list) {
         picDiv.classList = "pic";
         nameDiv.id = "information-name";
         zj.id = "information-zj";
-        tjtime.id = "information-time";
         playTime.id = "information-count";
         xx.classList = "xx";
         arName.classList = "ar-name";
@@ -126,7 +124,6 @@ function creatList(list) {
         xx.appendChild(arName);
         div1.appendChild(xx);
         li.appendChild(zj);
-        li.appendChild(tjtime);
         li.appendChild(playTime);
         ul.appendChild(li);
     }

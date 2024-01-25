@@ -87,7 +87,6 @@
 }
 .container .homepage-right .songlist .ListS  #information,
 .container .homepage-right .songlist .ListS  #information-zj,
-.container .homepage-right .songlist .ListS  #information-time,
 .container .homepage-right .songlist .ListS  #information-count{
     display: flex;
     align-items: center;
