@@ -1,0 +1,118 @@
+/* 音乐播放栏 */
+.container .playbar {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;  
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #000;
+}
+
+/* 播放栏左侧 */
+.container .playbar .Music-Information{
+  display: flex;
+  align-items: center;
+  width: 300px;
+  height: 100%;
+  /* background-color: red; */
+}
+.container .playbar .Music-Information .cover{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 100%;
+  padding: 10px;
+  /* background-color: greenyellow; */
+}
+.container .playbar .Music-Information .cover:hover{
+  cursor: pointer;
+}
+.container .playbar .Music-Information .cover img{
+  width: 55px;
+  height: 55px;
+  background-color: rosybrown;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.container .playbar .Music-Information .song-title-singer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+.container .playbar .Music-Information .song-title p{
+  font-size: 14px;
+  color: #fff;
+  font-weight: bold;
+  padding-bottom: 2px;
+}
+.container .playbar .Music-Information .singer p{
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 播放栏中间 */
+.container .playbar .Music-control{
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  position: relative;
+  width: 800px;
+  height: 100%;
+}
+.container .playbar .Music-control audio{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  /* background-color: red; */
+}
+audio::-webkit-media-controls-start-playback-button {
+  display: none;
+}
+
+.container .playbar .Music-control audio::-webkit-media-controls {  
+  overflow: hidden !important  
+}  
+.container .playbar .Music-control .playerbtn{
+  display: flex;
+  justify-content: space-around;
+  width: 200px;
+  height: 50px;
+  /* background-color: blue; */
+}
+.container .playbar .Music-control .playerbtn button{
+  border: 0;
+  background-color: transparent;
+}
+.container .playbar .Music-control .playerbtn #suspend{
+  display: none;
+}
+.container .playbar .Music-control .playerbtn .icon{
+  width: 30px;
+  height: 30px;
+}
+.container .playbar .Music-control .playerbtn button path{
+  transition: 0.2s;
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -ms-transition: 0.2s;
+  -o-transition: 0.2s;
+}
+.container .playbar .Music-control .playerbtn button:hover path{
+  fill: #fff;
+}
+.container .playbar .Music-control .playerbtn button:active path{
+  fill: #b3b3b3;
+}
+
+/* 播放栏右侧 */
+.container .playbar .Music-playlist{
+  width: 400px;
+  height: 100%;
+}

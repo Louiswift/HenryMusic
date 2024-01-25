@@ -1,0 +1,134 @@
+/* 主页左侧 */
+
+.container .homepage-wrapper {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #000;
+}
+.container .homepage-wrapper .homepage-left {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: calc(100vh - 90px);
+}
+/* 上面区域 */
+
+.container .homepage-wrapper .homepage-left .left-above {
+  padding: 5px;
+  height: 110px;
+  background: #121212;
+}
+
+/* 下面区域 */
+.container .homepage-wrapper .homepage-left .left-below {
+  height: calc(100vh - 19px);
+  padding: 5px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  background-color: #121212;
+}
+
+/* 上面区域 && 下面区域共同样式*/
+
+.container .homepage-wrapper .homepage-left .left-above .text-homepage-search,
+.container .homepage-wrapper .homepage-left .left-below .wrap-MusicLibrary,
+.container .homepage-wrapper .homepage-left .left-below .wrap-songsheet{
+  display: flex;
+}
+.container .homepage-wrapper .homepage-left .left-above .text-homepage-search .icon,
+.container .homepage-wrapper .homepage-left .left-below .MusicLibrary .icon{
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 45px;
+  height: 51px;
+}
+.container .homepage-wrapper .homepage-left .left-below .MusicLibrary,
+.container .homepage-wrapper .homepage-left .left-above a{
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  width: 100%;
+}
+.container .homepage-wrapper .homepage-left .left-above a:hover,
+.container .homepage-wrapper .homepage-left .left-above a:hover .text{
+  transition: 0.3s;
+  color: #fff;
+}
+.container .homepage-wrapper .homepage-left .left-below .text{
+  color: #fff;
+}
+
+/* 音乐库 添加歌单按钮*/
+.container .homepage-wrapper .homepage-left .left-below .MusicLibrary .creatPlaylist{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 100%;
+  margin: auto;
+}
+.container .homepage-wrapper .homepage-left .left-below .MusicLibrary .creatPlaylist #addButton{
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+/* 歌单 */
+.container .homepage-wrapper .homepage-left .left-below .wrap-songsheet .songsheet{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.container .homepage-wrapper .homepage-left .left-below .wrap-songsheet .songsheet li{
+  width: 100%;
+  height: 51px;
+  margin-top: 10px;
+  padding: 5px 0;
+}
+.container .homepage-wrapper .homepage-left .left-below .wrap-songsheet .songsheet li a{
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-left: 5px;
+  font-family: "微软雅黑";
+}
+.container .homepage-wrapper .homepage-left .left-below .wrap-songsheet .songsheet li a .icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 100%;
+  border-radius: 5px;
+  background-color: #282828;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.container .homepage-wrapper .homepage-left .left-below .wrap-songsheet .songsheet li a .icon img{
+  width: 30px;
+  height: 30px;
+}
+.container .homepage-wrapper .homepage-left .left-below .wrap-songsheet .songsheet li a .text-songsheet{
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  height: 100%;
+  color: #fff;
+}
+/* 鼠标悬浮样式 */
+.container .homepage-wrapper .homepage-left .left-below .wrap-songsheet .songsheet li:hover{
+  background-color: rgba(255,255, 255, 0.04);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}

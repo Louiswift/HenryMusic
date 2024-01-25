@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Henry Music</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/homepage-left.css">
+    <link rel="stylesheet" href="css/homepage-right.css">
+    <link rel="stylesheet" href="css/playbar.css">
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="css/list.css">
+    <link rel="stylesheet" href="css/lyric.css">
+</head>
+
+<body style="min-width: 1000px;">
+    <div class="container">
+        <div class="homepage-wrapper">
+            <!-- 俩栏布局 左侧 -->
+            <div class="homepage-left">
+                <div class="left-above radius">
+                    <div class="text-homepage-search">
+                        <a href="index.html" class="homepage-text-font-style">
+                            <div class="icon">
+                                <img src="img/主页.svg" alt="homepage-icon" class="img-icon">
+                            </div>
+                            <div class="text" style="color: #fff;">主页</div>
+                        </a>
+                    </div>
+                    <div class="text-homepage-search">
+                        <a href="search.html" class="homepage-text-font-style">
+                            <div class="icon">
+                                <img src="img/搜索.svg" alt="homepage-icon" class="img-icon">
+                            </div>
+                            <div class="text default-color">搜索</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="left-below radius">
+                    <!-- 音乐库 -->
+                    <div class="wrap-MusicLibrary">
+                        <div class="MusicLibrary">
+                            <div class="icon">
+                                <img src="img/库存.svg" alt="homepage-icon" class="img-icon">
+                            </div>
+                            <div class="text homepage-text-font-style">音乐库</div>
+                            <div class="creatPlaylist">
+                                <button id="addButton">
+                                    <img src="img/创建&添加&批量添加.svg" alt="" width="16px" height="16px">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 歌单 -->
+                    <div class="wrap-songsheet">
+                        <ul class="songsheet" id="songsheet">
+                            <li>
+                                <a href="#">
+                                    <div class="icon">
+                                        <img src="img/歌单.svg">
+                                    </div>
+                                    <div class="text-songsheet">
+                                        我的 #1 歌单
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="icon">
+                                        <img src="img/歌单.svg">
+                                    </div>
+                                    <div class="text-songsheet">
+                                        我的 #2 歌单
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 俩栏布局 右侧 -->
+            <div class="homepage-right radius">
+                <div class="nav-wrap">
+                    <div class="nav">探索Premium</div>
+                    <div class="nav" style="background-color: #000; color: #fff;">Vip 用户</div>
+                </div>
+                <div class="songlist rightTop">
+                    <div class="songTitle">
+                        <div class="songlist-pic">
+                            <img src="" alt="">
+                        </div>
+                        <div class="text-listname-song">
+                            <div class="text-songlist">歌单</div>
+                            <div class="song-list-name">Henry Music List</div>
+                        </div>
+                    </div>
+                    <div class="ListS">
+                        <div class="Song-information">
+                            <div class="information">#标题</div>
+                            <div class="information">专辑</div>
+                            <div class="information">添加日期</div>
+                            <div class="information">时长</div>
+                        </div>
+
+                        <ul id="list"></ul>
+                    </div>
+                </div>
+                <ul id="lyric-wrap">
+                    <div class="lyric"></div>
+                </ul>
+            </div>
+        </div>
+       
+        <!-- 播放栏 -->
+        <div class="playbar">
+            <div class="Music-Information">
+                <div class="cover">
+                    <img src="http://s4.music.126.net/style/web2/img/default/default_album.jpg" alt="" id="pic">
+                </div>
+                <div class="song-title-singer">
+                    <div class="song-title" id="songname">
+                        <p id="songName"></p>
+                    </div>
+                    <div class="singer" id="singer">
+                        <p id="singerName"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="Music-control">
+                <div class="playerbtn">
+                    <button id="PreviousSong" style="color: #000;">
+                        <!-- <img src="img/上一首.svg" alt=""> -->
+                        <svg t="1703759124842" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="8726" width="200" height="200">
+                            <path
+                                d="M364.302083 465.602819L687.954365 218.588294c38.416414-29.327534 93.791393-1.929039 93.791392 46.396277v494.029051c0 48.325316-55.374979 75.725617-93.791392 46.398084L364.302083 558.397181c-30.600916-23.357989-30.600916-69.436372 0-92.794362zM238.945254 780.798397V451.684117v-164.562559c0-19.628152-5.904521-60.475733 17.057907-75.841215 25.523642-17.068744 59.747828 1.210165 59.747828 31.919454v493.676839c0 19.628152 5.915358 60.473927-17.047069 75.841215-25.53448 17.068744-59.758666-1.211971-59.758666-31.919454z"
+                                fill="#b3b3b3" p-id="8727"></path>
+                        </svg>
+                    </button>
+                    <button id="play" style="color: #000;">
+                        <svg t="1703760707364" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="4189" width="200" height="200">
+                            <path
+                                d="M128 138.666667c0-47.232 33.322667-66.666667 74.176-43.562667l663.146667 374.954667c40.96 23.168 40.853333 60.8 0 83.882666L202.176 928.896C161.216 952.064 128 932.565333 128 885.333333v-746.666666z"
+                                fill="#b3b3b3" p-id="4190"></path>
+                        </svg>
+                    </button>
+                    <button id="suspend" style="color: #000;">
+                        <svg t="1703761767488" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="5265" width="200" height="200">
+                            <path d="M191.397656 128.194684l191.080943 0 0 768.472256-191.080943 0 0-768.472256Z"
+                                fill="#b3b3b3" p-id="5266"></path>
+                            <path d="M575.874261 128.194684l192.901405 0 0 768.472256-192.901405 0 0-768.472256Z"
+                                fill="#b3b3b3" p-id="5267"></path>
+                        </svg>
+                    </button>
+                    <button id="nextSongs" style="color: #000;">
+                        <!-- <img src="img/下一首.svg" alt=""> -->
+                        <svg t="1703759489834" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="2465" width="200" height="200">
+                            <path
+                                d="M655.706179 465.602819L332.053897 218.588294c-38.414608-29.327534-93.791393-1.929039-93.791392 46.396277v494.029051c0 48.325316 55.376785 75.725617 93.791392 46.398084l323.652282-247.014525c30.602722-23.357989 30.602722-69.436372 0-92.794362zM781.064814 780.798397V451.684117v-164.562559c0-19.628152 5.904521-60.475733-17.057907-75.841215-25.523642-17.068744-59.747828 1.210165-59.747828 31.919454v493.676839c0 19.628152-5.915358 60.473927 17.047069 75.841215 25.532673 17.068744 59.758666-1.211971 59.758666-31.919454z"
+                                fill="#b3b3b3" p-id="2466"></path>
+                        </svg>
+                    </button>
+                </div>
+                <audio id="audio" controls src="" controlsList="nodownload noplaybackrate">
+                    <source type="audio/mpeg">
+                </audio>
+            </div>
+            <div class="Music-playlist"></div>
+        </div>
+    </div>
+
+    <script src="js/functions.js"></script>
+    <script src="js/request.js"></script>
+    <script src="js/public.js"></script>
+    <script src="js/playlistList.js"></script>
+    <script src="js/playbar.js"></script>
+    <script src="js/lyric.js"></script>
+</body>
+
+</html>
