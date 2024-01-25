@@ -1,28 +1,16 @@
 // 生成歌单
 recommendedPlaylists().then(resp => {
-  const ul = document.querySelector("#playlists");
-  ul.addEventListener("click", (event) => {
-    let li = event.target.closest("li");
-    if (!li) return;
-    if (!ul.contains(li)) return;
-    const { songId } = li.dataset;
-    window.location.href = "list.html?id=" + songId;
-  });
+  const ul = document.querySelector("#RecommendedPlaylists");
+  clickOnPlaylist(ul);
   let arr = resp.result;
-  generatePlaylists(arr,ul)
+  generatePlaylists(arr,ul);
 });
 
 getTheDailyRecommendedSongList().then(resp => {
-  const ul = document.querySelector("#playlists");
-  ul.addEventListener("click", (event) => {
-    let li = event.target.closest("li");
-    if (!li) return;
-    if (!ul.contains(li)) return;
-    const { songId } = li.dataset;
-    window.location.href = "list.html?id=" + songId;
-  });
+  const ul = document.querySelector("#DailyRecommendations");
+  clickOnPlaylist(ul);
   let arr = resp.recommend;
-  generatePlaylists(arr,ul)
+  generatePlaylists(arr,ul);
 });
 
 window.onload = () => {

@@ -54,6 +54,20 @@ async function addDblClickEventListener(ul, audio, playMain, list) {
 }
 
 /**
+ * 单击歌单，进入歌单
+ * @param {*} ul 点击的区域
+ */
+function clickOnPlaylist(ul){
+    ul.addEventListener("click", (event) => {
+        let li = event.target.closest("li");
+        if (!li) return;
+        if (!ul.contains(li)) return;
+        const { songId } = li.dataset;
+        window.location.href = "list.html?id=" + songId;
+      });
+}
+
+/**
  * 将接口中获取的歌曲信息，转换为该歌曲的详细信息
  * @param {*} list 存放转换后的歌曲数组
  * @param {*} songs 需要转换的歌曲数组
