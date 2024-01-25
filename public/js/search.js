@@ -10,7 +10,7 @@ if (!searchValue) {
         await improveSongInformation(list,songs)
         creatList(list);
         addDblClickEventListener(ul, audio, playMain, list)    
-    });
+    })
 }
 
 
