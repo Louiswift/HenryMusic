@@ -14,14 +14,10 @@ const getNewSong = async () => {
  */
 async function getTheDailyRecommendedSongList(){
   const resp = await fetch(`https://www.henrywang.xyz/recommend/resource`,{
-    headers:{
-      'Authorization': localStorage.getItem('token'),
-      credentials: 'include',
-    },
-    method: 'post',
-    body: JSON.stringify({
-      cookie: localStorage.getItem('cookie')
-    })
+    // headers:{
+    //   'Authorization': localStorage.getItem('token'),
+    //   credentials: 'include',
+    // },
   });
   return await resp.json();
 }
@@ -99,6 +95,27 @@ async function search(key){
 } 
 
 /**
+ * 搜索建议
+ * @param {*} keywords 关键词
+ * @returns 对象
+ * @param 说明: 调用此接口 , 可获取默认搜索关键词;
+ */
+async function searchSuggestions(keywords){
+  const resp = await fetch(`https://www.henrywang.xyz/search/suggest?keywords=${keywords}`);
+  return await resp.json();
+}
+
+/**
+ * 热门搜索（详细）
+ * @returns 对象
+ * @param 说明 : 调用此接口,可获取热门搜索列表
+ */
+async function hotSearch(){
+  const resp = await fetch(`https://www.henrywang.xyz/search/hot/detail`);
+  return await resp.json();
+} 
+
+/**
  * 获取歌曲详情
  * @param {*} id 歌曲id
  * @returns 
@@ -117,17 +134,6 @@ async function getSongDetails(id){
  */
 async function getsongLyric(id){
   const resp = await fetch(`https://www.henrywang.xyz/lyric?id=${id}`);
-  return await resp.json();
-}
-
-/**
- * 搜索建议
- * @param {*} keywords 关键词
- * @returns 对象
- * @param 说明: 调用此接口 , 可获取默认搜索关键词;
- */
-async function searchSuggestions(keywords){
-  const resp = await fetch(`https://www.henrywang.xyz/search/suggest?keywords=${keywords}`);
   return await resp.json();
 }
 
