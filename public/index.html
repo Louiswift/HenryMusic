@@ -22,7 +22,7 @@
             <div class="homepage-left">
                 <div class="left-above radius">
                     <div class="text-homepage-search">
-                        <a href="index.html" class="homepage-text-font-style">
+                        <a href="" class="homepage-text-font-style">
                             <div class="icon">
                                 <img src="img/主页.svg" alt="homepage-icon" class="img-icon">
                             </div>
@@ -85,18 +85,20 @@
             <!-- 俩栏布局 右侧 -->
             <div class="homepage-right radius">
                 <div class="nav-wrap">
-                    <div class="nav">探索Premium</div>
-                    <div class="nav" style="background-color: #000; color: #fff;">Vip 用户</div>
+                    <img src="" class="headSculpture">
                 </div>
-                <div class="Recommended-playlists rightTop fade-transition" style="display: block;">
-                    <div class="title">歌单推荐</div>
-                    <ul id="RecommendedPlaylists"></ul>
-                    <div class="title">每日推荐</div>
-                    <ul id="DailyRecommendations"></ul>
+                <div class="right-content-wrap">
+                    <div class="Recommended-playlists rightTop fade-transition" style="display: block;">
+                        <div class="title">歌单推荐</div>
+                        <ul id="RecommendedPlaylists"></ul>
+                        <div class="title">每日推荐</div>
+                        <ul id="DailyRecommendations"></ul>
+                    </div>
+                    <ul id="lyric-wrap" class="fade-transition">
+                        <div class="lyric"></div>
+                    </ul>
+                    <div class="userInfoWrap" style="display: none;"></div>
                 </div>
-                <ul id="lyric-wrap" class = "fade-transition">
-                    <div class="lyric"></div>
-                </ul>
             </div>
 
         </div>
@@ -166,6 +168,7 @@
         <script src="js/playbar.js"></script>
         <script src="js/public.js"></script>
         <script src="js/lyric.js"></script>
+        <script src="js/userInfo.js"></script>
 </body>
 
 </html>

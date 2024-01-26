@@ -135,6 +135,8 @@ loginBtn.addEventListener('click', async () => {
     localStorage.setItem('token', resp.token);
     localStorage.setItem('cookie', resp.cookie);
     if (resp.code == 200) {
+        console.log(resp.profile)
+        localStorage.setItem('userInformation',JSON.stringify(resp.profile));
         window.location.href = 'index.html';
     } else {
         alert(resp.msg);
