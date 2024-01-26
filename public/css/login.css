@@ -172,6 +172,15 @@ body{
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
     cursor: pointer;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+}
+
+.container .wrap .LoginInfo .textVerCode:active{
+    border: 2px solid #fff;
 }
 
 .container .wrap .LoginInfo .txtSMSLogin:hover{
@@ -200,11 +209,11 @@ body{
     -o-transition: 0.3s;
 }
 
-.container .wrap .LoginInfo #Login:hover{
+.container .wrap .LoginInfo .Login:hover{
     cursor: pointer;
 }
 
-.container .wrap .LoginInfo #Login:active{
+.container .wrap .LoginInfo .Login:active{
     border: 2px solid #fff;
     background-color: #169c46;
 }
