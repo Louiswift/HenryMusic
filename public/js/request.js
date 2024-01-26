@@ -133,13 +133,23 @@ async function getsongLyric(id){
 }
 
 /**
- * 手机登录
+ * 手机号密码登录
  * @param {*} phone 手机号码
  * @param {*} password 密码
+ * @returns 包含用户信息的对象
+ */
+async function mobilePasswordLogin(phone,password){
+  const resp = await fetch(`https://henrywang.xyz/login/cellphone?phone=${phone}&password=${password}`);
+  return await resp.json();
+}
+
+/**
+ * 手机号验证码登录
+ * @param {*} phone 手机号码
  * @param {*} captcha 验证码
  * @returns 包含用户信息的对象
  */
-async function mobileLogin(phone,captcha){
+async function mobileVerificationCodeLogin(phone,captcha){
   const resp = await fetch(`https://henrywang.xyz/login/cellphone?phone=${phone}&captcha=${captcha}`);
   return await resp.json();
 }
@@ -165,11 +175,6 @@ async function visitorLogin(){
   return await resp.json();
 }
 
-/*
-  功能: 发送验证码
-  参数: phone: 手机号码
-  说明: 调用此接口 ,传入手机号码, 可发送验证码
-*/
 /**
  * 发送验证码
  * @param {*} phone 手机号码

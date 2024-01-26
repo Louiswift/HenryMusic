@@ -90,6 +90,11 @@ body{
 
 .container .wrap .loginMethod li:hover{
     border: 1px solid #fff;
+    cursor: pointer;
+}
+
+.container .wrap .loginMethod li:active{
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .container .wrap hr{
@@ -128,14 +133,61 @@ body{
     color: #878787;
 }
 
-.container .wrap .LoginInfo #Login{
+.container .wrap .LoginInfo .txtSMSLogin{
+    width: 50px;
+    height: 30px;
+    padding: 0;
+    font-size: 10px;
+    cursor: pointer;
+    background-color: #121212;
+    border: 1px solid #878787;
+    border-radius: 10px;
+    color: #878787;
+    transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.container .wrap .LoginInfo #SMS{
+    width: 130px;
+}
+
+.container .wrap .LoginInfo .textVerCode{
+    width: 80px;
+    height: 40px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #000;
+    border-radius: 5px;
+    background-color: #1fdf64;
+    border: 1px solid #878787;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    cursor: pointer;
+}
+
+.container .wrap .LoginInfo .txtSMSLogin:hover{
+    text-decoration: underline;
+}
+
+.container .wrap .LoginInfo .Login{
     width: 200px;
+    height: 30px;
     margin: 30px 0 0 0;
     font-size: 12px;
     font-weight: 600;
     color: #000;
     background-color: #1fdf64;
     border: 0;
+    cursor: pointer;
     border-radius: 30px;
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px;
@@ -180,7 +232,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     font-size: 12px;
     color: #878787;
     bottom: 0px;

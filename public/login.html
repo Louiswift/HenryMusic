@@ -19,17 +19,43 @@
             <div class="wrap">
                 <h1 class="title">登录到HenryMusic</h1>
                 <ul class="loginMethod">
-                    <li class="email">📫 使用 Email 账户登录</li>
-                    <li class="email">使用 二维码 登录</li>
-                    <li class="email">游客登录</li>
+                    <li class="userPhoneNumber" data-type="phoneLogin">使用 手机号 登录</li>
+                    <li class="qrCodeLogin" data-type="qrCodeLogin">使用 二维码 登录</li>
+                    <li class="VisitorLogin" data-type="VisitorLogin">游客登录</li>
                 </ul>
                 <hr>
-                <ul class="LoginInfo">
+                <!-- 邮箱登录 -->
+                <ul class="LoginInfo" id="eamilLogin">
                     <li>电子邮箱</li>
                     <input type="text" id="txtEmail" placeholder="电子邮箱">
                     <li>密码</li>
-                    <input type="text" id="txtPassword" placeholder="密码">
-                    <input type="button" value="登录" id="Login">
+                    <input type="password" id="emailLogPassword" placeholder="密码">
+                    <input type="button" value="登录" class="Login" id="Login">
+                </ul>
+                <!-- 手机登录 -->
+                <ul class="LoginInfo" id="phoneLog" style="display: none;">
+                    <li>手机号</li>
+                    <input type="text" id="phoneNumber" placeholder="手机号">
+                    <div class="phonepwdWrap">
+                        <li>密码</li>
+                        <input type="password" id="phonePassword" placeholder="密码">
+                    </div>
+                    <div class="SMSLoginWrap" style="display: none;">
+                        <li>验证码</li>
+                        <input type="password" id="SMS" placeholder="请输入短信验证码">
+                        <button class="textVerCode" id="obtainVerificationCode">获取验证码</button>
+                    </div>
+                    <div class="SMSLoginBtnWrap">
+                        <li style="margin-bottom: 0;">
+                            <button class="txtSMSLogin" id="SMSLogin">短信登录</button>
+                    </div>
+                    <div class="pwdLoginBtnWrap" style="display: none;">
+                        <li style="margin-bottom: 0;">
+                            <button class="txtSMSLogin" id="pwdLogin">密码登录</button>
+                    </div>
+                    </li>
+                    <button class="Login" id="phoneLogin">登录</button>
+                    <button class="Login" id="codeLoginBtn" style="display: none;">登录</button>
                 </ul>
                 <hr>
                 <div class="enrollment-Wrap">
@@ -44,6 +70,7 @@
         </div>
     </div>
 
+    <script src="js/functions.js"></script>
     <script src="js/request.js"></script>
     <script src="js/login.js"></script>
 </body>
