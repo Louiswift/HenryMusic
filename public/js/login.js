@@ -67,7 +67,7 @@ if (method == 'phoneLogin') {
             localStorage.setItem('token', resp.token);
             localStorage.setItem('cookie', resp.cookie);
             if (resp.code == 200) {
-                window.location.href = 'index.html';
+                window.location.href = 'https://henrymusic.xyz/';
             } else {
                 alert(resp.msg);
             }
@@ -84,7 +84,7 @@ if (method == 'phoneLogin') {
             localStorage.setItem('token', resp.token);
             localStorage.setItem('cookie', resp.cookie);
             if (resp.code == 200) {
-                window.location.href = 'index.html';
+                window.location.href = 'https://henrymusic.xyz/';
             } else {
                 alert(resp.msg);
             }
@@ -117,7 +117,7 @@ if (method == 'phoneLogin') {
         console.log(resp)
         localStorage.setItem("loginMethod", "游客")
         localStorage.setItem("userId", resp.userId)
-        window.location.href = "index.html"
+        window.location.href = "https://henrymusic.xyz/"
     });
 }
 
@@ -137,7 +137,7 @@ loginBtn.addEventListener('click', async () => {
     if (resp.code == 200) {
         console.log(resp.profile)
         localStorage.setItem('userInformation',JSON.stringify(resp.profile));
-        window.location.href = 'index.html';
+        window.location.href = 'https://henrymusic.xyz/';
     } else {
         alert(resp.msg);
     }
