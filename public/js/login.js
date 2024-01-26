@@ -16,7 +16,20 @@ const sendCodeBtn = document.querySelector("#sendCode");
 loginBtn.addEventListener('click', async () => {
     const email = txtEmail.value;
     const Password = txtPassword.value;
-    const resp = await emailLogin(JSON.stringify(email),JSON.stringify(Password));
+    const resp = await emailLogin(JSON.stringify(email), JSON.stringify(Password));
+    localStorage.setItem('token', resp.token);
+    localStorage.setItem('cookie', resp.cookie);
+    if (resp.code == 200) {
+        window.location.href = 'index.html';
+    } else {
+        alert(resp.msg);
+    }
+});
+
+loginBtn.addEventListener('click', async () => {
+    const email = txtEmail.value;
+    const Password = txtPassword.value;
+    const resp = await emailLogin(email,Password);
     localStorage.setItem('token',resp.token);
     localStorage.setItem('cookie',resp.cookie);
     if(resp.code == 200){
