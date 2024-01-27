@@ -28,8 +28,8 @@ async function addDblClickEventListener(ul, audio, playMain, list) {
         let li = event.target.closest("li");
         if (!li) return;
         if (!ul.contains(li)) return;
-        if(event.target){
-        audio.currentTime = 0;  
+        if (event.target) {
+            audio.currentTime = 0;
         }
         let playList = JSON.parse(localStorage.getItem('playList'));
         localStorage.setItem('playingList', JSON.stringify(playList));
@@ -57,14 +57,14 @@ async function addDblClickEventListener(ul, audio, playMain, list) {
  * 单击歌单，进入歌单
  * @param {*} ul 点击的区域
  */
-function clickOnPlaylist(ul){
+function clickOnPlaylist(ul) {
     ul.addEventListener("click", (event) => {
         let li = event.target.closest("li");
         if (!li) return;
         if (!ul.contains(li)) return;
         const { songId } = li.dataset;
         window.location.href = "list.html?id=" + songId;
-      });
+    });
 }
 
 /**
@@ -96,7 +96,7 @@ function creatList(list) {
         const zj = document.createElement("div");
         const playTime = document.createElement("div");
         const xx = document.createElement("div");
-        const arName = document.createElement("div");
+        const singer = document.createElement("div");
 
         div1.id = "information";
         picDiv.classList = "pic";
@@ -104,12 +104,20 @@ function creatList(list) {
         zj.id = "information-zj";
         playTime.id = "information-count";
         xx.classList = "xx";
-        arName.classList = "ar-name";
+        singer.classList = "ar-name";
 
         nameDiv.innerText = list[i].name;
         img.src = list[i].al.picUrl;
         zj.innerText = list[i].al.name;
-        arName.innerText = list[i].ar[0].name;
+
+        let singerNames = '';
+        for (let j = 0; j < list[i].ar.length; j++) {
+            singerNames += list[i].ar[j].name;
+            if (j < list[i].ar.length - 1) {
+                singerNames += ' / ';
+            }
+        }
+        singer.innerHTML = singerNames;
 
         const { h, m, s } = duration(list[i].dt);
         playTime.innerText = h ? `${h}:${m}:${s}` : `${m}:${s}`
@@ -121,7 +129,7 @@ function creatList(list) {
         div1.appendChild(picDiv);
         picDiv.appendChild(img);
         xx.appendChild(nameDiv);
-        xx.appendChild(arName);
+        xx.appendChild(singer);
         div1.appendChild(xx);
         li.appendChild(zj);
         li.appendChild(playTime);
@@ -134,31 +142,31 @@ function creatList(list) {
  * @param {*} arr 遍历的歌单信息
  * @param {*} ul 生成至该元素
  */
-function generatePlaylists(arr,ul){
+function generatePlaylists(arr, ul) {
     for (let i = 0; i < arr.length; i++) {
-      const newLi = document.createElement("li");
-      const newA = document.createElement("a");
-      const newDivImg = document.createElement("div");
-      const newImg = document.createElement("img");
-      const newDivText = document.createElement("div");
-  
-      newDivImg.classList.add("pic")
-      newImg.classList.add("pic-img")
-      newDivText.classList.add("text-list")
-  
-      let songListId = arr[i].id;
-      newLi.setAttribute("data-song-id", songListId);
-  
-      newImg.src = arr[i].picUrl;
-      newDivText.textContent = arr[i].name;
-  
-      newLi.appendChild(newA);
-      newA.appendChild(newDivImg);
-      newDivImg.appendChild(newImg);
-      newA.appendChild(newDivText);
-      ul.appendChild(newLi);
+        const newLi = document.createElement("li");
+        const newA = document.createElement("a");
+        const newDivImg = document.createElement("div");
+        const newImg = document.createElement("img");
+        const newDivText = document.createElement("div");
+
+        newDivImg.classList.add("pic")
+        newImg.classList.add("pic-img")
+        newDivText.classList.add("text-list")
+
+        let songListId = arr[i].id;
+        newLi.setAttribute("data-song-id", songListId);
+
+        newImg.src = arr[i].picUrl;
+        newDivText.textContent = arr[i].name;
+
+        newLi.appendChild(newA);
+        newA.appendChild(newDivImg);
+        newDivImg.appendChild(newImg);
+        newA.appendChild(newDivText);
+        ul.appendChild(newLi);
     }
-  }
+}
 
 /**
  * 歌曲时长
@@ -198,9 +206,15 @@ async function setSongInfo(songId) {
         pic.src = song.songs[0].al.picUrl;
         songName.innerText = song.songs[0].name;
         title.innerText = song.songs[0].name;
+
+        let singerNames = '';
         for (let i = 0; i < song.songs[0].ar.length; i++) {
-            singer.innerText = song.songs[0].ar[i].name;
+            singerNames += song.songs[0].ar[i].name;
+            if (i < song.songs[0].ar.length - 1) {
+                singerNames += ' / ';
+            }
         }
+        singer.innerHTML = singerNames;
     });
 
     // 获取歌曲URL
@@ -296,7 +310,7 @@ function updateButton() {
  * @param {*} arr 遍历的数组
  * @param {*} hotHistoryWrap 遍历完添加至该元素
  */
-function generateSearcHistory(arr,hotHistoryWrap){
+function generateSearcHistory(arr, hotHistoryWrap) {
     for (let i = 0; i < arr.length; i++) {
         let li = document.createElement("li");
         li.innerText = arr[i].searchWord;
