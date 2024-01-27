@@ -3,7 +3,6 @@ const nav = document.querySelector(".nav-wrap");
 const lyricWrap = document.querySelector("#lyric-wrap");
 
 pic.addEventListener('click', () => {
-  console.log(rightTop.style.display == "block")
     if (rightTop.style.display == "block") {
         nav.style.display = "none";
         rightTop.style.display = "none";
