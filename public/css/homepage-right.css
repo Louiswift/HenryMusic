@@ -13,6 +13,8 @@
 .container .homepage-wrapper .homepage-right::-webkit-scrollbar{
   display: none;
 }
+
+/* 导航栏 */
 .container .homepage-wrapper .homepage-right .nav-wrap{
   position: sticky;
   top: 0;
@@ -40,14 +42,235 @@
   -moz-border-radius: 50px;
   -ms-border-radius: 50px;
   -o-border-radius: 50px;
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  -o-transition: all 1s ease;
 }
 
 .container .homepage-right .right-content-wrap{
   display: flex;
 }
 
+/* 用户详细信息 */
 .container .homepage-right .userInfoWrap{
-  position: relative;
+  position: sticky;
+  top: 60px;
+  right: 0;
   width: 600px;
-  height: 500px;
+  height: calc(100vh - 190px);
+  border-radius: 30px;
+  padding: 20px;
+  background-color: #191919;
+  transition: all 1s ease;
+
+}
+
+.container .homepage-right .userInfoWrap .user{
+  display: flex;
+  padding: 0 0 30px 0;
+}
+
+.container .homepage-right .userInfoWrap .user .userInfoHeadSculpture{
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+}
+
+.container .homepage-right .userInfoWrap .user .usersecond{
+  width: 100%;
+  margin-left: 20px;
+}
+
+.container .homepage-right .userInfoWrap .user .usersecond .nameLevel{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 30px;
+}
+
+.container .homepage-right .userInfoWrap .user .usersecond .nameLevel .username {
+  font-size: 16px;
+}
+
+.container .homepage-right .userInfoWrap .user .usersecond .nameLevel .vip{
+  width: 50px;
+  height: 30px;
+  margin-top: 3px; 
+}
+
+.container .homepage-right .userInfoWrap .user .usersecond .nameLevel .userlevel{
+  width: 40px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  padding: 0 2px;
+  border-radius: 30px;
+  border: 1px solid #fff;
+  font-size: 12px;
+}
+
+.container .homepage-right .userInfoWrap .user .usersecond .nameLevel .EditProfile{
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding: 0 5px;
+  height: 240x;
+  line-height: 24px;
+  transition: 1s;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  -o-transition: 1s;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.container .homepage-right .userInfoWrap .user .usersecond .nameLevel .EditProfile:hover{
+  cursor: pointer;
+}
+.container .homepage-right .userInfoWrap .user .usersecond .nameLevel .EditProfile:active{
+  /* background-color: ; */
+}
+
+.container .homepage-right .userInfoWrap .user .usersecond hr {
+  border-width: 1px 0 0 0;
+  margin: 15px 0 10px 0;
+}
+
+.container .homepage-right .userInfoWrap .user .usersecond .RegionalageWrap{
+  display: flex;
+  font-size: 12px;
+  /* background-color: red; */
+}
+
+.container .homepage-right .userInfoWrap .user .usersecond .RegionalageWrap span{
+  margin-right: 25px;
+}
+
+/* 听歌排行 */
+.container .homepage-right .userInfoWrap .ListeningchartWrap{
+  width: 100%;
+  padding: 0 0 20px 0;
+}
+
+.container .homepage-right .userInfoWrap .ListeningchartWrap .ListeningchartWrapFlex{
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0 10px 0;
+}
+
+.container .homepage-right .userInfoWrap .ListeningchartWrap .ListeningchartWrapFlex .ListeningchartTitle{
+  font-weight: 400;
+}
+
+.container .homepage-right .userInfoWrap .ListeningchartWrap .ListeningchartWrapFlex .ListeningcharCount{
+  font-size: 12px;
+}
+
+.container .homepage-right .userInfoWrap .ListeningchartWrap .ListeningchartWrapFlex .ListeningchartLastWeek,
+.container .homepage-right .userInfoWrap .ListeningchartWrap .ListeningchartWrapFlex .ListeningchartAllevents{
+  font-size: 12px;
+}
+
+.container .homepage-right .userInfoWrap .ListeningchartWrap .Listeningchart{
+  width: 100%;
+  border: 1px solid #878787;
+  border-top: 2px solid #1fdf64;
+}
+
+.container .homepage-right .userInfoWrap .ListeningchartWrap .Listeningchart li{
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 15px;
+  /* background-color: red; */
+}
+
+.container .homepage-right .userInfoWrap .ListeningchartWrap .Listeningchart li:nth-child(even){
+ background-color: rgba(255, 255, 255, 0.05); 
+}
+
+.container .homepage-right .userInfoWrap .ListeningchartWrap .Listeningchart li:hover{
+ background-color: rgba(255, 255, 255, 0.15); 
+}
+
+.container .homepage-right .userInfoWrap .ListeningchartWrap .Listeningchart li .ListeningchartOrder{
+  font-size: 14px;
+  padding-right: 10px;
+}
+
+.container .homepage-right .userInfoWrap .ListeningchartWrap .Listeningchart li button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #1fdf64;
+  border-radius: 50%;
+  background-color: transparent;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.container .homepage-right .userInfoWrap .ListeningchartWrap .Listeningchart li .ListeningchartSongname{
+  font-size: 12px;
+  font-weight: bold;
+  padding: 0 5px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.container .homepage-right .userInfoWrap .ListeningchartWrap .Listeningchart li .ListeningchartSongname:hover,
+.container .homepage-right .userInfoWrap .ListeningchartWrap .Listeningchart li .ListeningchartArName:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.container .homepage-right .userInfoWrap .ListeningchartWrap .Listeningchart li .ListeningchartArName{
+  font-size: 11px;
+  padding: 0 5px;
+}
+
+.container .homepage-right .userInfoWrap .ListeningchartWrap .Listeningchart li span{
+  font-size: 11px;
+}
+
+/* 我创建的歌单 */
+.container .homepage-right .userInfoWrap .playlistIcreated{
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: flex-start; */
+  width: 100%;
+  padding: 10px 0;
+  border-top: 2px solid #1fdf64;
+}
+
+.container .homepage-right .userInfoWrap .playlistIcreated li {
+  margin: 5px 1px;
+}
+
+.container .homepage-right .userInfoWrap .playlistIcreated li:hover{
+  cursor: pointer;
+}
+
+.container .homepage-right .userInfoWrap .playlistIcreated li a{
+  display: block;
+}
+
+.container .homepage-right .userInfoWrap .playlistIcreated li a img{
+  width: 100px;
+  height: 100px;
+}
+
+.container .homepage-right .userInfoWrap .playlistIcreated li a .txtplaylistName{
+  width: 100px;
+  height: 16px;
+  padding: 3px 2px;
+  font-size: 12px;
 }

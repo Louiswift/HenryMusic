@@ -1,28 +1,29 @@
 .container .homepage-right .Recommended-playlists .title{
+    display: inline-block;
     font-size: 25px;
     font-weight: bold;
     color: #fff;
-    padding: 20px;
+    padding: 30px 30px 0;
 }
 .container .homepage-right .Recommended-playlists ul{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+    gap: 30px;
+    padding: 30px;
 }
 .container .homepage-right .Recommended-playlists ul li{
-    width: 160px;
-    height: 220px;
-    margin: 8.5px;
-    border-radius: 10px;
-    background: linear-gradient(to bottom,#181818, #141414, #131313, #121212, #181818, #181818);
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
+   border-radius: 10px;
+   background-color: #161616;
+   overflow: hidden;
+   transition: 0.7s;
 }
+
+.container .homepage-right .Recommended-playlists ul li:hover{
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
 .container .homepage-right .Recommended-playlists ul li a{
     display: block;
-    width: 100%;
     height: 100%;
 }
 .container .homepage-right .Recommended-playlists ul li a:hover{
@@ -32,20 +33,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 150px;
+    padding: 10px;
 }
 .container .homepage-right .Recommended-playlists ul li a .pic img {
-    width: 130px;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
+    width:8em;
+    border-radius: 5px;
 }
 .container .homepage-right .Recommended-playlists ul li a .text-list{
     display: flex;
-    height: 70px;
-    font-size: 14px;
-    padding: 5px 10px;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    font-size: 13px;
+    padding: 0 10px;
 }
