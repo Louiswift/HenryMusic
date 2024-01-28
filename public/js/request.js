@@ -31,7 +31,7 @@ async function getDailySongRecommendations(){
  * @returns 对象
  */
 const recommendedPlaylists = async () => {
-  const resp = await fetch('https://henrymusic.xyz/personalized?limit=9');
+  const resp = await fetch('https://henrymusic.xyz/personalized?limit=36');
   return await resp.json();
 }
 
@@ -195,5 +195,43 @@ async function sendVerificationCode(phone){
 */
 async function checkCode(phone,captcha){
   const resp = await fetch(`https://henrymusic.xyz/captcha/verify?phone=${phone}&captcha=${captcha}`);
+  return await resp.json();
+}
+
+/**
+ * 登录状态
+ * @param 说明 : 调用此接口,可获取登录状态
+*/
+async function loginStatus(){
+  const resp = await fetch(`https://henrymusic.xyz/login/status`);
+  return await resp.json();
+}
+
+/**
+ * 获取用户详细
+ * @param {*} id 用户id
+ * @param 说明 : 登录后调用此接口 , 传入用户 id, 可以获取用户详情
+*/
+async function getUserDetails(id){
+  const resp = await fetch(`https://henrymusic.xyz/user/detail?uid=${id}`);
+  return await resp.json();
+}
+
+/**
+ * 获取用户信息 , 歌单，收藏，mv, dj 数量
+ * @param 说明 : 登录后调用此接口 , 可以获取用户信息
+*/
+async function getUserInfoAndPlaylist(){
+  const resp = await fetch(`https://henrymusic.xyz/user/subcount`);
+  return await resp.json();
+}
+
+/**
+ * 获取用户歌单
+ * @param {*} id 用户id
+ * @param 说明 : 登录后调用此接口 , 传入用户 id, 可以获取用户歌单
+*/
+async function getUserPlaylists(id){
+  const resp = await fetch(`https://henrymusic.xyz/user/playlist?uid=${id}`);
   return await resp.json();
 }
