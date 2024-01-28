@@ -19,7 +19,7 @@ loginStatus().then(async resp => {
     if (resp.data.account) {
         headSculpture.src = resp.data.profile.avatarUrl;
         userInfoHeadSculpture.src = resp.data.profile.avatarUrl;
-        username.innerText = resp.data.profile.name;
+        username.innerText = resp.data.profile.nickname;
 
     } else {
         headSculpture.src = 'https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2023%2F0406%2F5da2c82ej00rsof5j0038d200et00djg005i0050.jpg&thumbnail=660x2147483647&quality=80&type=jpg';
