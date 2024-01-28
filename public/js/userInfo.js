@@ -17,8 +17,8 @@ const username = document.querySelector('.username');
 
 loginStatus().then(async resp => {
     if (resp.data.account) {
-        headSculpture.src = resp.profile.avatarUrl;
-        userInfoHeadSculpture.src = resp.profile.avatarUrl;
+        headSculpture.src = resp.data.profile.avatarUrl;
+        userInfoHeadSculpture.src = resp.data.profile.avatarUrl;
         username.innerText = resp.data.profile.name;
 
     } else {
