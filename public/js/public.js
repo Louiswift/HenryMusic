@@ -1,6 +1,3 @@
-// 强制页面从服务器重新加载
-window.location.reload(true);
-
 window.onload = () => {
     const playStatus = localStorage.getItem('play');
     if (playStatus === '1') {
