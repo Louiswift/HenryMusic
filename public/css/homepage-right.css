@@ -49,6 +49,10 @@
   -o-transition: all 1s ease;
 }
 
+.container .homepage-wrapper .homepage-right .nav-wrap .headSculpture:hover{
+  cursor: pointer;
+}
+
 .container .homepage-right .right-content-wrap{
   display: flex;
 }

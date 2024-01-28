@@ -10,7 +10,7 @@ getTheDailyRecommendedSongList().then(resp => {
   const ul = document.querySelector("#DailyRecommendations");
   clickOnPlaylist(ul);
   let arr = resp.recommend;
-  generatePlaylists(arr,ul);
+  generatePlaylists(arr, ul);
 });
 
 window.onload = () => {
