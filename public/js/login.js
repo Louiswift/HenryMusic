@@ -117,7 +117,7 @@ if (method == 'phoneLogin') {
         console.log(resp)
         localStorage.setItem("loginMethod", "游客")
         localStorage.setItem("userId", resp.userId)
-        window.location.href = "https://henrymusic.xyz/"
+        window.location.href = "index.html"
     });
 }
 
