@@ -36,7 +36,7 @@
   -o-border-radius: 0px 25px 25px 0;
 }
 .container .homepage-wrapper .homepage-right .popularSearches-History {
-  /* display: none; */
+  display: none;
   position: fixed;
   top: 60px;
   width: 330px;

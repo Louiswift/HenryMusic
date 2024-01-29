@@ -37,11 +37,20 @@ if (searchValue !== null) {
 }
 
 // 鼠标聚焦搜索框
-input.addEventListener('focus', () => {
+// input.addEventListener('focus', () => {
+//     popularSearches.style.display = 'block';
+// });
+// input.addEventListener('blur', () => {
+//     popularSearches.style.display = 'none';
+// });
+input.addEventListener('click', function() {
     popularSearches.style.display = 'block';
 });
-input.addEventListener('blur', () => {
-    popularSearches.style.display = 'none';
+
+document.addEventListener('click', function(event) {
+    if (event.target !== input && event.target !== popularSearches) {
+        popularSearches.style.display = 'none';
+    }
 });
 
 // 热门搜索
