@@ -138,7 +138,9 @@ loginBtn.addEventListener('click', async () => {
         console.log(resp.profile)
         localStorage.setItem("loginMethod", "邮箱登录")
         localStorage.setItem("userId", resp.profile.userId);
-        window.location.href = 'https://henrymusic.xyz/';
+        setTimeout(function() {
+            window.location.href = 'https://henrymusic.xyz/';
+          }, 500);
     } else {
         alert(resp.msg);
     }
