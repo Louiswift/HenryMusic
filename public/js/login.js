@@ -60,7 +60,7 @@ if (method == 'phoneLogin') {
 
     // 手机号密码登录
     phoneLoginBtn.addEventListener('click', async () => {
-    const phone = phoneNumber.value;
+        const phone = phoneNumber.value;
         const password = phonePassword.value;
         mobilePasswordLogin(phone, password).then(resp => {
             console.log(resp)
@@ -73,12 +73,12 @@ if (method == 'phoneLogin') {
             }
         });
     });
-    
+
     // 手机号短信验证登录
     codeLoginBtn.addEventListener('click', async () => {
-    const phone = phoneNumber.value;
+        const phone = phoneNumber.value;
         const code = SMS.value;
-        
+
         await mobileVerificationCodeLogin(phone, code).then(resp => {
             console.log(resp)
             localStorage.setItem('token', resp.token);
@@ -89,23 +89,23 @@ if (method == 'phoneLogin') {
                 alert(resp.msg);
             }
         });
-        await checkCode(phone,code).then(resp => {
+        await checkCode(phone, code).then(resp => {
             console.log(resp)
         });
     });
-    
-     // 点击该按钮获取验证码
-     obtainVerificationCode.addEventListener('click', async () => {
-    const phone = phoneNumber.value;
+
+    // 点击该按钮获取验证码
+    obtainVerificationCode.addEventListener('click', async () => {
+        const phone = phoneNumber.value;
         await sendVerificationCode(phone).then(resp => {
             console.log(resp)
-            if(resp.code == 200){
+            if (resp.code == 200) {
                 console.log(`验证码已发送至：${phone}`);
-            }else{
+            } else {
                 console.log(resp.message) || console.log(resp.code);
             }
         });
-     });
+    });
 
 } else if (method == 'qrCodeLogin') {
     // 登陆方式为二维码登录
@@ -138,9 +138,8 @@ loginBtn.addEventListener('click', async () => {
         console.log(resp.profile)
         localStorage.setItem("loginMethod", "邮箱登录")
         localStorage.setItem("userId", resp.profile.userId);
-        setTimeout(function() {
-            window.location.href = 'https://henrymusic.xyz/';
-          }, 500);
+        getUserInfo();
+        window.location.href = 'https://henrymusic.xyz/';
     } else {
         alert(resp.msg);
     }
