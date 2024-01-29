@@ -5,21 +5,21 @@ const userInfoWrap = document.querySelector('.userInfoWrap');
 // 获取用户详细信息中的用户头像dom
 const userInfoHeadSculpture = document.querySelector('.userInfoHeadSculpture');
 const username = document.querySelector('.username');
-
+// 点击头像显示用户信息下拉列表
+headSculpture.addEventListener('click', () => {
+    if (userInfoWrap.style.display == 'none') {
+        userInfoWrap.style.display = 'block'
+    } else {
+        userInfoWrap.style.display = 'none';
+    }
+});
 loginStatus().then(async resp => {
     if (resp.data.account) {
         headSculpture.src = resp.data.profile.avatarUrl;
         userInfoHeadSculpture.src = resp.data.profile.avatarUrl;
         username.innerText = resp.data.profile.nickname;
 
-        // 点击头像显示用户信息下拉列表
-        headSculpture.addEventListener('click', () => {
-            if (userInfoWrap.style.display == 'none') {
-                userInfoWrap.style.display = 'block'
-            } else {
-                userInfoWrap.style.display = 'none';
-            }
-        });
+        
 
         await getUserDetails(resp.data.account.id).then(resp => {
             console.log(resp)
@@ -64,6 +64,6 @@ loginStatus().then(async resp => {
         })
         // userInfoHeadSculpture.src = 'https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2023%2F0406%2F5da2c82ej00rsof5j0038d200et00djg005i0050.jpg&thumbnail=660x2147483647&quality=80&type=jpg';
         // username.innerText = "游客";
-        userInfoWrap.style.display = 'none';
+        // userInfoWrap.style.display = 'none';
     }
 })
