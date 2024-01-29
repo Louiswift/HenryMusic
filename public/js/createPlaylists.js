@@ -6,12 +6,16 @@ recommendedPlaylists().then(resp => {
   generatePlaylists(arr,ul);
 });
 
-getTheDailyRecommendedSongList().then(resp => {
-  const ul = document.querySelector("#DailyRecommendations");
-  clickOnPlaylist(ul);
-  let arr = resp.recommend;
-  generatePlaylists(arr, ul);
-});
+loginStatus().then(async resp => {
+  if (resp.data.account) {
+    getTheDailyRecommendedSongList().then(async resp => {
+      const ul = document.querySelector("#DailyRecommendations");
+      clickOnPlaylist(ul);
+      let arr = resp.recommend;
+      generatePlaylists(arr, ul);
+    });
+  }
+})
 
 window.onload = () => {
   const currentPlaySongOrder = localStorage.getItem('currentPlaySongOrder');

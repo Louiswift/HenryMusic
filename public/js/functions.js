@@ -20,7 +20,7 @@ function getParameterByName(name) {
  * @param {固定参数} playMain 播放函数
  * @param {*} list 歌曲列表
  */
-async function addDblClickEventListener(ul, audio, playMain, list) {
+async function addDblClickEventListener(ul, audio , list) {
     // 双击li播放歌曲
     ul.addEventListener("dblclick", async (event) => {
         localStorage.setItem('playTime', '0');
@@ -289,7 +289,21 @@ async function playMain() {
     if (playingSongId !== Number(songId)) {
         await setSongInfo(playList[order].id);
     }
-    audio.play();
+
+    let playPromise = audio.play();
+
+    if (playPromise !== undefined) {
+        playPromise.then(_ => {
+          // Automatic playback started!
+          // Show playing UI.
+          // We can now safely pause video...
+          video.pause();
+        })
+        .catch(error => {
+          // Auto-play was prevented
+          // Show paused UI.
+        });
+      }
 }
 
 /**

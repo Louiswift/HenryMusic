@@ -15,5 +15,5 @@ getAllsongsOnThePlaylist(dataId).then(resp => {
     const ul = document.querySelector("#list");
     let songs = resp.songs;
     creatList(songs);
-    addDblClickEventListener(ul, audio, playMain, songs);
+    addDblClickEventListener(ul, audio, songs);
 })
