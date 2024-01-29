@@ -14,6 +14,7 @@ getPlaylistsDetail(dataId).then(resp => {
 getAllsongsOnThePlaylist(dataId).then(resp => {
     const ul = document.querySelector("#list");
     let songs = resp.songs;
+    // localStorage.setItem('playList',resp.songs)
     creatList(songs);
     addDblClickEventListener(ul, audio, songs);
 })

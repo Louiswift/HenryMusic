@@ -9,7 +9,8 @@ if (!searchValue) {
         let songs = resp.result;
         await improveSongInformation(list, songs)
         creatList(list);
-        await addDblClickEventListener(ul, audio, playMain, list)
+        await addDblClickEventListener(ul, audio , list)
+        console.log(list)
     });
 }
 
@@ -31,7 +32,7 @@ if (searchValue !== null) {
         const songs = resp.result.songs;
         await improveSongInformation(list, songs)
         creatList(list);
-        await addDblClickEventListener(ul, audio, playMain, list)
+        await addDblClickEventListener(ul, audio , list)
     });
 }
 
