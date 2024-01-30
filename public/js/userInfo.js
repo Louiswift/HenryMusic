@@ -25,7 +25,7 @@ if (user.code === 200) {
     userInfoHeadSculpture.src = user.profile.avatarUrl;
     username.innerText = user.profile.nickname;
 
-    getUserDetails(resp.data.account.id).then(resp => {
+    getUserDetails(user.account.id).then(resp => {
         console.log(resp)
     });
 
