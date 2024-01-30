@@ -3,7 +3,7 @@
 }
 #lyric-wrap {
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 150px);
   overflow-y: scroll;
   text-align: center;
   background-color: #10875f;
