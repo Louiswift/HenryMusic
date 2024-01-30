@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 3;
   border-radius: 20px 20px 0 0;
   background-color: #121212;
 }
@@ -40,6 +41,7 @@
 .container .homepage-wrapper .homepage-right .popularSearches-History {
   display: none;
   position: fixed;
+  /* z-index: 100; */
   top: 60px;
   width: 330px;
   z-index: 2;
