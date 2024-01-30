@@ -59,16 +59,34 @@
 
 /* 用户详细信息 */
 .container .homepage-right .userInfoWrap{
-  position: sticky;
-  top: 60px;
-  right: 0;
+  position: fixed;
+  top: 65px;
+  transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: translateX(440px);
   overflow-y: scroll;
-  width: 600px;
+  right: 5px;
+  width: 400px;
   height: calc(100vh - 190px);
   border-radius: 30px;
   padding: 20px;
   background-color: #191919;
-  transition: all 1s ease;
+  transition: transform 1s ease;
+  -webkit-transform: translateX(440px);
+  -moz-transform: translateX(440px);
+  -ms-transform: translateX(440px);
+  -o-transform: translateX(440px);
+  -webkit-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.container .homepage-right #show{
+  transform: translatex(0);
+  -webkit-transform: translatex(0);
+  -moz-transform: translatex(0);
+  -ms-transform: translatex(0);
+  -o-transform: translatex(0);
 }
 
 .container .homepage-wrapper .homepage-right .userInfoWrap::-webkit-scrollbar{

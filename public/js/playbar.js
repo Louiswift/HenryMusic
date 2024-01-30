@@ -98,15 +98,16 @@ MusicPlaylist.addEventListener('click', (event) => {
         closeLyrics.style.display = 'none';
         openLyrics.style.display = 'block';
     } else if (button == openPlaylist) {
-        userInfoWrap.style.display = 'block';
+        userInfoWrap.id = 'show';
+        userInfo.style.display = 'none';
         openPlaylist.style.display = 'none';
         closePlaylist.style.display = 'block';
-        userInfo.style.display = 'none';
         playingListWrap.style.display = 'block';
         playingList();
     } else if (button == closePlaylist) {
-        userInfoWrap.style.display = 'none';
+        userInfoWrap.id = '';
         closePlaylist.style.display = 'none';
+        userInfo.style.display = 'block';
         openPlaylist.style.display = 'block';
         playingListWrap.style.display = 'none';
     }
@@ -117,7 +118,7 @@ async function playingList() {
     let ul = document.querySelector('.playingList #list');
     let songsNumber = document.querySelector('#songsNumber');
 
-    console.log(playingList)
+    ul.innerHTML = '';
     let count = 0;
     if (playingList) {
         for (let i = 0; i < playingList.length; i++) {
@@ -127,7 +128,6 @@ async function playingList() {
         creatList(playingList,ul);
         songsNumber.innerText = `共${count}首歌曲`;
     }
-    await addDblClickEventListener(ul);
-    await settingUpViewing(playingList);
+    addDblClickEventListener(ul);
 }
 // playingList()

@@ -23,27 +23,41 @@ async function addDblClickEventListener(ul) {
     // 双击li播放歌曲
     ul.addEventListener("dblclick", async (event) => {
         localStorage.setItem('playTime', '0');
-
+        const { firstId } = event.target.closest("ul").dataset;
+        // const {  } = ulWrap.dataset
+        // console.log(ulWrap.dataset)
         let li = event.target.closest("li");
         if (!li) return;
         if (!ul.contains(li)) return;
         if (event.target) {
             audio.currentTime = 0;
         }
-        let playList = JSON.parse(localStorage.getItem('playList'));
-        localStorage.setItem('playingList', JSON.stringify(playList));
 
-        const { songOrder,songId } = li.dataset;
+        // const playlist = localStorage.getItem('playList');
+        // debugger
+        const playinglist = JSON.parse(localStorage.getItem('playingList'));
+       
+        if(Number(firstId) !== playinglist[0].id){
+            exchangePlaylists();
+            playingList();
+        }
+
+        const { songOrder, songId } = li.dataset;
         localStorage.setItem('currentPlaySongOrder', songOrder);
         playMain();
     });
+}
+
+function exchangePlaylists() {
+    let playList = JSON.parse(localStorage.getItem('playList'));
+    localStorage.setItem('playingList', JSON.stringify(playList));
 }
 
 /**
  * 设置正在看的歌曲
  * @param {*} list 歌曲数组
  */
-async function settingUpViewing(list){
+async function settingUpViewing(list) {
     localStorage.setItem('playList', JSON.stringify(list));
     const playingList = (localStorage.getItem('playingList') || []);
 
@@ -91,8 +105,9 @@ async function improveSongInformation(list, songs) {
  * Dom生成歌曲列表
  * @param {*} list 包含歌曲的数组
  */
-function creatList(list,ul) {
-    if(list){
+function creatList(list, ul) {
+    ul.dataset.firstId = list[0].id
+    if (list) {
         for (let i = 0; i < list.length; i++) {
             const li = document.createElement("li");
             const div1 = document.createElement("div");
@@ -103,7 +118,7 @@ function creatList(list,ul) {
             const playTime = document.createElement("div");
             const xx = document.createElement("div");
             const singer = document.createElement("div");
-    
+
             div1.id = "information";
             picDiv.classList = "pic";
             nameDiv.id = "information-name";
@@ -114,11 +129,11 @@ function creatList(list,ul) {
             playTime.id = "information-count";
             xx.classList = "xx";
             singer.classList = "ar-name f-thide";
-    
+
             nameDiv.innerText = list[i].name;
             img.src = list[i].al.picUrl;
             zj.innerText = list[i].al.name;
-    
+
             let singerNames = '';
             for (let j = 0; j < list[i].ar.length; j++) {
                 singerNames += list[i].ar[j].name;
@@ -127,13 +142,13 @@ function creatList(list,ul) {
                 }
             }
             singer.innerHTML = singerNames;
-    
+
             const { h, m, s } = duration(list[i].dt);
             playTime.innerText = h ? `${h}:${m}:${s}` : `${m}:${s}`
-    
+
             li.dataset.songId = list[i].id
             li.dataset.songOrder = i
-    
+
             li.appendChild(div1);
             div1.appendChild(picDiv);
             picDiv.appendChild(img);
@@ -144,7 +159,7 @@ function creatList(list,ul) {
             li.appendChild(playTime);
             ul.appendChild(li);
         }
-    }else{
+    } else {
         console.log('未发现歌曲')
     }
 }
@@ -343,3 +358,12 @@ function generateSearcHistory(arr, hotHistoryWrap) {
         hotHistoryWrap.appendChild(li);
     }
 }
+
+/**
+ * 登陆成功后，返回登录信息
+ */
+async function getUserInfo() {
+    await loginStatus().then(async resp => {
+        localStorage.setItem('user', JSON.stringify(resp.data));
+    })
+};
