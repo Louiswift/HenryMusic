@@ -110,7 +110,7 @@
                     <ul id="lyric-wrap">
                         <div class="lyric"></div>
                     </ul>
-    
+
                     <!-- 用户详细信息 -->
                     <div class="userInfoWrap">
                         <div class="userInfo" style="display: none;">
@@ -149,7 +149,7 @@
                                     </div>
                                 </div>
                             </div>
-    
+
                             <!-- 听歌排行 -->
                             <div class="ListeningchartWrap">
                                 <div class="ListeningchartWrapFlex">
@@ -190,7 +190,7 @@
                                     </li>
                                 </ul>
                             </div>
-    
+
                             <!-- 我创建的歌单 -->
                             <div class="ListeningchartWrap">
                                 <div class="ListeningchartWrapFlex">
@@ -198,7 +198,7 @@
                                 </div>
                                 <ul class="playlistIcreated" id="createdPlaylist"></ul>
                             </div>
-    
+
                             <!-- 我收藏的歌单 -->
                             <div class="ListeningchartWrap">
                                 <div class="ListeningchartWrapFlex">
@@ -251,7 +251,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
 
             <!-- 播放栏 -->
@@ -307,9 +307,18 @@
                             </svg>
                         </button>
                     </div>
-                    <audio id="audio" controls src="" controlsList="nodownload noplaybackrate">
-                        <source type="audio/mpeg">
-                    </audio>
+                    <div class="audio-player">
+                        <audio id="audio" src="" controls>
+                            <source type="audio/mpeg">
+                        </audio>
+                        <div class="progress-bar">
+                            <div id="progress" class="progress"></div>
+                            <div id="progressBall" class="progress-ball"></div>
+                        </div>
+                        <div id="time" class="time">
+                            <span id="currentTime">00:00</span><span id="duration">00:00</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="Music-playlist">
                     <!-- 歌词按钮 -->

@@ -59,17 +59,88 @@
 /* 播放栏中间 */
 .container .playbar .Music-control{
   display: flex;
-  justify-content: center;
-  /* align-items: center; */
+  align-items: center;
+  flex-direction: column;
   position: relative;
-  width: 800px;
+  width: 600px;
   height: 100%;
 }
+
+.container .playbar .Music-control .audio-player {
+  position: absolute;
+  top: 40px;
+  width: 600px;
+  margin: 20px;
+}
+
+.container .playbar .Music-control .audio-player .progress-bar {
+  width: 100%;
+  height: 5px;
+  background-color: #494848;
+  cursor: pointer;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.container .playbar .Music-control .audio-player .progress-bar .progress-ball {
+  position: absolute;
+  top: -3px;
+  right: 600px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: white;
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.container .playbar .Music-control .audio-player .progress-bar:hover .progress-ball {
+  opacity: 1;
+}
+
+
+.container .playbar .Music-control .audio-player .progress-bar .progress {
+  height: 100%;
+  background-color: #fff;
+  width: 0%;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.container .playbar .Music-control .audio-player .progress-bar:hover .progress{
+  background-color: #1fdf64;
+}
+
+.container .playbar .Music-control .audio-player .time #currentTime{
+  position: relative;
+  left: -43px;
+  top: -17px;
+  color: #929292;
+  font-size: 14px;
+}
+
+.container .playbar .Music-control .audio-player .time #duration{
+  position: relative;
+  left: 573px;
+  top: -17px;
+  color: #929292;
+  font-size: 14px;
+}
+
 .container .playbar .Music-control audio{
   position: absolute;
   bottom: 0;
   width: 100%;
   height: 30px;
+  display: none;
   /* background-color: red; */
 }
 audio::-webkit-media-controls-start-playback-button {
@@ -82,9 +153,9 @@ audio::-webkit-media-controls-start-playback-button {
 .container .playbar .Music-control .playerbtn{
   display: flex;
   justify-content: space-around;
+  margin-top: 10px;
   width: 200px;
   height: 50px;
-  /* background-color: blue; */
 }
 .container .playbar .Music-control .playerbtn button{
   border: 0;
@@ -115,7 +186,7 @@ audio::-webkit-media-controls-start-playback-button {
 .container .playbar .Music-playlist{
   display: flex;
   align-items: center;
-  width: 200px;
+  width: 300px;
   height: 100%;
 }
 

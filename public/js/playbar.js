@@ -130,4 +130,70 @@ async function playingList() {
     }
     addDblClickEventListener(ul);
 }
-// playingList()
+
+// 进度条
+const progressBar = document.querySelector('.progress-bar');
+const progress = document.getElementById('progress');
+const currentTimeSpan = document.getElementById('currentTime');
+const durationSpan = document.getElementById('duration');
+let isDragging = false;
+
+function updateProgressBar() {
+    const progressPercentage = (audio.currentTime / audio.duration) * 100;
+    progress.style.width = `${progressPercentage}%`;
+
+    const currentTime = formatTime(audio.currentTime);
+    currentTimeSpan.textContent = currentTime;
+
+    const duration = formatTime(audio.duration);
+    durationSpan.textContent = duration;
+}
+
+function formatTime(time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${padZero(minutes)}:${padZero(seconds)}`;
+}
+
+function padZero(number) {
+    return number.toString().padStart(2, '0');
+}
+
+function setProgress(event) {
+    const progressBarWidth = progressBar.clientWidth;
+    const clickX = event.offsetX;
+    const progressPercentage = (clickX / progressBarWidth) * 100;
+    progress.style.width = `${progressPercentage}%`;
+    const newTime = (progressPercentage / 100) * audio.duration;
+    audio.currentTime = newTime;
+}
+
+progressBar.addEventListener('click', (event) => {
+    setProgress(event);
+});
+
+
+progressBar.addEventListener('mousedown', () => {
+    isDragging = true;
+});
+
+progressBar.addEventListener('mouseup', () => {
+    isDragging = false;
+});
+
+audio.addEventListener('timeupdate', () => {
+    updateProgressBar();
+});
+
+const progressBall = document.getElementById('progressBall');
+
+function updateProgressBall() {
+    const progressPercentage = (audio.currentTime / audio.duration) * 100;
+    const progressBallPosition = (progressPercentage / 100) * progressBar.clientWidth;
+    progressBall.style.transform = `translateX(${progressBallPosition}px)`;
+}
+
+audio.addEventListener('timeupdate', () => {
+    updateProgressBar();
+    updateProgressBall();
+});

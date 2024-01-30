@@ -316,9 +316,18 @@
                             </svg>
                         </button>
                     </div>
-                    <audio id="audio" controls src="" controlsList="nodownload noplaybackrate">
-                        <source type="audio/mpeg">
-                    </audio>
+                    <div class="audio-player">
+                        <audio id="audio" src="" controls>
+                            <source type="audio/mpeg">
+                        </audio>
+                        <div class="progress-bar">
+                            <div id="progress" class="progress"></div>
+                            <div id="progressBall" class="progress-ball"></div>
+                        </div>
+                        <div id="time" class="time">
+                            <span id="currentTime">00:00</span><span id="duration">00:00</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="Music-playlist">
                     <!-- 歌词按钮 -->
