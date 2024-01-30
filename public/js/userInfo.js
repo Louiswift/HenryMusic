@@ -25,12 +25,12 @@ if (user.code === 200) {
     userInfoHeadSculpture.src = user.profile.avatarUrl;
     username.innerText = user.profile.nickname;
 
-    await getUserDetails(resp.data.account.id).then(resp => {
+    getUserDetails(resp.data.account.id).then(resp => {
         console.log(resp)
     });
 
     // 获取用户信息中的歌单dom
-    await getUserPlaylists(resp.data.account.id).then(async resp => {
+    getUserPlaylists(resp.data.account.id).then(async resp => {
         const createdPlaylist = document.querySelector('#createdPlaylist');
         const playlist = resp.playlist;
         console.log(playlist)
