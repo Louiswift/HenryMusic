@@ -30,7 +30,7 @@ if (user.code === 200) {
     });
 
     // 获取用户信息中的歌单dom
-    getUserPlaylists(resp.data.account.id).then(async resp => {
+    getUserPlaylists(user.data.account.id).then(async resp => {
         const createdPlaylist = document.querySelector('#createdPlaylist');
         const playlist = resp.playlist;
         console.log(playlist)
