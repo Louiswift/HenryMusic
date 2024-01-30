@@ -62,13 +62,17 @@
   position: sticky;
   top: 60px;
   right: 0;
+  overflow-y: scroll;
   width: 600px;
   height: calc(100vh - 190px);
   border-radius: 30px;
   padding: 20px;
   background-color: #191919;
   transition: all 1s ease;
+}
 
+.container .homepage-wrapper .homepage-right .userInfoWrap::-webkit-scrollbar{
+  display: none;
 }
 
 .container .homepage-right .userInfoWrap .user{
@@ -277,4 +281,91 @@
   height: 16px;
   padding: 3px 2px;
   font-size: 12px;
+}
+
+.container .homepage-right .userInfoWrap .playingList .playQueueTitle{
+  color: #fff;
+  padding: 0 0 15px 0;
+}
+
+.container .homepage-right .userInfoWrap .playingList #songsNumber{
+  font-size: 10px;
+}
+
+.container .homepage-right .userInfoWrap .playingList ul li{
+  display: flex;
+  justify-content: space-between;
+    width: 100%;
+    height: 50px;
+    padding: 5px 0;
+  
+}
+
+.container .homepage-right .userInfoWrap .playingList ul li:nth-child(odd){
+  background-color: rgba(255, 255, 255, 0.02); 
+
+}
+
+.container .homepage-right .userInfoWrap .playingList ul li:hover{
+ background-color: rgba(255, 255, 255, 0.15); 
+
+}
+
+.container .homepage-right .userInfoWrap .playingList ul li #information{
+  display: flex;
+    align-items: center;
+    width: 140px;
+    height: 50px;
+    font-size: 14px;
+    color: #fff;
+}
+
+.container .homepage-right .userInfoWrap .playingList ul li #information-count{
+  width: 50px;
+  line-height: 50px;
+  font-size: 12px;
+  color: #fff;
+}
+.container .homepage-right .userInfoWrap .playingList ul li #information-zj{
+  width: 80px;
+  line-height: 50px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.container .homepage-right .userInfoWrap .playingList ul li #information .pic{
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.container .homepage-right .userInfoWrap .playingList ul li #information .pic img{
+  width: 40px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.container .homepage-right .userInfoWrap .playingList ul li #information .xx{
+  height: 50px;
+  line-height: 50px;
+}
+
+.container .homepage-right .userInfoWrap .playingList ul li #information #information-name{
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 5px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.container .homepage-right .userInfoWrap .playingList ul li #information .ar-name{
+  width: 80px;
+    height: 25px;
+    line-height: 20px;
+    font-size: 11px;
+    margin-left: 5px;
 }

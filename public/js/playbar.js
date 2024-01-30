@@ -69,3 +69,65 @@ control.addEventListener("click", (event) => {
         }
     }
 });
+
+const rightTop = document.querySelector(".rightTop");
+const lyricWrap = document.querySelector("#lyric-wrap");
+const MusicPlaylist = document.querySelector('.Music-playlist');
+const openLyrics = document.querySelector('#openLyrics');
+const closeLyrics = document.querySelector('#closeLyrics');
+const openPlaylist = document.querySelector('#openPlaylist');
+const closePlaylist = document.querySelector('#closePlaylist');
+const userInfo = document.querySelector('.userInfo');
+const playingListWrap = document.querySelector('.playingList');
+
+MusicPlaylist.addEventListener('click', (event) => {
+    let button = event.target.closest("button");
+    if (!button) return;
+    if (!MusicPlaylist.contains(button)) return;
+    console.log(event.target)
+    if (button == openLyrics) {
+        console.log('打开歌词');
+        rightTop.style.display = "none";
+        lyricWrap.style.display = "block";
+        openLyrics.style.display = 'none';
+        closeLyrics.style.display = 'block';
+    } else if (button == closeLyrics) {
+        console.log('关闭歌词');
+        rightTop.style.display = "block";
+        lyricWrap.style.display = "none";
+        closeLyrics.style.display = 'none';
+        openLyrics.style.display = 'block';
+    } else if (button == openPlaylist) {
+        userInfoWrap.style.display = 'block';
+        openPlaylist.style.display = 'none';
+        closePlaylist.style.display = 'block';
+        userInfo.style.display = 'none';
+        playingListWrap.style.display = 'block';
+        playingList();
+    } else if (button == closePlaylist) {
+        userInfoWrap.style.display = 'none';
+        closePlaylist.style.display = 'none';
+        openPlaylist.style.display = 'block';
+        playingListWrap.style.display = 'none';
+    }
+});
+
+async function playingList() {
+    let playingList = JSON.parse(localStorage.getItem('playingList'));
+    let ul = document.querySelector('.playingList #list');
+    let songsNumber = document.querySelector('#songsNumber');
+
+    console.log(playingList)
+    let count = 0;
+    if (playingList) {
+        for (let i = 0; i < playingList.length; i++) {
+            count++;
+        }
+        console.log('检测到有真正播放的歌曲，开始生成歌单');
+        creatList(playingList,ul);
+        songsNumber.innerText = `共${count}首歌曲`;
+    }
+    await addDblClickEventListener(ul);
+    await settingUpViewing(playingList);
+}
+// playingList()

@@ -113,6 +113,23 @@ audio::-webkit-media-controls-start-playback-button {
 
 /* 播放栏右侧 */
 .container .playbar .Music-playlist{
-  width: 400px;
+  display: flex;
+  align-items: center;
+  width: 200px;
   height: 100%;
+}
+
+.container .playbar .Music-playlist button{
+  background-color: transparent;
+  border: 0;
+  margin: 0 15px;
+}
+
+.container .playbar .Music-playlist button:hover{
+  cursor: pointer;
+}
+
+.container .playbar .Music-playlist button svg{
+  width: 20px;
+  height: 20px;
 }

@@ -11,10 +11,10 @@ getPlaylistsDetail(dataId).then(resp => {
     title.innerText = name;
 });
 
-getAllsongsOnThePlaylist(dataId).then(resp => {
+getAllsongsOnThePlaylist(dataId).then(async resp => {
     const ul = document.querySelector("#list");
     let songs = resp.songs;
-    // localStorage.setItem('playList',resp.songs)
-    creatList(songs);
-    addDblClickEventListener(ul, audio, songs);
+    creatList(songs,ul);
+    await addDblClickEventListener(ul);
+    await settingUpViewing(songs);
 })

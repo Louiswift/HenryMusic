@@ -16,11 +16,10 @@ function getParameterByName(name) {
 /**
  * 
  * @param {*} ul 点击的区域
- * @param {固定参数} audio 音频源
  * @param {固定参数} playMain 播放函数
  * @param {*} list 歌曲列表
  */
-async function addDblClickEventListener(ul, audio , list) {
+async function addDblClickEventListener(ul) {
     // 双击li播放歌曲
     ul.addEventListener("dblclick", async (event) => {
         localStorage.setItem('playTime', '0');
@@ -34,10 +33,17 @@ async function addDblClickEventListener(ul, audio , list) {
         let playList = JSON.parse(localStorage.getItem('playList'));
         localStorage.setItem('playingList', JSON.stringify(playList));
 
-        const { songOrder } = li.dataset;
+        const { songOrder,songId } = li.dataset;
         localStorage.setItem('currentPlaySongOrder', songOrder);
         playMain();
     });
+}
+
+/**
+ * 设置正在看的歌曲
+ * @param {*} list 歌曲数组
+ */
+async function settingUpViewing(list){
     localStorage.setItem('playList', JSON.stringify(list));
     const playingList = (localStorage.getItem('playingList') || []);
 
@@ -85,55 +91,61 @@ async function improveSongInformation(list, songs) {
  * Dom生成歌曲列表
  * @param {*} list 包含歌曲的数组
  */
-function creatList(list) {
-    let ul = document.querySelector('#list')
-    for (let i = 0; i < list.length; i++) {
-        const li = document.createElement("li");
-        const div1 = document.createElement("div");
-        const picDiv = document.createElement("div");
-        const nameDiv = document.createElement("div");
-        const img = document.createElement("img");
-        const zj = document.createElement("div");
-        const playTime = document.createElement("div");
-        const xx = document.createElement("div");
-        const singer = document.createElement("div");
-
-        div1.id = "information";
-        picDiv.classList = "pic";
-        nameDiv.id = "information-name";
-        zj.id = "information-zj";
-        playTime.id = "information-count";
-        xx.classList = "xx";
-        singer.classList = "ar-name";
-
-        nameDiv.innerText = list[i].name;
-        img.src = list[i].al.picUrl;
-        zj.innerText = list[i].al.name;
-
-        let singerNames = '';
-        for (let j = 0; j < list[i].ar.length; j++) {
-            singerNames += list[i].ar[j].name;
-            if (j < list[i].ar.length - 1) {
-                singerNames += ' / ';
+function creatList(list,ul) {
+    if(list){
+        for (let i = 0; i < list.length; i++) {
+            const li = document.createElement("li");
+            const div1 = document.createElement("div");
+            const picDiv = document.createElement("div");
+            const nameDiv = document.createElement("div");
+            const img = document.createElement("img");
+            const zj = document.createElement("div");
+            const playTime = document.createElement("div");
+            const xx = document.createElement("div");
+            const singer = document.createElement("div");
+    
+            div1.id = "information";
+            picDiv.classList = "pic";
+            nameDiv.id = "information-name";
+            nameDiv.classList = "f-thide";
+            // f-thide
+            zj.id = "information-zj";
+            zj.classList = "f-thide";
+            playTime.id = "information-count";
+            xx.classList = "xx";
+            singer.classList = "ar-name f-thide";
+    
+            nameDiv.innerText = list[i].name;
+            img.src = list[i].al.picUrl;
+            zj.innerText = list[i].al.name;
+    
+            let singerNames = '';
+            for (let j = 0; j < list[i].ar.length; j++) {
+                singerNames += list[i].ar[j].name;
+                if (j < list[i].ar.length - 1) {
+                    singerNames += ' / ';
+                }
             }
+            singer.innerHTML = singerNames;
+    
+            const { h, m, s } = duration(list[i].dt);
+            playTime.innerText = h ? `${h}:${m}:${s}` : `${m}:${s}`
+    
+            li.dataset.songId = list[i].id
+            li.dataset.songOrder = i
+    
+            li.appendChild(div1);
+            div1.appendChild(picDiv);
+            picDiv.appendChild(img);
+            xx.appendChild(nameDiv);
+            xx.appendChild(singer);
+            div1.appendChild(xx);
+            li.appendChild(zj);
+            li.appendChild(playTime);
+            ul.appendChild(li);
         }
-        singer.innerHTML = singerNames;
-
-        const { h, m, s } = duration(list[i].dt);
-        playTime.innerText = h ? `${h}:${m}:${s}` : `${m}:${s}`
-
-        li.dataset.songId = list[i].id
-        li.dataset.songOrder = i
-
-        li.appendChild(div1);
-        div1.appendChild(picDiv);
-        picDiv.appendChild(img);
-        xx.appendChild(nameDiv);
-        xx.appendChild(singer);
-        div1.appendChild(xx);
-        li.appendChild(zj);
-        li.appendChild(playTime);
-        ul.appendChild(li);
+    }else{
+        console.log('未发现歌曲')
     }
 }
 
@@ -294,16 +306,16 @@ async function playMain() {
 
     if (playPromise !== undefined) {
         playPromise.then(_ => {
-          // Automatic playback started!
-          // Show playing UI.
-          // We can now safely pause video...
-          video.pause();
+            // Automatic playback started!
+            // Show playing UI.
+            // We can now safely pause video...
+            video.pause();
         })
-        .catch(error => {
-          // Auto-play was prevented
-          // Show paused UI.
-        });
-      }
+            .catch(error => {
+                // Auto-play was prevented
+                // Show paused UI.
+            });
+    }
 }
 
 /**
