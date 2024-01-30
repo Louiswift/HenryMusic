@@ -60,6 +60,8 @@ if (user.code === 200) {
         console.log(resp)
     });
 
+
+} else {
     headSculpture.src = 'img/登录.svg';
     headSculpture.addEventListener('click', () => {
         window.location.href = 'login.html';
