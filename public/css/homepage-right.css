@@ -64,7 +64,6 @@
   z-index: 3;
   transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transform: translateX(440px);
-  overflow-y: scroll;
   right: 5px;
   width: 400px;
   height: calc(100vh - 190px);
@@ -302,6 +301,7 @@
   font-size: 12px;
 }
 
+/* 播放列表 */
 .container .homepage-right .userInfoWrap .playingList .playQueueTitle{
   color: #fff;
   padding: 0 0 15px 0;
@@ -309,6 +309,15 @@
 
 .container .homepage-right .userInfoWrap .playingList #songsNumber{
   font-size: 10px;
+}
+
+.container .homepage-right .userInfoWrap .playingList #list{
+  height: calc(100vh - 230px);
+  overflow-y: scroll;
+}
+
+.container .homepage-right .userInfoWrap .playingList #list::-webkit-scrollbar{
+  display: none;
 }
 
 .container .homepage-right .userInfoWrap .playingList ul li{
