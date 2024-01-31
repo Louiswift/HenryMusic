@@ -196,6 +196,30 @@ function generatePlaylists(arr, ul) {
 }
 
 /**
+ * 创建你的歌单
+ * @param {*} ul 生成至该元素
+ */
+function createYourPlaylist(ul) {
+    // 创建dom
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    const img = document.createElement('img');
+    const div = document.createElement('div');
+
+    // 给dom赋值class & 值
+    div.classList = 'txtplaylistName f-thide';
+    img.src = playlist[i].coverImgUrl;
+    div.innerText = playlist[i].name;
+    li.setAttribute("data-song-id", playlist[i].id);
+
+    // 将dom拼装
+    a.appendChild(img);
+    a.appendChild(div);
+    li.appendChild(a);
+    ul.appendChild(li);
+}
+
+/**
  * 歌曲时长
  * @param {*} time 歌曲信息接口中的dt属性值
  * @returns 
