@@ -8,6 +8,11 @@ recommendedPlaylists().then(resp => {
 
 loginStatus().then(async resp => {
   if (resp.data.account) {
+    let titleDailyRecommendations = document.querySelector('#titleDailyRecommendations');
+    let DailyRecommendations = document.querySelector('#DailyRecommendations');
+    titleDailyRecommendations.style.display = 'block';
+    DailyRecommendations.style.display = 'block';
+
     getTheDailyRecommendedSongList().then(async resp => {
       const ul = document.querySelector("#DailyRecommendations");
       clickOnPlaylist(ul);
