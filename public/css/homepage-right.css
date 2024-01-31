@@ -269,17 +269,23 @@
 
 /* 我创建的歌单 */
 .container .homepage-right .userInfoWrap .playlistIcreated{
-  display: flex;
-  flex-wrap: wrap;
-  /* justify-content: flex-start; */
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+  overflow-y: scroll;
   width: 100%;
+  height: 120px;
   padding: 10px 0;
   border-top: 2px solid #1fdf64;
 }
 
-.container .homepage-right .userInfoWrap .playlistIcreated li {
-  margin: 5px 1px;
+.container .homepage-right .userInfoWrap .playlistIcreated::-webkit-scrollbar{
+  display: none;
 }
+
+/* .container .homepage-right .userInfoWrap .playlistIcreated li {
+  margin: 5px 1px;
+} */
 
 .container .homepage-right .userInfoWrap .playlistIcreated li:hover{
   cursor: pointer;
