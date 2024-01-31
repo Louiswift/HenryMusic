@@ -283,10 +283,6 @@
   display: none;
 }
 
-/* .container .homepage-right .userInfoWrap .playlistIcreated li {
-  margin: 5px 1px;
-} */
-
 .container .homepage-right .userInfoWrap .playlistIcreated li:hover{
   cursor: pointer;
 }

@@ -30,7 +30,7 @@ if (user && user.account !== null) {
         headSculpture.src = resp.profile.avatarUrl;
         userInfoHeadSculpture.src = resp.profile.avatarUrl;
         username.textContent = resp.profile.nickname;
-        userlevel.textContent = `LV${resp.bindings.level}`;
+        userlevel.textContent = `LV${resp.level}`;
         if(resp.profile.vipType == 11){
             vip.src = 'img/vip.svg';
         }else{
@@ -46,9 +46,9 @@ if (user && user.account !== null) {
 
         for (let i = 0; i < playlist.length; i++) {
             if (playlist[i].subscribed == true) {
-                createYourPlaylist(collectPlaylists);
+                createYourPlaylist(playlist, collectPlaylists);
             } else {
-                createYourPlaylist(createdPlaylist);
+                createYourPlaylist(playlist, createdPlaylist);
             }
         }
         clickOnPlaylist(createdPlaylist);
