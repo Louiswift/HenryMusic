@@ -36,8 +36,8 @@ async function addDblClickEventListener(ul) {
         // const playlist = localStorage.getItem('playList');
         // debugger
         const playinglist = JSON.parse(localStorage.getItem('playingList'));
-       
-        if(Number(firstId) !== playinglist[0].id){
+
+        if (Number(firstId) !== playinglist[0].id) {
             exchangePlaylists();
             playingList();
         }
@@ -200,24 +200,26 @@ function generatePlaylists(arr, ul) {
  * @param {*} playlist 需要生成的歌单数组
  * @param {*} ul 生成至该元素
  */
-function createYourPlaylist(playlist,ul) {
-    // 创建dom
-    const li = document.createElement('li');
-    const a = document.createElement('a');
-    const img = document.createElement('img');
-    const div = document.createElement('div');
+function createYourPlaylist(playlist, ul) {
+    for (let i = 0; i < playlist.length; i++) {
+        // 创建dom
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        const img = document.createElement('img');
+        const div = document.createElement('div');
 
-    // 给dom赋值class & 值
-    div.classList = 'txtplaylistName f-thide';
-    img.src = playlist[i].coverImgUrl;
-    div.innerText = playlist[i].name;
-    li.setAttribute("data-song-id", playlist[i].id);
+        // 给dom赋值class & 值
+        div.classList = 'txtplaylistName f-thide';
+        img.src = playlist[i].coverImgUrl;
+        div.innerText = playlist[i].name;
+        li.setAttribute("data-song-id", playlist[i].id);
 
-    // 将dom拼装
-    a.appendChild(img);
-    a.appendChild(div);
-    li.appendChild(a);
-    ul.appendChild(li);
+        // 将dom拼装
+        a.appendChild(img);
+        a.appendChild(div);
+        li.appendChild(a);
+        ul.appendChild(li);
+    }
 }
 
 /**
