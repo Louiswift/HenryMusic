@@ -121,7 +121,7 @@
   font-size: 16px;
 }
 
-.container .homepage-right .userInfoWrap .user .usersecond .nameLevel .vip{
+.container .homepage-right .userInfoWrap .user .usersecond .nameLevel #vip{
   width: 50px;
   height: 30px;
   margin-top: 3px; 
