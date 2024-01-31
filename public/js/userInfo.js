@@ -20,7 +20,7 @@ headSculpture.addEventListener('click', function () {
 });
 
 const user = JSON.parse(localStorage.getItem('user'));
-if (user.code === 200) {
+if (user && user.account !== null) {
     headSculpture.src = user.profile.avatarUrl;
     userInfoHeadSculpture.src = user.profile.avatarUrl;
     username.innerText = user.profile.nickname;
