@@ -31,9 +31,9 @@ if (user && user.account !== null) {
         userInfoHeadSculpture.src = resp.profile.avatarUrl;
         username.textContent = resp.profile.nickname;
         userlevel.textContent = `LV${resp.level}`;
-        if(resp.profile.vipType == 11){
+        if (resp.profile.vipType == 11) {
             vip.src = 'img/vip.svg';
-        }else{
+        } else {
             vip.src = 'img/普通用户.svg';
         }
     });
@@ -44,13 +44,7 @@ if (user && user.account !== null) {
         const collectPlaylists = document.querySelector('#collectPlaylists');
         const playlist = resp.playlist;
 
-        for (let i = 0; i < playlist.length; i++) {
-            if (playlist[i].subscribed == true) {
-                createYourPlaylist(playlist, collectPlaylists);
-            } else {
-                createYourPlaylist(playlist, createdPlaylist);
-            }
-        }
+        createYourPlaylist(playlist, collectPlaylists, createdPlaylist);
         clickOnPlaylist(createdPlaylist);
     })
     getUserInfoAndPlaylist().then(resp => {
@@ -59,11 +53,11 @@ if (user && user.account !== null) {
 
 
 } else {
-        headSculpture.src = 'img/登录.svg';
-        headSculpture.addEventListener('click', () => {
-            window.location.href = 'login.html';
-            userInfoHeadSculpture.src = 'https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2023%2F0406%2F5da2c82ej00rsof5j0038d200et00djg005i0050.jpg&thumbnail=660x2147483647&quality=80&type=jpg';
-            username.innerText = "游客";
-            userInfoWrap.style.display = 'none';
-        })
+    headSculpture.src = 'img/登录.svg';
+    headSculpture.addEventListener('click', () => {
+        window.location.href = 'login.html';
+        userInfoHeadSculpture.src = 'https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2023%2F0406%2F5da2c82ej00rsof5j0038d200et00djg005i0050.jpg&thumbnail=660x2147483647&quality=80&type=jpg';
+        username.innerText = "游客";
+        userInfoWrap.style.display = 'none';
+    })
 }

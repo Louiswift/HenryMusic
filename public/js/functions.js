@@ -200,7 +200,7 @@ function generatePlaylists(arr, ul) {
  * @param {*} playlist 需要生成的歌单数组
  * @param {*} ul 生成至该元素
  */
-function createYourPlaylist(playlist, ul) {
+function createYourPlaylist(playlist, ul,ul2) {
     for (let i = 0; i < playlist.length; i++) {
         // 创建dom
         const li = document.createElement('li');
@@ -218,7 +218,11 @@ function createYourPlaylist(playlist, ul) {
         a.appendChild(img);
         a.appendChild(div);
         li.appendChild(a);
-        ul.appendChild(li);
+        if (playlist[i].subscribed == true) {
+            ul.appendChild(li);
+        }else{
+            ul2.appendChild(li);
+        }
     }
 }
 
