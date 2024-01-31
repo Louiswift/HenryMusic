@@ -197,9 +197,10 @@ function generatePlaylists(arr, ul) {
 
 /**
  * 创建你的歌单
+ * @param {*} playlist 需要生成的歌单数组
  * @param {*} ul 生成至该元素
  */
-function createYourPlaylist(ul) {
+function createYourPlaylist(playlist,ul) {
     // 创建dom
     const li = document.createElement('li');
     const a = document.createElement('a');
