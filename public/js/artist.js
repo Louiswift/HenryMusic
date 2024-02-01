@@ -1,45 +1,30 @@
 const singerId = getParameterByName('id');
 getSingerDetails(singerId).then(resp => {
     const singerPic = document.querySelector('#singerPic');
-    singerPic.src = resp.data.artist.cover;
-    let a = document.querySelector('.songTitle');
-    setBackgroundFromImage(resp.data.artist.cover,a)
+    const singerName = document.querySelector('#artistName');
+    const identity = document.querySelector('#identity');
+    const Engartisname = document.querySelector('#Engartisname');
+
     console.log(resp)
-})
-getPopularSongsFromSingers(singerId).then(resp => {
-    console.log(resp);
+
+    singerPic.src = resp.data.artist.avatar;
+    singerName.textContent = resp.data.artist.name;
+    if(resp.data.artist.identifyTag !== null){
+      identity.textContent = resp.data.artist.identifyTag[0];
+    }else{
+      identity.textContent = '认证艺人';
+    }
+    Engartisname.textContent = resp.data.artist.alias[0];
+
 })
 
-function setBackgroundFromImage(imagePath,div) {
-    const image = new Image();
-    image.onload = function() {
-      const canvas = document.createElement('canvas');
-      const context = canvas.getContext('2d');
-      context.drawImage(image, 0, 0);
-      const imageData = context.getImageData(0, 0, image.width, image.height);
-      const pixels = imageData.data;
-      const colorCounts = {};
-      for (let i = 0; i < pixels.length; i += 4) {
-        const r = pixels[i];
-        const g = pixels[i + 1];
-        const b = pixels[i + 2];
-        const color = `${r},${g},${b}`;
-        if (colorCounts[color]) {
-          colorCounts[color]++;
-        } else {
-          colorCounts[color] = 1;
-        }
-      }
-      let maxCount = 0;
-      let maxColor = '';
-      for (const color in colorCounts) {
-        if (colorCounts[color] > maxCount) {
-          maxCount = colorCounts[color];
-          maxColor = color;
-        }
-      }
-      div.style.backgroundColor = `rgb(${maxColor})`;
-    };
-    image.src = imagePath;
-  }
-  
+// 歌手热门50首歌曲
+getPopularSongsFromSingers(singerId).then(async resp => {
+  const ul = document.querySelector('#list');
+    console.log(resp);
+    let songs = resp.songs;
+
+    creatList(songs, ul);
+    addDblClickEventListener(ul);
+    await settingUpViewing(songs);
+})

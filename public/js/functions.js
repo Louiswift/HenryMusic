@@ -32,8 +32,6 @@ function clickArname(singer) {
 /**
  *双击播放歌曲
  * @param {*} ul 点击的区域
- * @param {固定参数} playMain 播放函数
- * @param {*} list 歌曲列表
  */
 async function addDblClickEventListener(ul) {
     ul.addEventListener("dblclick", async (event) => {
@@ -136,7 +134,11 @@ function creatList(list, ul) {
             const playTime = document.createElement("div");
             const xx = document.createElement("div");
             const singer = document.createElement("div");
+            const orderWrap = document.createElement("div");
+            const order = document.createElement("div");
 
+            orderWrap.id = 'orderWrap';
+            order.id = 'order';
             div1.id = "information";
             picDiv.classList = "pic";
             nameDiv.id = "information-name";
@@ -151,6 +153,7 @@ function creatList(list, ul) {
             nameDiv.innerText = list[i].name;
             img.src = list[i].al.picUrl;
             zj.innerText = list[i].al.name;
+            order.textContent = i + 1;
 
             singer.innerHTML = '';
             for (let i = 0; i < list[0].ar.length; i++) {
@@ -174,6 +177,8 @@ function creatList(list, ul) {
             li.dataset.songOrder = i
 
             li.appendChild(div1);
+            div1.appendChild(orderWrap);
+            orderWrap.appendChild(order);
             div1.appendChild(picDiv);
             picDiv.appendChild(img);
             xx.appendChild(nameDiv);
@@ -289,11 +294,12 @@ async function setSongInfo(songId) {
         songName.innerText = song.songs[0].name;
         title.innerText = song.songs[0].name;
         singer.innerHTML = '';
+        console.log(singer)
 
         for (let i = 0; i < song.songs[0].ar.length; i++) {
             let a = document.createElement('a');
             a.id = 'singerName';
-            singer.appendChild(a);
+            console.log(song.songs[0].ar[i].name)
             a.textContent = song.songs[0].ar[i].name;
             a.setAttribute('data-singer-id', song.songs[0].ar[i].id);
 
@@ -302,6 +308,7 @@ async function setSongInfo(songId) {
                 span.textContent = ' / ';
                 singer.appendChild(span)
             }
+            singer.appendChild(a);
         }
     });
 
