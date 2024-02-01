@@ -148,10 +148,12 @@ color: #fff;
     color: #fff;
     font-weight: bold;
 }
-.container .homepage-right .songlist .ListS  #information .ar-name{
-    display: flex;
-    align-items: center;
+.container .homepage-right .songlist .ListS  #information #singer{
     height: 40%;
-    font-size: 12px;
+    font-size: 11px;
     margin-left: 5px;
+}
+
+.container .homepage-right .songlist .ListS  #information #singer #singerName:hover{
+    text-decoration: underline;
 }

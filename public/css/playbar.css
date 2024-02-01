@@ -51,9 +51,14 @@
   font-weight: bold;
   padding-bottom: 2px;
 }
-.container .playbar .Music-Information .singer p{
+.container .playbar .Music-Information .singer #singerName{
   font-size: 11px;
   color: rgba(255, 255, 255, 0.8);
+}
+
+.container .playbar .Music-Information .singer #singerName:hover{
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 /* 播放栏中间 */
