@@ -235,3 +235,33 @@ async function getUserPlaylists(id){
   const resp = await fetch(`https://henrymusic.xyz/user/playlist?uid=${id}`);
   return await resp.json();
 }
+
+/**
+ * 歌手热门 50 首歌曲
+ * @param {*} id 歌手 id
+ * @param 说明 : 调用此接口,可获取歌手热门 50 首歌曲
+*/
+async function getPopularSongsFromSingers(id){
+  const resp = await fetch(`https://henrymusic.xyz/artist/top/song?id=${id}`);
+  return await resp.json();
+}
+
+/**
+ * 歌手热门 50 首歌曲
+ * @param {*} id 歌手 id
+ * @param 说明 : 调用此接口,可获取歌手热门 50 首歌曲
+*/
+async function getPopularSongsFromSingers(id){
+  const resp = await fetch(`https://henrymusic.xyz/artist/top/song?id=${id}`);
+  return await resp.json();
+}
+
+/**
+ * 获取歌手详情
+ * @param {*} id 歌手 id
+ * @param 说明 : 调用此接口 , 传入歌手 id, 可获得获取歌手详情
+*/
+async function getSingerDetails(id){
+  const resp = await fetch(`https://henrymusic.xyz/artist/detail?id=${id}`);
+  return await resp.json();
+}
