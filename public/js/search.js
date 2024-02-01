@@ -11,6 +11,7 @@ if (!searchValue) {
         creatList(list, ul);
         await addDblClickEventListener(ul);
         await settingUpViewing(list);
+        clickArnamelist(ul)
     });
 }
 
@@ -34,6 +35,7 @@ if (searchValue !== null) {
         creatList(list, ul);
         await addDblClickEventListener(ul)
         await settingUpViewing(list);
+        clickArnamelist(ul)
     });
 }
 

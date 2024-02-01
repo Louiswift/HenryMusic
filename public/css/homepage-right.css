@@ -415,7 +415,7 @@
     font-weight: bold;
 }
 
-.container .homepage-right .userInfoWrap .playingList ul li #information #singer{
+.container .homepage-right .userInfoWrap .playingList ul li #information #playlistSinger{
   width: 80px;
     height: 25px;
     line-height: 20px;
@@ -423,6 +423,7 @@
     margin-left: 5px;
 }
 
-.container .homepage-right .userInfoWrap .playingList ul li #information #singer #singerName:hover{
+.container .homepage-right .userInfoWrap .playingList ul li #information #playlistSinger #singerName:hover{
   text-decoration: underline;
+  cursor: pointer;
 }

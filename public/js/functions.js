@@ -28,6 +28,20 @@ function clickArname(singer) {
         window.location.href = "artist.html?id=" + singerId;
     })
 }
+function clickArnamelist(songList){
+    songList.addEventListener("click", (event) => {
+        const artistName = event.target.closest("#singerName");
+        if (!artistName) return;
+        console.log(event.target)
+    
+        // 进入歌手主页的逻辑
+        const { singerId } = event.target.dataset;
+        console.log(singerId)
+        window.location.href = "artist.html?id=" + singerId;
+    });
+}
+
+
 
 /**
  *双击播放歌曲
@@ -37,8 +51,6 @@ async function addDblClickEventListener(ul) {
     ul.addEventListener("dblclick", async (event) => {
         localStorage.setItem('playTime', '0');
         const { firstId } = event.target.closest("ul").dataset;
-        // const {  } = ulWrap.dataset
-        // console.log(ulWrap.dataset)
         let li = event.target.closest("li");
         if (!li) return;
         if (!ul.contains(li)) return;
@@ -46,8 +58,6 @@ async function addDblClickEventListener(ul) {
             audio.currentTime = 0;
         }
 
-        // const playlist = localStorage.getItem('playList');
-        // debugger
         const playinglist = JSON.parse(localStorage.getItem('playingList'));
 
         if (Number(firstId) !== playinglist[0].id) {
@@ -133,7 +143,7 @@ function creatList(list, ul) {
             const zj = document.createElement("div");
             const playTime = document.createElement("div");
             const xx = document.createElement("div");
-            const singer = document.createElement("div");
+            const playbarsinger = document.createElement("div");
             const orderWrap = document.createElement("div");
             const order = document.createElement("div");
 
@@ -147,26 +157,26 @@ function creatList(list, ul) {
             zj.classList = "f-thide";
             playTime.id = "information-count";
             xx.classList = "xx";
-            singer.classList = "singer f-thide";
-            singer.id = 'singer';
+            playbarsinger.classList = "singer f-thide";
+            playbarsinger.id = 'playlistSinger';
 
             nameDiv.innerText = list[i].name;
             img.src = list[i].al.picUrl;
             zj.innerText = list[i].al.name;
             order.textContent = i + 1;
 
-            singer.innerHTML = '';
-            for (let i = 0; i < list[0].ar.length; i++) {
+            playbarsinger.innerHTML = '';
+            for (let j = 0; j < list[i].ar.length; j++) {
                 let a = document.createElement('a');
                 a.id = 'singerName';
-                singer.appendChild(a);
-                a.textContent = list[0].ar[i].name;
-                a.setAttribute('data-singer-id', list[0].ar[i].id);
-
-                if (i < list[0].ar.length - 1) {
+                playbarsinger.appendChild(a);
+                a.textContent = list[i].ar[j].name;
+                a.setAttribute('data-singer-id', list[i].ar[j].id);
+    
+                if (j < list[i].ar.length - 1) {
                     let span = document.createElement('span');
                     span.textContent = ' / ';
-                    singer.appendChild(span)
+                    playbarsinger.appendChild(span)
                 }
             }
 
@@ -182,7 +192,7 @@ function creatList(list, ul) {
             div1.appendChild(picDiv);
             picDiv.appendChild(img);
             xx.appendChild(nameDiv);
-            xx.appendChild(singer);
+            xx.appendChild(playbarsinger);
             div1.appendChild(xx);
             li.appendChild(zj);
             li.appendChild(playTime);
@@ -285,7 +295,7 @@ function addZero(time) {
 async function setSongInfo(songId) {
     const songName = document.querySelector("#songName");
     const pic = document.querySelector("#pic");
-    const singer = document.querySelector('#singer');
+    const playbarsinger = document.querySelector('#playbarsinger');
 
     // 获取歌曲信息
     await getSongDetails(songId).then(song => {
@@ -293,22 +303,20 @@ async function setSongInfo(songId) {
         pic.src = song.songs[0].al.picUrl;
         songName.innerText = song.songs[0].name;
         title.innerText = song.songs[0].name;
-        singer.innerHTML = '';
-        console.log(singer)
 
+        playbarsinger.innerHTML = '';
         for (let i = 0; i < song.songs[0].ar.length; i++) {
             let a = document.createElement('a');
             a.id = 'singerName';
-            console.log(song.songs[0].ar[i].name)
+            playbarsinger.appendChild(a);
             a.textContent = song.songs[0].ar[i].name;
             a.setAttribute('data-singer-id', song.songs[0].ar[i].id);
 
             if (i < song.songs[0].ar.length - 1) {
                 let span = document.createElement('span');
                 span.textContent = ' / ';
-                singer.appendChild(span)
+                playbarsinger.appendChild(span)
             }
-            singer.appendChild(a);
         }
     });
 

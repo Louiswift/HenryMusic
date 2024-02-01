@@ -12,7 +12,8 @@ audio.addEventListener("timeupdate", () => {
 });
 
 // 点击进入歌手主页
-clickArname(singer);
+const playbarsinger = document.querySelector('#playbarsinger');
+clickArname(playbarsinger);
 
 // 自动播放下一首歌曲
 audio.addEventListener('ended', async () => {
@@ -87,7 +88,6 @@ MusicPlaylist.addEventListener('click', (event) => {
     let button = event.target.closest("button");
     if (!button) return;
     if (!MusicPlaylist.contains(button)) return;
-    console.log(event.target)
     if (button == openLyrics) {
         console.log('打开歌词');
         rightTop.style.display = "none";

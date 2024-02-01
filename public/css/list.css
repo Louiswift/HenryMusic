@@ -154,10 +154,9 @@ color: #fff;
     height: 100%;
 }
 .container .homepage-right .songlist .ListS  #information #information-name{
-    display: flex;
-    align-items: center;
-    width: 200px;
+    width: 150px;
     height: 60%;
+    line-height: 30px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -165,12 +164,12 @@ color: #fff;
     color: #fff;
     font-weight: bold;
 }
-.container .homepage-right .songlist .ListS  #information #singer{
+.container .homepage-right .songlist .ListS  #information #playlistSinger{
     height: 40%;
     font-size: 11px;
     margin-left: 5px;
 }
 
-.container .homepage-right .songlist .ListS  #information #singer #singerName:hover{
+.container .homepage-right .songlist .ListS  #information #playlistSinger #singerName:hover{
     text-decoration: underline;
 }

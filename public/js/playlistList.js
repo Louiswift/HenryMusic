@@ -14,7 +14,8 @@ getPlaylistsDetail(dataId).then(resp => {
 getAllsongsOnThePlaylist(dataId).then(async resp => {
     const ul = document.querySelector("#list");
     let songs = resp.songs;
-    creatList(songs,ul);
+    creatList(songs, ul);
     await addDblClickEventListener(ul);
     await settingUpViewing(songs);
+    clickArnamelist(ul)
 })

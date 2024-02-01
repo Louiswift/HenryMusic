@@ -27,4 +27,5 @@ getPopularSongsFromSingers(singerId).then(async resp => {
     creatList(songs, ul);
     addDblClickEventListener(ul);
     await settingUpViewing(songs);
+    clickArnamelist(ul)
 })
