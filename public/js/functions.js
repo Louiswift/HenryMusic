@@ -14,13 +14,28 @@ function getParameterByName(name) {
 }
 
 /**
- * 
+ * 单击歌手名，进入歌手主页
+ * @param {*} singer 传入歌手文本父元素
+ */
+function clickArname(singer) {
+    singer.addEventListener('click', (event) => {
+        let a = event.target.closest("a");
+        if (!a) return;
+        if (!singer.contains(a)) return;
+    
+        const { singerId } = event.target.dataset;
+        console.log(singerId)
+        window.location.href = "artist.html?id=" + singerId;
+    })
+}
+
+/**
+ *双击播放歌曲
  * @param {*} ul 点击的区域
  * @param {固定参数} playMain 播放函数
  * @param {*} list 歌曲列表
  */
 async function addDblClickEventListener(ul) {
-    // 双击li播放歌曲
     ul.addEventListener("dblclick", async (event) => {
         localStorage.setItem('playTime', '0');
         const { firstId } = event.target.closest("ul").dataset;
@@ -48,6 +63,9 @@ async function addDblClickEventListener(ul) {
     });
 }
 
+/**
+ * 将正在看的歌单赋值给正在听的
+ */
 function exchangePlaylists() {
     let playList = JSON.parse(localStorage.getItem('playList'));
     localStorage.setItem('playingList', JSON.stringify(playList));
@@ -123,25 +141,31 @@ function creatList(list, ul) {
             picDiv.classList = "pic";
             nameDiv.id = "information-name";
             nameDiv.classList = "f-thide";
-            // f-thide
             zj.id = "information-zj";
             zj.classList = "f-thide";
             playTime.id = "information-count";
             xx.classList = "xx";
-            singer.classList = "ar-name f-thide";
+            singer.classList = "singer f-thide";
+            singer.id = 'singer';
 
             nameDiv.innerText = list[i].name;
             img.src = list[i].al.picUrl;
             zj.innerText = list[i].al.name;
 
-            let singerNames = '';
-            for (let j = 0; j < list[i].ar.length; j++) {
-                singerNames += list[i].ar[j].name;
-                if (j < list[i].ar.length - 1) {
-                    singerNames += ' / ';
+            singer.innerHTML = '';
+            for (let i = 0; i < list[0].ar.length; i++) {
+                let a = document.createElement('a');
+                a.id = 'singerName';
+                singer.appendChild(a);
+                a.textContent = list[0].ar[i].name;
+                a.setAttribute('data-singer-id', list[0].ar[i].id);
+
+                if (i < list[0].ar.length - 1) {
+                    let span = document.createElement('span');
+                    span.textContent = ' / ';
+                    singer.appendChild(span)
                 }
             }
-            singer.innerHTML = singerNames;
 
             const { h, m, s } = duration(list[i].dt);
             playTime.innerText = h ? `${h}:${m}:${s}` : `${m}:${s}`
@@ -200,7 +224,7 @@ function generatePlaylists(arr, ul) {
  * @param {*} playlist 需要生成的歌单数组
  * @param {*} ul 生成至该元素
  */
-function createYourPlaylist(playlist, ul,ul2) {
+function createYourPlaylist(playlist, ul, ul2) {
     for (let i = 0; i < playlist.length; i++) {
         // 创建dom
         const li = document.createElement('li');
@@ -220,7 +244,7 @@ function createYourPlaylist(playlist, ul,ul2) {
         li.appendChild(a);
         if (playlist[i].subscribed == true) {
             ul.appendChild(li);
-        }else{
+        } else {
             ul2.appendChild(li);
         }
     }
@@ -255,8 +279,8 @@ function addZero(time) {
  */
 async function setSongInfo(songId) {
     const songName = document.querySelector("#songName");
-    const singer = document.querySelector("#singerName");
-    const pic = document.getElementById("pic");
+    const pic = document.querySelector("#pic");
+    const singer = document.querySelector('#singer');
 
     // 获取歌曲信息
     await getSongDetails(songId).then(song => {
@@ -264,15 +288,21 @@ async function setSongInfo(songId) {
         pic.src = song.songs[0].al.picUrl;
         songName.innerText = song.songs[0].name;
         title.innerText = song.songs[0].name;
+        singer.innerHTML = '';
 
-        let singerNames = '';
         for (let i = 0; i < song.songs[0].ar.length; i++) {
-            singerNames += song.songs[0].ar[i].name;
+            let a = document.createElement('a');
+            a.id = 'singerName';
+            singer.appendChild(a);
+            a.textContent = song.songs[0].ar[i].name;
+            a.setAttribute('data-singer-id', song.songs[0].ar[i].id);
+
             if (i < song.songs[0].ar.length - 1) {
-                singerNames += ' / ';
+                let span = document.createElement('span');
+                span.textContent = ' / ';
+                singer.appendChild(span)
             }
         }
-        singer.innerHTML = singerNames;
     });
 
     // 获取歌曲URL

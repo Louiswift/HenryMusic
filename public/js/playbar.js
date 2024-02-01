@@ -11,6 +11,9 @@ audio.addEventListener("timeupdate", () => {
     localStorage.setItem('playTime', audio.currentTime);
 });
 
+// 点击进入歌手主页
+clickArname(singer);
+
 // 自动播放下一首歌曲
 audio.addEventListener('ended', async () => {
     audio.currentTime = 0;

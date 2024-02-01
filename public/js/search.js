@@ -11,7 +11,6 @@ if (!searchValue) {
         creatList(list, ul);
         await addDblClickEventListener(ul);
         await settingUpViewing(list);
-
     });
 }
 
