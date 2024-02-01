@@ -14,7 +14,7 @@ function getParameterByName(name) {
 }
 
 /**
- * 单击歌手名，进入歌手主页
+ * 单击播放栏歌手名，进入歌手主页
  * @param {*} singer 传入歌手文本父元素
  */
 function clickArname(singer) {
@@ -28,6 +28,11 @@ function clickArname(singer) {
         window.location.href = "artist.html?id=" + singerId;
     })
 }
+
+/**
+ * 单击列表歌手名，进入歌手主页
+ * @param {*} songList 传入歌手文本父元素
+ */
 function clickArnamelist(songList){
     songList.addEventListener("click", (event) => {
         const artistName = event.target.closest("#singerName");
