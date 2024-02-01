@@ -1,0 +1,10 @@
+.container .homepage-wrapper .homepage-right .right-content-wrap .songlist .songTitle{
+    padding: 10px;
+    overflow: hidden;
+}
+
+.container .homepage-wrapper .homepage-right .right-content-wrap .songlist .songTitle #singerPic{
+    width: 200px;
+    height: 200px;
+    /* border-radius: 50%; */
+}
