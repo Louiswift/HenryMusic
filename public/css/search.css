@@ -8,6 +8,7 @@
 }
 .container .homepage-wrapper .homepage-right .nav-wrap .search-wrap{
   display: flex;
+  width: calc(100vw - 340px);
   margin-left: 20px;
 }
 .container .homepage-wrapper .homepage-right .nav-wrap .search-icon{

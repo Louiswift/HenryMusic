@@ -3,6 +3,7 @@
   position: fixed;
   display: flex;
   justify-content: space-between;  
+  z-index: 3;
   bottom: 0;
   width: 100%;
   height: 80px;
@@ -13,7 +14,7 @@
 .container .playbar .Music-Information{
   display: flex;
   align-items: center;
-  width: 300px;
+  width: 20%;
   height: 100%;
   /* background-color: red; */
 }
@@ -67,14 +68,14 @@
   align-items: center;
   flex-direction: column;
   position: relative;
-  width: 600px;
+  width: 40%;
   height: 100%;
 }
 
 .container .playbar .Music-control .audio-player {
   position: absolute;
   top: 40px;
-  width: 600px;
+  width: 100%;
   margin: 20px;
 }
 
@@ -93,7 +94,7 @@
 .container .playbar .Music-control .audio-player .progress-bar .progress-ball {
   position: absolute;
   top: -3px;
-  right: 600px;
+  right: 100%;
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -102,6 +103,10 @@
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
 }
 
 .container .playbar .Music-control .audio-player .progress-bar:hover .progress-ball {
@@ -134,7 +139,7 @@
 
 .container .playbar .Music-control .audio-player .time #duration{
   position: relative;
-  left: 573px;
+  left: 96.3%;
   top: -17px;
   color: #929292;
   font-size: 14px;
@@ -146,7 +151,6 @@
   width: 100%;
   height: 30px;
   display: none;
-  /* background-color: red; */
 }
 audio::-webkit-media-controls-start-playback-button {
   display: none;
@@ -191,7 +195,8 @@ audio::-webkit-media-controls-start-playback-button {
 .container .playbar .Music-playlist{
   display: flex;
   align-items: center;
-  width: 300px;
+  justify-content: flex-end;
+  width: 20%;
   height: 100%;
 }
 
@@ -199,6 +204,7 @@ audio::-webkit-media-controls-start-playback-button {
   background-color: transparent;
   border: 0;
   margin: 0 15px;
+  margin-right: 50px;
 }
 
 .container .playbar .Music-playlist button:hover{

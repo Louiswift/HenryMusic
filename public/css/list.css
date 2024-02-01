@@ -1,9 +1,9 @@
 .container .homepage-right .songlist .songTitle{
     display: flex;
-    width: 100%;
+    width: calc(100vw - 360px);
     padding: 20px;
     height: 240px;
-    background: linear-gradient(to bottom, #888fa4, #888fa4, #585c69, #4e525e);
+    /* background: linear-gradient(to bottom, #888fa4, #888fa4, #585c69, #4e525e); */
 }
 .container .homepage-right .songlist .songTitle .songlist-pic{
     display: flex;
@@ -45,9 +45,10 @@
 .container .homepage-right .songlist .ListS .Song-information{
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    width: 50%;
     height: 50px;
     font-size: 14px;
+    padding: 0 10px;
     border-bottom: 1px solid #414141;
 }
 
@@ -63,16 +64,19 @@
 
 .container .homepage-right .songlist .ListS{
     /* display: none; */
+    width: 100vw;
+    margin-top: 20px;
 }
 
 .container .homepage-right .songlist .ListS #list{
+    width: 100vw;
     padding: 0 10px;
-
 }
+
 .container .homepage-right .songlist .ListS #list li{
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    width: 50%;
     height: 50px;
     margin: 10px 0;
     padding: 5px 0;
@@ -100,6 +104,20 @@
     color: #fff;
 }
 
+.container .homepage-right .songlist .ListS #information #orderWrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    height: 50px;
+}
+
+.container .homepage-right .songlist .ListS #information #orderWrap #order{
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+}
+
 .container .homepage-right .songlist .ListS #information-zj{
 width: 100px;
 height: 50px;
@@ -117,7 +135,6 @@ color: #fff;
 }
 
 .container .homepage-right .songlist .ListS  #information .pic{
-    width: 40px;
     height: 40px;
     border-radius: 10px;
     -webkit-border-radius: 10px;

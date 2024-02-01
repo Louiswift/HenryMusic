@@ -1,10 +1,45 @@
 .container .homepage-wrapper .homepage-right .right-content-wrap .songlist .songTitle{
-    padding: 10px;
+    display: flex;
+    align-items: center;
     overflow: hidden;
+    height: 300px;
+    border-bottom: 2px solid #2c2a2a;
+    padding: 10px;
 }
 
-.container .homepage-wrapper .homepage-right .right-content-wrap .songlist .songTitle #singerPic{
-    width: 200px;
-    height: 200px;
-    /* border-radius: 50%; */
+.container .homepage-wrapper .homepage-right .right-content-wrap .songlist .songTitle .singerPicWrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 100%;
+}
+
+.container .homepage-wrapper .homepage-right .right-content-wrap .songlist .songTitle .singerPicWrap #singerPic{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+.container .homepage-wrapper .homepage-right .right-content-wrap .songlist .songTitle .singerNameWrap #identity{
+    margin-left: 5px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.container .homepage-wrapper .homepage-right .right-content-wrap .songlist .songTitle #artistName{
+    font-size: 4em;
+    font-weight: 600;
+    color: #fff;
+    margin-top: 5px;
+    letter-spacing: 2px;
+}
+.container .homepage-wrapper .homepage-right .right-content-wrap .songlist .songTitle .singerNameWrap{
+    display: flex;
+    align-items: center;
+}
+.container .homepage-wrapper .homepage-right .right-content-wrap .songlist .songTitle #Engartisname{
+    font-size: 13px;
+    color: #fff;
+    font-weight: 600;
 }
