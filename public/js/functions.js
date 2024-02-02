@@ -22,7 +22,7 @@ function clickArname(singer) {
         let a = event.target.closest("a");
         if (!a) return;
         if (!singer.contains(a)) return;
-    
+
         const { singerId } = event.target.dataset;
         console.log(singerId)
         window.location.href = "artist.html?id=" + singerId;
@@ -33,12 +33,12 @@ function clickArname(singer) {
  * 单击列表歌手名，进入歌手主页
  * @param {*} songList 传入歌手文本父元素
  */
-function clickArnamelist(songList){
+function clickArnamelist(songList) {
     songList.addEventListener("click", (event) => {
         const artistName = event.target.closest("#singerName");
         if (!artistName) return;
         console.log(event.target)
-    
+
         // 进入歌手主页的逻辑
         const { singerId } = event.target.dataset;
         console.log(singerId)
@@ -177,7 +177,7 @@ function creatList(list, ul) {
                 playbarsinger.appendChild(a);
                 a.textContent = list[i].ar[j].name;
                 a.setAttribute('data-singer-id', list[i].ar[j].id);
-    
+
                 if (j < list[i].ar.length - 1) {
                     let span = document.createElement('span');
                     span.textContent = ' / ';
@@ -364,6 +364,7 @@ async function playMain() {
         audio.addEventListener("timeupdate", () => {
             setStatus(audio.currentTime);
         });
+
         function setStatus(time) {
             time += 0.5;
 
@@ -378,22 +379,26 @@ async function playMain() {
 
             if (lyricWrap.style.display == "block") {
                 // 滚动
-                const size = {
-                    liHeight: activeLi.offsetHeight,
-                    containerHeight: lyric.offsetHeight / activeLi.offsetHeight * 17
-                };
-                if (size.containerHeight !== Infinity) {
-                    let top = size.liHeight * index + size.liHeight / 2 - size.containerHeight / 2;
-                    top = -top;
-                    if (top > 0) {
-                        top = 0;
+                if (activeLi && activeLi.innerHTML !== '') {
+                    const size = {
+                        liHeight: activeLi.offsetHeight,
+                        containerHeight: lyricWrap.offsetHeight
+                    };
+                    if (size.containerHeight !== Infinity) {
+                        let top = size.liHeight * index + size.liHeight / 2 - size.containerHeight / 2;
+                        top = -top;
+                        if (top > 0) {
+                            top = 0;
+                        }
+                        lyric.style.transform = `translate3d(0, ${top}px, 0)`;
+                        lyric.style.transition = `2s`;
                     }
-                    lyric.style.transform = `translate3d(0, ${top}px, 0)`;
-                    lyric.style.transition = `2s`;
                 }
             }
         }
     });
+
+
     if (playingSongId !== Number(songId)) {
         await setSongInfo(playList[order].id);
     }
