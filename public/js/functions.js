@@ -209,6 +209,32 @@ function creatList(list, ul) {
 }
 
 /**
+ * DOM生成相似歌手
+ * @param {*} artist 歌手数组
+ * @param {*} ul 生成至该元素
+ */
+function creatSimilarSingers(artist, ul) {
+    for (let i = 0; i < artist.length; i++) {
+      let li = document.createElement('li');
+      let imgWrap = document.createElement('div');
+      let img = document.createElement('img');
+      let singerName = document.createElement('a');
+
+      imgWrap.classList = 'imgWrap';
+      singerName.id = 'singerName';
+      li.setAttribute('data-singer-id',artist[i].id);
+
+      li.appendChild(imgWrap)
+      li.appendChild(singerName)
+      imgWrap.appendChild(img);
+      ul.appendChild(li);
+
+      img.src = artist[i].picUrl;
+      singerName.textContent = artist[i].name;
+    }
+  }
+
+/**
  * DOM生成歌单列表
  * @param {*} arr 遍历的歌单信息
  * @param {*} ul 生成至该元素
