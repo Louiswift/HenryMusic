@@ -29,3 +29,8 @@ getPopularSongsFromSingers(singerId).then(async resp => {
     await settingUpViewing(songs);
     clickArnamelist(ul)
 })
+
+// 相似歌手
+similarSingers(singerId).then(resp => {
+  console.log(resp)
+});
