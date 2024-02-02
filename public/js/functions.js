@@ -37,6 +37,7 @@ function clickArnamelist(songList) {
     songList.addEventListener("click", (event) => {
         const artistName = event.target.closest("#singerName");
         if (!artistName) return;
+        if (!songList.contains(artistName)) return;
         console.log(event.target)
 
         // 进入歌手主页的逻辑
