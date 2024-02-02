@@ -123,7 +123,7 @@
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
 }
-.container .homepage-wrapper .homepage-right .right-content-wrap .right-content .wrap-right #SimilarsingersUl li #singerName{
+.container .homepage-wrapper .homepage-right .right-content-wrap .right-content .wrap-right #SimilarsingersUl li #singer{
     display: flex;
     align-items: center;
     height: 40px;

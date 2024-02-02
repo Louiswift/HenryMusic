@@ -221,7 +221,8 @@ function creatSimilarSingers(artist, ul) {
       let singerName = document.createElement('a');
 
       imgWrap.classList = 'imgWrap';
-      singerName.id = 'singerName';
+      singerName.id = 'singer';
+      li.id = 'singerName';
       li.setAttribute('data-singer-id',artist[i].id);
 
       li.appendChild(imgWrap)
