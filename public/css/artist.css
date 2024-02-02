@@ -1,3 +1,14 @@
+.container .homepage-wrapper .homepage-right {
+    position: absolute;
+    top: 0;
+    left: 300px;
+    right: 0;
+    bottom: 0;
+    flex: 1;
+    height: calc(100vh - 90px);
+    background: linear-gradient(to bottom, #212121, #212121, #121212, #121212, #121212, #121212);
+  }
+
 .container .homepage-wrapper .homepage-right .right-content-wrap .songlist .songTitle{
     display: flex;
     align-items: center;
@@ -42,4 +53,80 @@
     font-size: 13px;
     color: #fff;
     font-weight: 600;
+}
+.container .homepage-wrapper .homepage-right .right-content-wrap .right-content{
+    display: flex;
+}
+/* .container .homepage-wrapper .homepage-right .right-content-wrap .right-content .ListS{
+    width: 100%;
+
+}
+.container .homepage-wrapper .homepage-right .right-content-wrap .right-content .ListS #list{
+    width: 70vw;
+}
+*/
+.container .homepage-wrapper .homepage-right .right-content-wrap .right-content .wrap-right{
+    width: 30%;
+    height: calc(100vh - 60px - 80px - 352px);
+    margin-left: 10px;
+    margin-top: 20px;
+    background-color: #121212;
+    overflow-y: scroll;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+} 
+.container .homepage-wrapper .homepage-right .right-content-wrap .right-content .wrap-right::-webkit-scrollbar{
+    display: none;
+}
+.container .homepage-wrapper .homepage-right .right-content-wrap .right-content .wrap-right #SimilarsingersUl{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(120px,1fr));
+    gap: 20px;
+}
+.container .homepage-wrapper .homepage-right .right-content-wrap .right-content .wrap-right #SimilarsingersUl li{
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 10px;
+    padding-bottom: 0;
+    flex-direction: column;
+    background-color: #181818;
+    border-radius: 10px;
+    height: 160px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+.container .homepage-wrapper .homepage-right .right-content-wrap .right-content .wrap-right #SimilarsingersUl li:hover{
+    background-color: #282828;
+    cursor: pointer;
+}
+.container .homepage-wrapper .homepage-right .right-content-wrap .right-content .wrap-right #SimilarsingersUl li .imgWrap{
+    width: 120px;
+    height: 120px;
+}
+.container .homepage-wrapper .homepage-right .right-content-wrap .right-content .wrap-right #SimilarsingersUl li .imgWrap img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.container .homepage-wrapper .homepage-right .right-content-wrap .right-content .wrap-right #SimilarsingersUl li #singerName{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    font-size: 15px;
+    color: #fff;
 }
