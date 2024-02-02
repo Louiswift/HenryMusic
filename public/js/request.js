@@ -265,3 +265,35 @@ async function getSingerDetails(id){
   const resp = await fetch(`https://henrymusic.xyz/artist/detail?id=${id}`);
   return await resp.json();
 }
+
+/**
+ * 获取相似歌手
+ * @param {*} id: 歌手 id
+ * @param {*} like 可选参数: like 布尔值 , 默认为 true 即喜欢 , 若传 false, 则取消喜欢
+ * @param 说明 : 调用此接口 , 传入歌手 id, 可获得相似歌手
+*/
+async function similarSingers(id){
+  const resp = await fetch(`https://henrymusic.xyz/simi/artist?id=${id}`);
+  return await resp.json();
+}
+
+/**
+ * 最近播放-歌曲
+ * @param {*}  limit 可选参数 返回数量 , 默认为 100
+ * @param 说明 : 调用此接口 , 可获得最近播放-歌曲
+*/
+async function ecentlyPlayed(){
+  const resp = await fetch(`https://henrymusic.xyz/record/recent/song?limit=20`);
+  return await resp.json();
+}
+
+/**
+ * 喜欢音乐
+ * @param {*} id 歌曲 id
+ * @param {*} like 可选参数: like 布尔值 , 默认为 true 即喜欢 , 若传 false, 则取消喜欢
+ * @param 说明 : 调用此接口 , 传入音乐 id, 可喜欢该音乐
+*/
+async function likeMusic(id){
+  const resp = await fetch(`https://henrymusic.xyz/like?id=${id}`);
+  return await resp.json();
+}
