@@ -231,7 +231,7 @@ function creatSimilarSingers(artist, ul) {
         imgWrap.appendChild(img);
         ul.appendChild(li);
 
-        img.src = artist[i].picUrl;
+        img.src = artist[i].img1v1Url;
         singerName.textContent = artist[i].name;
     }
 }
