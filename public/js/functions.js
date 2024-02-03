@@ -114,8 +114,8 @@ function clickOnPlaylist(ul) {
         let li = event.target.closest("li");
         if (!li) return;
         if (!ul.contains(li)) return;
-        const { songId } = li.dataset;
-        window.location.href = "list.html?id=" + songId;
+        const { songId,singerId } = li.dataset;
+        window.location.href = "list.html?id=" + (songId || singerId);
     });
 }
 
@@ -210,7 +210,7 @@ function creatList(list, ul) {
 }
 
 /**
- * DOM生成相似歌手
+ * DOM生成相似XX
  * @param {*} artist 歌手数组
  * @param {*} ul 生成至该元素
  */
@@ -231,7 +231,11 @@ function creatSimilarSingers(artist, ul) {
         imgWrap.appendChild(img);
         ul.appendChild(li);
 
-        img.src = artist[i].img1v1Url;
+        if (artist[i].img1v1Url) {
+            img.src = artist[i].img1v1Url;
+        } else {
+            img.src = artist[i].coverImgUrl;
+        }
         singerName.textContent = artist[i].name;
     }
 }
