@@ -132,6 +132,7 @@ async function playingList() {
         songsNumber.innerText = `共${count}首歌曲`;
     }
     addDblClickEventListener(ul);
+    clickArnamelist(ul);
 }
 
 // 进度条
