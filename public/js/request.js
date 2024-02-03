@@ -269,11 +269,20 @@ async function getSingerDetails(id){
 /**
  * 获取相似歌手
  * @param {*} id: 歌手 id
- * @param {*} like 可选参数: like 布尔值 , 默认为 true 即喜欢 , 若传 false, 则取消喜欢
  * @param 说明 : 调用此接口 , 传入歌手 id, 可获得相似歌手
 */
 async function similarSingers(id){
   const resp = await fetch(`https://henrymusic.xyz/simi/artist?id=${id}`);
+  return await resp.json();
+}
+
+/**
+ * 获取相似歌单
+ * @param {*} id: 歌手 id
+ * @param 说说明 : 调用此接口 , 传入歌曲 id, 可获得相似歌单
+*/
+async function similarPlaylists(id){
+  const resp = await fetch(`https://henrymusic.xyz/simi/playlist?id=${id}`);
   return await resp.json();
 }
 
