@@ -38,3 +38,12 @@
   white-space: nowrap;
   word-wrap: normal;
 }
+
+.bgImgTitle{
+  position: absolute;
+  z-index: 1;
+  filter: blur(70px);
+  width: 100%;
+  height: 300px;
+  -webkit-filter: blur(70px);
+}

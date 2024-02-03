@@ -13,12 +13,16 @@
     display: flex;
     align-items: center;
     overflow: hidden;
+    width: calc(100% - 20px);
     height: 300px;
     border-bottom: 2px solid #2c2a2a;
     padding: 10px;
+    /* background:url(http://p1.music.126.net/dhztbTZ4ohPe3wXXwsy1qg==/109951168290287908.jpg) 100% 100% no-repeat; */
 }
 
 .container .homepage-wrapper .homepage-right .right-content-wrap .songlist .songTitle .singerPicWrap{
+    position: relative;
+    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,12 +44,16 @@
 }
 
 .container .homepage-wrapper .homepage-right .right-content-wrap .songlist .songTitle .singerNameWrap #identity{
+    position: relative;
+    z-index: 2;
     margin-left: 5px;
     color: #fff;
     font-size: 14px;
 }
 
 .container .homepage-wrapper .homepage-right .right-content-wrap .songlist .songTitle #artistName{
+    position: relative;
+    z-index: 2;
     font-size: 4em;
     font-weight: 600;
     color: #fff;
@@ -53,10 +61,14 @@
     letter-spacing: 2px;
 }
 .container .homepage-wrapper .homepage-right .right-content-wrap .songlist .songTitle .singerNameWrap{
+    position: relative;
+    z-index: 2;
     display: flex;
     align-items: center;
 }
 .container .homepage-wrapper .homepage-right .right-content-wrap .songlist .songTitle #Engartisname{
+    position: relative;
+    z-index: 2;
     font-size: 13px;
     color: #fff;
     font-weight: 600;

@@ -4,15 +4,20 @@ getSingerDetails(singerId).then(resp => {
   const singerName = document.querySelector('#artistName');
   const identity = document.querySelector('#identity');
   const Engartisname = document.querySelector('#Engartisname');
+  const bgImgTitle = document.querySelector('.bgImgTitle');
 
-  console.log(resp)
+  console.log(resp.data.artist)
 
   singerPic.src = resp.data.artist.avatar;
   singerName.textContent = resp.data.artist.name;
-  if (resp.data.artist.identifyTag !== null) {
-    identity.textContent = resp.data.artist.identifyTag[0];
-  } else {
+  bgImgTitle.src = resp.data.artist.avatar;
+
+  if (resp.data.artist.identifyTag == null) {
     identity.textContent = '认证艺人';
+  } else if (resp.data.artist.identifyTag[0] == '网易音乐人'){
+    identity.textContent = 'HenryMusic音乐人';
+  } else {
+    identity.textContent = resp.data.artist.identifyTag[0];
   }
   Engartisname.textContent = resp.data.artist.alias[0];
 

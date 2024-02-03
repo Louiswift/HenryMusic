@@ -6,6 +6,8 @@
     /* background: linear-gradient(to bottom, #888fa4, #888fa4, #585c69, #4e525e); */
 }
 .container .homepage-right .songlist .songTitle .songlist-pic{
+    position: relative;
+    z-index: 2;
     display: flex;
     width: 240px;
     height: 240px;
@@ -24,6 +26,8 @@
     -o-border-radius: 15px;
 }
 .container .homepage-right .songlist .songTitle .text-listname-song{
+    position: relative;
+    z-index: 2;
     margin-left: 20px;
 }
 .container .homepage-right .songlist .songTitle .text-songlist{
