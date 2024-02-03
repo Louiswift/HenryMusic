@@ -32,7 +32,7 @@ getPopularSongsFromSingers(singerId).then(async resp => {
 
 // 相似歌手
 similarSingers(singerId).then(resp => {
-  console.log(resp)
+  console.log(`相似歌手该功能，${resp.msg}`)
   const artist = resp.artists;
   const ul = document.querySelector('#SimilarsingersUl');
   if(artist){

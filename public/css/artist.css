@@ -26,6 +26,13 @@
     height: 100%;
 }
 
+.container .homepage-right .songlist .ListS #list{
+    overflow-y: scroll;
+    width: 100%;
+    height: calc(100vh - 60px - 80px - 382px);
+    padding: 0 10px;
+}
+
 .container .homepage-wrapper .homepage-right .right-content-wrap .songlist .songTitle .singerPicWrap #singerPic{
     width: 250px;
     height: 250px;
@@ -57,14 +64,6 @@
 .container .homepage-wrapper .homepage-right .right-content-wrap .right-content{
     display: flex;
 }
-/* .container .homepage-wrapper .homepage-right .right-content-wrap .right-content .ListS{
-    width: 100%;
-
-}
-.container .homepage-wrapper .homepage-right .right-content-wrap .right-content .ListS #list{
-    width: 70vw;
-}
-*/
 .container .homepage-wrapper .homepage-right .right-content-wrap .right-content .wrap-right{
     width: 30%;
     height: calc(100vh - 60px - 80px - 352px);

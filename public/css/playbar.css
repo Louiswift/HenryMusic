@@ -6,7 +6,7 @@
   z-index: 3;
   bottom: 0;
   width: 100%;
-  height: 80px;
+  height: 72px;
   background-color: #000;
 }
 
@@ -24,8 +24,7 @@
   justify-content: center;
   width: 80px;
   height: 100%;
-  padding: 10px;
-  /* background-color: greenyellow; */
+  margin-left: 10px;
 }
 .container .playbar .Music-Information .cover:hover{
   cursor: pointer;
@@ -139,7 +138,7 @@
 
 .container .playbar .Music-control .audio-player .time #duration{
   position: relative;
-  left: 96.3%;
+  left: 96%;
   top: -17px;
   color: #929292;
   font-size: 14px;
