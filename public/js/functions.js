@@ -114,7 +114,7 @@ function clickOnPlaylist(ul) {
         let li = event.target.closest("li");
         if (!li) return;
         if (!ul.contains(li)) return;
-        const { songId,singerId } = li.dataset;
+        const { songId, singerId } = li.dataset;
         window.location.href = "list.html?id=" + (songId || singerId);
     });
 }
@@ -334,38 +334,42 @@ async function setSongInfo(songId) {
     const pic = document.querySelector("#pic");
     const playbarsinger = document.querySelector('#playbarsinger');
 
-    // 获取歌曲信息
-    await getSongDetails(songId).then(song => {
-        console.log(song)
-        pic.src = song.songs[0].al.picUrl;
-        songName.innerText = song.songs[0].name;
-        title.innerText = song.songs[0].name;
+    if (songId) {
+        // 获取歌曲信息
+        await getSongDetails(songId).then(song => {
+            console.log(song)
+            pic.src = song.songs[0].al.picUrl;
+            songName.innerText = song.songs[0].name;
+            title.innerText = song.songs[0].name;
 
-        playbarsinger.innerHTML = '';
-        for (let i = 0; i < song.songs[0].ar.length; i++) {
-            let a = document.createElement('a');
-            a.id = 'singerName';
-            playbarsinger.appendChild(a);
-            a.textContent = song.songs[0].ar[i].name;
-            a.setAttribute('data-singer-id', song.songs[0].ar[i].id);
+            playbarsinger.innerHTML = '';
+            for (let i = 0; i < song.songs[0].ar.length; i++) {
+                let a = document.createElement('a');
+                a.id = 'singerName';
+                playbarsinger.appendChild(a);
+                a.textContent = song.songs[0].ar[i].name;
+                a.setAttribute('data-singer-id', song.songs[0].ar[i].id);
 
-            if (i < song.songs[0].ar.length - 1) {
-                let span = document.createElement('span');
-                span.textContent = ' / ';
-                playbarsinger.appendChild(span)
+                if (i < song.songs[0].ar.length - 1) {
+                    let span = document.createElement('span');
+                    span.textContent = ' / ';
+                    playbarsinger.appendChild(span)
+                }
             }
-        }
-    });
+        });
 
-    // 获取歌曲URL
-    await getSongUrl(songId).then(resp => {
-        if (resp.data) {
-            audio.src = resp.data[0].url;
-            audio.dataset.songId = songId;
-        } else {
-            console.log(resp.message);
-        }
-    });
+        // 获取歌曲URL
+        await getSongUrl(songId).then(resp => {
+            if (resp.data) {
+                audio.src = resp.data[0].url;
+                audio.dataset.songId = songId;
+            } else {
+                console.log(resp.message);
+            }
+        });
+    } else {
+        console.log('没有获取到歌曲Id')
+    }
 }
 
 /**
