@@ -128,7 +128,7 @@ async function playingList() {
             count++;
         }
         console.log('检测到有真正播放的歌曲，开始生成歌单');
-        creatList(playingList,ul);
+        creatList(playingList, ul);
         songsNumber.innerText = `共${count}首歌曲`;
     }
     addDblClickEventListener(ul);
@@ -200,4 +200,28 @@ function updateProgressBall() {
 audio.addEventListener('timeupdate', () => {
     updateProgressBar();
     updateProgressBall();
+});
+
+const likeWrap = document.querySelector('.likeWrap');
+const joinLikes = document.querySelector('#joinLikes');
+const disLike = document.querySelector('#disLike');
+
+likeWrap.addEventListener('click', (event) => {
+    const playingList = JSON.parse(localStorage.getItem('playingList'));
+    const currentPlaySongOrder = localStorage.getItem('currentPlaySongOrder');
+
+    let button = event.target.closest('button');
+    if (button.id === 'joinLikes') {
+        likeMusic(playingList[currentPlaySongOrder].id).then(resp => {
+            console.log(resp)
+        });
+        joinLikes.style.display = 'none';
+        disLike.style.display = 'block';
+    } else if (button.id === 'disLike') {
+        likeMusic(playingList[currentPlaySongOrder].id).then(resp => {
+            console.log(resp)
+        });
+        disLike.style.display = 'none';
+        joinLikes.style.display = 'block';
+    }
 });

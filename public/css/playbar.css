@@ -61,6 +61,46 @@
   text-decoration: underline;
 }
 
+.container .playbar .Music-Information .likeWrap{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 100%;
+  margin-left: 5px;
+}
+
+.container .playbar .Music-Information .likeWrap button{
+  width: 25px;
+  height: 25px;
+  background-color: transparent;
+  border: 0;
+}
+
+.container .playbar .Music-Information .likeWrap button:hover{
+  cursor: pointer;
+}
+
+.container .playbar .Music-Information .likeWrap #joinLikes svg{
+  fill: #A7A7A7;
+  width: 16px;
+  height: 16px;
+}
+
+.container .playbar .Music-Information .likeWrap #joinLikes svg:active{
+  fill: #494848;
+}
+
+.container .playbar .Music-Information .likeWrap #disLike svg{
+  fill: #1ED760;
+  width: 16px;
+  height: 16px;
+}
+
+.container .playbar .Music-Information .likeWrap #disLike svg:active{
+  fill: #115227;
+}
+
 /* 播放栏中间 */
 .container .playbar .Music-control{
   display: flex;
