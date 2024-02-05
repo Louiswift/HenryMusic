@@ -1,6 +1,7 @@
 // 生成歌单
 recommendedPlaylists().then(resp => {
   const ul = document.querySelector("#RecommendedPlaylists");
+  const playAllBtn = document.querySelector('#playAll');
   clickOnPlaylist(ul);
   let arr = resp.result;
   generatePlaylists(arr,ul);

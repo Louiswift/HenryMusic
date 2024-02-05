@@ -110,13 +110,34 @@ async function settingUpViewing(list) {
  * @param {*} ul 点击的区域
  */
 function clickOnPlaylist(ul) {
-    ul.addEventListener("click", (event) => {
-        let li = event.target.closest("li");
-        if (!li) return;
-        if (!ul.contains(li)) return;
-        const { songId, singerId } = li.dataset;
-        window.location.href = "list.html?id=" + (songId || singerId);
-    });
+    ul.addEventListener('click', handlePlaylistClick);
+    function handlePlaylistClick(event) {
+        const target = event.target;
+
+        if (target.id == 'playAll' || target.tagName === 'svg' || target.tagName === 'path') {
+            console.log('播放歌单所有歌曲');
+            let li = event.target.closest("li");
+            const { songId, singerId } = li.dataset;
+            playAllSongs(songId);
+        } else {
+            let li = event.target.closest("li");
+            const { songId, singerId } = li.dataset;
+            window.location.href = "list.html?id=" + (songId || singerId);
+        }
+    }
+}
+
+/**
+ * 播放歌单中所有歌曲
+ * @param {*} id 歌单id
+ */
+function playAllSongs(id) {
+    getAllsongsOnThePlaylist(id).then(resp => {
+        const songs = resp.songs;
+        localStorage.setItem('currentPlaySongOrder',0);
+        localStorage.setItem('playingList', JSON.stringify(songs));
+        playMain();
+    })
 }
 
 /**
@@ -252,20 +273,26 @@ function generatePlaylists(arr, ul) {
         const newDivImg = document.createElement("div");
         const newImg = document.createElement("img");
         const newDivText = document.createElement("div");
+        const button = document.createElement('button');
 
-        newDivImg.classList.add("pic")
-        newImg.classList.add("pic-img")
-        newDivText.classList.add("text-list")
+        newDivImg.classList.add("pic");
+        newImg.classList.add("pic-img");
+        newDivText.classList.add("text-list");
+        button.id = 'playAll';
 
         let songListId = arr[i].id;
         newLi.setAttribute("data-song-id", songListId);
 
         newImg.src = arr[i].picUrl;
         newDivText.textContent = arr[i].name;
+        button.innerHTML = `<svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 24 24"
+        class="Svg-sc-ytk21e-0 bneLcE"><path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path>
+    </svg>`;
 
         newLi.appendChild(newA);
         newA.appendChild(newDivImg);
         newDivImg.appendChild(newImg);
+        newDivImg.appendChild(button);
         newA.appendChild(newDivText);
         ul.appendChild(newLi);
     }
@@ -384,8 +411,8 @@ async function playMain() {
     audio.currentTime = playTime;
 
     localStorage.setItem('play', '1');
-
     let playingSongId = playList[order].id;
+
     await getsongLyric(playingSongId).then(resp => {
         lyric.innerText = '';
         let lrc = resp.lrc.lyric;
