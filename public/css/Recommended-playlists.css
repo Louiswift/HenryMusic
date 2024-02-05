@@ -12,6 +12,7 @@
     padding: 30px;
 }
 .container .homepage-right .Recommended-playlists ul li{
+    padding: 15px;
    border-radius: 10px;
    background-color: #161616;
    overflow: hidden;
@@ -30,14 +31,51 @@
     cursor: pointer;
 }
 .container .homepage-right .Recommended-playlists ul li a .pic{
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    overflow: hidden;
 }
 .container .homepage-right .Recommended-playlists ul li a .pic img {
-    width:8em;
+    width:100%;
     border-radius: 5px;
+}
+.container .homepage-right .Recommended-playlists ul li a .pic #playAll {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 100%;
+    left: 68%;
+    background-color: #1ED760;
+    color: #000;
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+    border: 0;
+    opacity: 0;
+    box-shadow: 0 5px 30px;
+    transition: opacity 0.4s;
+    -webkit-transition: opacity 0.4s;
+    -moz-transition: opacity 0.4s;
+    -ms-transition: opacity 0.4s;
+    -o-transition: opacity 0.4s;
+    
+}
+.container .homepage-right .Recommended-playlists ul li .pic:hover #playAll{
+  transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  top: 68%;
+  opacity: 1;
+}
+.container .homepage-right .Recommended-playlists ul li a .pic #playAll svg{
+    width: 20px;
+}
+.container .homepage-right .Recommended-playlists ul li a .pic #playAll:hover{
+    cursor: pointer;
+}
+.container .homepage-right .Recommended-playlists ul li a .pic #playAll:active{
+    background-color: #169c46;
 }
 .container .homepage-right .Recommended-playlists ul li a .text-list{
     display: flex;
