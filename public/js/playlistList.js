@@ -15,7 +15,6 @@ getPlaylistsDetail(dataId).then(async resp => {
     title.innerText = name;
 
     let songs = resp.playlist.tracks;
-    console.log(resp.playlist.tracks)
     creatList(songs, ul);
     await addDblClickEventListener(ul);
     await settingUpViewing(songs);

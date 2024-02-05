@@ -134,7 +134,7 @@ function clickOnPlaylist(ul) {
 function playAllSongs(id) {
     getAllsongsOnThePlaylist(id).then(resp => {
         const songs = resp.songs;
-        localStorage.setItem('currentPlaySongOrder',0);
+        localStorage.setItem('currentPlaySongOrder', 0);
         localStorage.setItem('playingList', JSON.stringify(songs));
         playMain();
     })
