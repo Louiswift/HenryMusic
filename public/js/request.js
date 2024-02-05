@@ -10,7 +10,7 @@ const getNewSong = async () => {
 
 /**
  * 获取每日推荐歌单 ( 需要登录 )
- * @returns 对象
+ * @returns 对象 
  */
 async function getTheDailyRecommendedSongList(){
   const resp = await fetch(`https://henrymusic.xyz/recommend/resource`);
@@ -42,7 +42,7 @@ const recommendedPlaylists = async () => {
  * @param 说明：通过歌单id，获取到歌单中所有的歌曲
  */
 const getAllsongsOnThePlaylist = async (PlayListId) => {
-  const resp = await fetch(`https://henrymusic.xyz/playlist/track/all?limit=20&id=${PlayListId}&offset=1`);
+  const resp = await fetch(`https://henrymusic.xyz/playlist/track/all?limit=50&id=${PlayListId}&offset=0`);
   return await resp.json();
 }
 
