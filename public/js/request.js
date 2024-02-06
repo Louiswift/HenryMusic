@@ -303,6 +303,6 @@ async function ecentlyPlayed(){
  * @param 说明 : 调用此接口 , 传入音乐 id, 可喜欢该音乐
 */
 async function likeMusic(id){
-  const resp = await fetch(`https://henrymusic.xyz/false?id=${id}`);
+  const resp = await fetch(`https://henrymusic.xyz/like${tf}id=${id}`);
   return await resp.json();
 }
