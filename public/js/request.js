@@ -296,13 +296,24 @@ async function ecentlyPlayed(){
   return await resp.json();
 }
 
+// /**
+//  * 喜欢音乐
+//  * @param {*} id 歌曲 id
+//  * @param {*} like 可选参数: like 布尔值 , 默认为 true 即喜欢 , 若传 false, 则取消喜欢
+//  * @param 说明 : 调用此接口 , 传入音乐 id, 可喜欢该音乐
+// */
+// async function likeMusic(id, like){
+//   const resp = await fetch(`https://henrymusic.xyz/like=${like}&id=${id}`);
+//   return await resp.json();
+// }
+
 /**
  * 喜欢音乐
  * @param {*} id 歌曲 id
  * @param {*} like 可选参数: like 布尔值 , 默认为 true 即喜欢 , 若传 false, 则取消喜欢
  * @param 说明 : 调用此接口 , 传入音乐 id, 可喜欢该音乐
 */
-async function likeMusic(id,tf){
-  const resp = await fetch(`https://henrymusic.xyz/like${tf}id=${id}`);
+async function likeMusic(id,listId,like){
+  const resp = await fetch(`https://henrymusic.xyz/playlist/tracks?op=$${like}&pid=${listId}&tracks=${id}`);
   return await resp.json();
 }

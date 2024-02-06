@@ -24,7 +24,6 @@ function clickArname(singer) {
         if (!singer.contains(a)) return;
 
         const { singerId } = event.target.dataset;
-        console.log(singerId)
         window.location.href = "artist.html?id=" + singerId;
     })
 }
@@ -100,7 +99,6 @@ async function settingUpViewing(list) {
     if (playStatus === '1') {
         playMain();
     } else {
-        console.log(playingList)
         if(playingList.length > 0){
             const songId = playingList[localStorage.getItem('currentPlaySongOrder')].id;
             await setSongInfo(songId);
@@ -369,7 +367,6 @@ async function setSongInfo(songId) {
     if (songId) {
         // 获取歌曲信息
         await getSongDetails(songId).then(song => {
-            console.log(song)
             pic.src = song.songs[0].al.picUrl;
             songName.innerText = song.songs[0].name;
             title.innerText = song.songs[0].name;
