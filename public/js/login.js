@@ -143,6 +143,7 @@ loginBtn.addEventListener('click', async () => {
         localStorage.setItem("loginMethod", "邮箱登录")
         setTimeout(function () {
             getUserInfo();
+           console.log('登陆成功')
         }, 500);
         window.location.href = 'https://henrymusic.xyz/';
     } else {

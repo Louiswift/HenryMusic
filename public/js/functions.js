@@ -522,5 +522,6 @@ function generateSearcHistory(arr, hotHistoryWrap) {
 async function getUserInfo() {
     await loginStatus().then(async resp => {
         localStorage.setItem('user', JSON.stringify(resp.data));
+        console.log('已经设置用户信息')
     })
 };
