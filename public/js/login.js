@@ -139,7 +139,6 @@ loginBtn.addEventListener('click', async () => {
     const Password = txtPassword.value;
     const resp = await emailLogin(email, Password);
     if (resp.code == 200) {
-        console.log(resp.profile)
         localStorage.setItem("loginMethod", "邮箱登录")
         setTimeout(function() {
             getUserInfo();

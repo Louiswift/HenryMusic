@@ -8,6 +8,7 @@ recommendedPlaylists().then(resp => {
 });
 
 loginStatus().then(async resp => {
+  localStorage.setItem('user', JSON.stringify(resp.data));
   if (resp.data.account) {
     let titleDailyRecommendations = document.querySelector('#titleDailyRecommendations');
     titleDailyRecommendations.style.display = 'block';
