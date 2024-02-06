@@ -46,6 +46,7 @@ if (user && user.account !== null) {
 
         createYourPlaylist(playlist, collectPlaylists, createdPlaylist);
         clickOnPlaylist(createdPlaylist);
+        clickOnPlaylist(collectPlaylists);
     })
     getUserInfoAndPlaylist().then(resp => {
         console.log(resp)
