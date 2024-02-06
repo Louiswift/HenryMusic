@@ -217,13 +217,13 @@ likeWrap.addEventListener('click', (event) => {
 
     let button = event.target.closest('button');
     if (button.id === 'joinLikes') {
-        likeMusic(playingList[currentPlaySongOrder].id,true).then(resp => {
+        likeMusic(playingList[currentPlaySongOrder].id,'true').then(resp => {
             console.log(resp)
         });
         joinLikes.style.display = 'none';
         disLike.style.display = 'block';
     } else if (button.id === 'disLike') {
-        likeMusic(playingList[currentPlaySongOrder].id,false).then(resp => {
+        likeMusic(playingList[currentPlaySongOrder].id,'false').then(resp => {
             console.log(resp)
         });
         disLike.style.display = 'none';
