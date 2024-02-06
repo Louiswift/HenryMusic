@@ -106,7 +106,7 @@ MusicPlaylist.addEventListener('click', (event) => {
         openPlaylist.style.display = 'none';
         closePlaylist.style.display = 'block';
         playingListWrap.style.display = 'block';
-        playingList();
+        // playingList();
     } else if (button == closePlaylist) {
         userInfoWrap.id = '';
         closePlaylist.style.display = 'none';
@@ -116,6 +116,11 @@ MusicPlaylist.addEventListener('click', (event) => {
     }
 });
 
+let playiingList = JSON.parse(localStorage.getItem('playingList'));
+console.log(playiingList)
+if(playiingList){
+    playingList()
+}
 async function playingList() {
     let playingList = JSON.parse(localStorage.getItem('playingList'));
     let ul = document.querySelector('.playingList #list');

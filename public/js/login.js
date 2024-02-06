@@ -138,12 +138,12 @@ loginBtn.addEventListener('click', async () => {
     const email = txtEmail.value;
     const Password = txtPassword.value;
     const resp = await emailLogin(email, Password);
-    localStorage.setItem('token', resp.token);
-    localStorage.setItem('cookie', resp.cookie);
     if (resp.code == 200) {
         console.log(resp.profile)
         localStorage.setItem("loginMethod", "邮箱登录")
-        getUserInfo();
+        setTimeout(function () {
+            getUserInfo();
+        }, 500);
         window.location.href = 'https://henrymusic.xyz/';
     } else {
         alert(resp.msg);

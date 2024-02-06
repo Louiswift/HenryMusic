@@ -6,7 +6,9 @@ window.onload = () => {
         const order = localStorage.getItem('currentPlaySongOrder');
         const playList = JSON.parse(localStorage.getItem('playingList'));
         if(playList){
-            setSongInfo(playList[order].id);
+            console.log(playList)
+            console.log(order)
+            setSongInfo(playList[order || 0].id);
         }else{
             console.log('未发现歌曲哦！播放不了呢！');
         }

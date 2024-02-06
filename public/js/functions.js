@@ -91,7 +91,7 @@ function exchangePlaylists() {
  */
 async function settingUpViewing(list) {
     localStorage.setItem('playList', JSON.stringify(list));
-    const playingList = (localStorage.getItem('playingList') || []);
+    const playingList = JSON.parse(localStorage.getItem('playingList')) || [];
 
     if (playingList.length === 0) {
         localStorage.setItem('playingList', JSON.stringify(list));
@@ -100,8 +100,13 @@ async function settingUpViewing(list) {
     if (playStatus === '1') {
         playMain();
     } else {
-        const songId = playingList[localStorage.getItem('currentPlaySongOrder')].id;
-        await setSongInfo(songId);
+        console.log(playingList)
+        if(playingList.length > 0){
+            const songId = playingList[localStorage.getItem('currentPlaySongOrder')].id;
+            await setSongInfo(songId);
+        }else{
+            console.log('没有正在看的歌曲哦')
+        }
     }
 }
 
