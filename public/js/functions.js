@@ -389,8 +389,10 @@ async function setSongInfo(songId) {
 
         // 该歌曲用户是否在喜欢列表中
         let user = JSON.parse(localStorage.getItem('user'));
+        console.log(user.account)
         if(user.account){
             likeMusicList(user.account.userId).then(resp => {
+                console.log(resp)
                 if(resp.code == 200){
                     const ids = resp.ids;
                     for (let i = 0; i < ids.length; i++) {
