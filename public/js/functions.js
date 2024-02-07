@@ -99,10 +99,10 @@ async function settingUpViewing(list) {
     if (playStatus === '1') {
         playMain();
     } else {
-        if(playingList.length > 0){
+        if (playingList.length > 0) {
             const songId = playingList[localStorage.getItem('currentPlaySongOrder')].id;
             await setSongInfo(songId);
-        }else{
+        } else {
             console.log('没有正在看的歌曲哦')
         }
     }
@@ -354,9 +354,6 @@ function duration(time) {
 function addZero(time) {
     return time < 10 ? '0' + time : time
 }
-likeMusicList(444055992).then(resp => {
-    console.log(resp)
-})
 
 /**
  * 设置歌曲信息
@@ -391,22 +388,29 @@ async function setSongInfo(songId) {
         });
 
         // 该歌曲用户是否在喜欢列表中
-        getPlaylistsDetail(640067993).then(resp => {
-            let songs = resp.playlist.tracks;
-            for (let i = 0; i < songs.length; i++) {
-                if (songs[i].id == songId) {
-                    console.log('true');
-                    disLike.style.display = 'block';
-                    joinLikes.style.display = 'none';
-                    return
-                } else {
-                    console.log(false)
-                    disLike.style.display = 'none';
-                    joinLikes.style.display = 'block';
+        let user = JSON.parse(localStorage.getItem('user'));
+        if(user.account){
+            likeMusicList(user.account.userId).then(resp => {
+                if(resp.code == 200){
+                    const ids = resp.ids;
+                    for (let i = 0; i < ids.length; i++) {
+                        if (ids[i].id == songId) {
+                            disLike.style.display = 'block';
+                            joinLikes.style.display = 'none';
+                            return
+                        } else {
+                            disLike.style.display = 'none';
+                            joinLikes.style.display = 'block';
+                        }
+                    }
+                }else{
+                    console.log(resp.msg);
                 }
-            }
-        })
-
+            })    
+        }else{
+            console.log('您似乎没有登录哦！')
+        }
+        
         // 获取歌曲URL
         await getSongUrl(songId).then(resp => {
             if (resp.data) {
@@ -435,19 +439,19 @@ async function setSongInfo(songId) {
             audio.addEventListener("timeupdate", () => {
                 setStatus(audio.currentTime);
             });
-    
+
             function setStatus(time) {
                 time += 0.5;
-    
+
                 const activeLi = document.querySelector('.active');
                 activeLi && activeLi.classList.remove('active');
-    
+
                 const index = lrcData.findIndex((lrc) => lrc.time > time) - 1;
                 if (index < 0) {
                     return;
                 }
                 lyric.children[index].classList.add('active');
-    
+
                 if (lyricWrap.style.display == "block") {
                     // 滚动
                     if (activeLi && activeLi.innerHTML !== '') {
