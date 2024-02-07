@@ -213,6 +213,7 @@ const disLike = document.querySelector('#disLike');
 
 likeWrap.addEventListener('click', (event) => {
     const playiiingList = JSON.parse(localStorage.getItem('playingList'));
+    const currentPlaySongOrder = (localStorage.getItem('currentPlaySongOrder'));
     let button = event.target.closest('button');
     if (button.id === 'joinLikes') {
         likeMusic(playiiingList[currentPlaySongOrder].id, 640067993, 'add').then(resp => {
