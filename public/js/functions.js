@@ -409,73 +409,71 @@ async function setSongInfo(songId) {
                 }
             })
         })
-    };
-
-    // 获取歌曲URL
-    await getSongUrl(songId).then(resp => {
-        if (resp.data) {
-            audio.src = resp.data[0].url;
-            audio.dataset.songId = songId;
-        } else {
-            console.log(resp.message);
-        }
-    });
-
-    await getsongLyric(songId).then(resp => {
-        lyric.innerText = '';
-        let lrc = resp.lrc.lyric;
-        lrcData = lrc
-            .split('\n')
-            .filter((s) => s)
-            .map((s) => {
-                const parts = s.split(']');
-                const timeParts = parts[0].replace('[', '').split(':');
-                return {
-                    time: +timeParts[0] * 60 + +timeParts[1],
-                    words: parts[1],
-                };
-            });
-        lyric.innerHTML = lrcData.map((lrc) => `<li>${lrc.words}</li>`).join('');
-        audio.addEventListener("timeupdate", () => {
-            setStatus(audio.currentTime);
+        // 获取歌曲URL
+        await getSongUrl(songId).then(resp => {
+            if (resp.data) {
+                audio.src = resp.data[0].url;
+                audio.dataset.songId = songId;
+            } else {
+                console.log(resp.message);
+            }
         });
 
-        function setStatus(time) {
-            time += 0.5;
-
-            const activeLi = document.querySelector('.active');
-            activeLi && activeLi.classList.remove('active');
-
-            const index = lrcData.findIndex((lrc) => lrc.time > time) - 1;
-            if (index < 0) {
-                return;
-            }
-            lyric.children[index].classList.add('active');
-
-            if (lyricWrap.style.display == "block") {
-                // 滚动
-                if (activeLi && activeLi.innerHTML !== '') {
-                    const size = {
-                        liHeight: activeLi.offsetHeight,
-                        containerHeight: lyricWrap.offsetHeight
+        await getsongLyric(songId).then(resp => {
+            lyric.innerText = '';
+            let lrc = resp.lrc.lyric;
+            lrcData = lrc
+                .split('\n')
+                .filter((s) => s)
+                .map((s) => {
+                    const parts = s.split(']');
+                    const timeParts = parts[0].replace('[', '').split(':');
+                    return {
+                        time: +timeParts[0] * 60 + +timeParts[1],
+                        words: parts[1],
                     };
-                    if (size.containerHeight !== Infinity) {
-                        let top = size.liHeight * index + size.liHeight / 2 - size.containerHeight / 2;
-                        top = -top;
-                        if (top > 0) {
-                            top = 0;
+                });
+            lyric.innerHTML = lrcData.map((lrc) => `<li>${lrc.words}</li>`).join('');
+            audio.addEventListener("timeupdate", () => {
+                setStatus(audio.currentTime);
+            });
+
+            function setStatus(time) {
+                time += 0.5;
+
+                const activeLi = document.querySelector('.active');
+                activeLi && activeLi.classList.remove('active');
+
+                const index = lrcData.findIndex((lrc) => lrc.time > time) - 1;
+                if (index < 0) {
+                    return;
+                }
+                lyric.children[index].classList.add('active');
+
+                if (lyricWrap.style.display == "block") {
+                    // 滚动
+                    if (activeLi && activeLi.innerHTML !== '') {
+                        const size = {
+                            liHeight: activeLi.offsetHeight,
+                            containerHeight: lyricWrap.offsetHeight
+                        };
+                        if (size.containerHeight !== Infinity) {
+                            let top = size.liHeight * index + size.liHeight / 2 - size.containerHeight / 2;
+                            top = -top;
+                            if (top > 0) {
+                                top = 0;
+                            }
+                            lyric.style.transform = `translate3d(0, ${top}px, 0)`;
+                            lyric.style.transition = `2s`;
                         }
-                        lyric.style.transform = `translate3d(0, ${top}px, 0)`;
-                        lyric.style.transition = `2s`;
                     }
                 }
             }
-        }
-    });
-} else {
-    console.log('没有获取到歌曲Id')
-}
-}
+        });
+    }else{
+        console.log('没有获取到歌曲id');
+    }
+};
 
 /**
  * 播放功能
