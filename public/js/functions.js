@@ -346,7 +346,8 @@ function CreateLibraryPlaylists(playlist, ul) {
         const a = document.createElement('a');
 
         iconWrap.classList.add('icon');
-        text.classList.add('text-songsheet');
+        text.classList.add('text-songsheet f-thide');
+        li.setAttribute("data-song-id", playlist[i].id);
 
         img.src = playlist[i].coverImgUrl;
         text.textContent = playlist[i].name;

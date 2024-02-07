@@ -91,6 +91,12 @@
   height: 51px;
   margin-top: 10px;
   padding: 5px 0;
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -ms-transition: 0.4s;
+  -o-transition: 0.4s;
+  font-size: 15px;
 }
 .container .homepage-wrapper .homepage-left .left-below .wrap-songsheet .songsheet li a{
   display: flex;
@@ -113,14 +119,18 @@
   -o-border-radius: 5px;
 }
 .container .homepage-wrapper .homepage-left .left-below .wrap-songsheet .songsheet li a .icon img{
-  width: 30px;
-  height: 30px;
+  width: 100%;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
 }
 .container .homepage-wrapper .homepage-left .left-below .wrap-songsheet .songsheet li a .text-songsheet{
-  display: flex;
-  align-items: center;
   margin-left: 10px;
-  height: 100%;
+  width: 150px;
+  height: 51px;
+  line-height: 51px;
   color: #fff;
 }
 /* 鼠标悬浮样式 */
