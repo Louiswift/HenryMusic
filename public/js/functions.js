@@ -317,7 +317,7 @@ function createYourPlaylist(playlist, ul, ul2) {
         // 给dom赋值class & 值
         div.classList = 'txtplaylistName f-thide';
         img.src = playlist[i].coverImgUrl;
-        div.innerText = playlist[i].name;
+        div.textContent = playlist[i].name;
         li.setAttribute("data-song-id", playlist[i].id);
 
         // 将dom拼装
@@ -329,6 +329,33 @@ function createYourPlaylist(playlist, ul, ul2) {
         } else {
             ul2.appendChild(li);
         }
+    }
+}
+
+/**
+ * 创建音乐库的歌单
+ * @param {*} playlist 需要生成的歌单数组
+ * @param {*} ul 生成至该元素
+ */
+function CreateLibraryPlaylists(playlist, ul) {
+    for (let i = 0; i < playlist.length; i++) {
+        const li = document.createElement('li');
+        const iconWrap = document.createElement('div');
+        const img = document.createElement('img');
+        const text = document.createElement('div');
+        const a = document.createElement('a');
+
+        iconWrap.classList.add('icon');
+        text.classList.add('text-songsheet');
+
+        img.src = playlist[i].coverImgUrl;
+        text.textContent = playlist[i].name;
+
+        li.appendChild(a);
+        iconWrap.appendChild(img);
+        a.appendChild(iconWrap);
+        a.appendChild(text);
+        ul.appendChild(li);
     }
 }
 

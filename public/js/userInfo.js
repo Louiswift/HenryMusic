@@ -42,9 +42,11 @@ if (user && user.account !== null) {
     getUserPlaylists(user.account.id).then(async resp => {
         const createdPlaylist = document.querySelector('#createdPlaylist');
         const collectPlaylists = document.querySelector('#collectPlaylists');
+        const ul = document.querySelector('#songsheet');
         const playlist = resp.playlist;
 
         createYourPlaylist(playlist, collectPlaylists, createdPlaylist);
+        CreateLibraryPlaylists(playlist, ul);
         clickOnPlaylist(createdPlaylist);
         clickOnPlaylist(collectPlaylists);
     })
