@@ -394,13 +394,15 @@ async function setSongInfo(songId) {
             likeMusicList(user.account.userId).then(resp => {
                 console.log(resp)
                 if(resp.code == 200){
-                    const ids = resp.ids;
-                    for (let i = 0; i < ids.length; i++) {
-                        if (ids[i].id == songId) {
+                    let arr = resp.ids;
+                    for (let i = 0; i < arr.length; i++) {
+                        if (arr[i].id == songId) {
+                            console.log('true')
                             disLike.style.display = 'block';
                             joinLikes.style.display = 'none';
                             return
                         } else {
+                            console.log('false')
                             disLike.style.display = 'none';
                             joinLikes.style.display = 'block';
                         }
