@@ -118,7 +118,7 @@ MusicPlaylist.addEventListener('click', (event) => {
 
 let playiingList = JSON.parse(localStorage.getItem('playingList'));
 console.log(playiingList)
-if(playiingList){
+if (playiingList) {
     playingList()
 }
 async function playingList() {
@@ -212,18 +212,16 @@ const joinLikes = document.querySelector('#joinLikes');
 const disLike = document.querySelector('#disLike');
 
 likeWrap.addEventListener('click', (event) => {
-    const playingList = JSON.parse(localStorage.getItem('playingList'));
-    const currentPlaySongOrder = localStorage.getItem('currentPlaySongOrder');
-
+    const playiiingList = JSON.parse(localStorage.getItem('playingList'));
     let button = event.target.closest('button');
     if (button.id === 'joinLikes') {
-        likeMusic(playingList[currentPlaySongOrder].id, 640067993, 'add').then(resp => {
+        likeMusic(playiiingList[currentPlaySongOrder].id, 640067993, 'add').then(resp => {
             console.log(resp)
         });
         joinLikes.style.display = 'none';
         disLike.style.display = 'block';
     } else if (button.id === 'disLike') {
-        likeMusic(playingList[currentPlaySongOrder].id, 640067993, 'del').then(resp => {
+        likeMusic(playiiingList[currentPlaySongOrder].id, 640067993, 'del').then(resp => {
             console.log(resp)
         });
         disLike.style.display = 'none';

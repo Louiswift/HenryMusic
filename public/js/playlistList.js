@@ -23,10 +23,9 @@ getPlaylistsDetail(dataId).then(async resp => {
     const { firstId } = ul.dataset;
     similarPlaylists(firstId).then(resp => {
         const playlists = resp.playlists;
-        creatSimilarSingers(playlists,similarPlaylistsUl);
+        creatSimilarSingers(playlists, similarPlaylistsUl);
         clickOnPlaylist(similarPlaylistsUl);
-    })    
-
+    })
 });
 
 getAllsongsOnThePlaylist(dataId).then(async resp => {

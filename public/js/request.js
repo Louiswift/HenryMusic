@@ -317,3 +317,13 @@ async function likeMusic(id,listId,like){
   const resp = await fetch(`https://henrymusic.xyz/playlist/tracks?op=$${like}&pid=${listId}&tracks=${id}`);
   return await resp.json();
 }
+
+/**
+ * 喜欢音乐列表
+ * @param {*} uid: 用户 id
+ * @param 说明 : 调用此接口 , 传入用户 id, 可获取已喜欢音乐 id 列表(id 数组)
+*/
+async function likeMusicList(uid){
+  const resp = await fetch(`https://henrymusic.xyz/likelist?uid=${uid}`);
+  return await resp.json();
+}

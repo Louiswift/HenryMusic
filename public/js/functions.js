@@ -354,6 +354,9 @@ function duration(time) {
 function addZero(time) {
     return time < 10 ? '0' + time : time
 }
+likeMusicList(444055992).then(resp => {
+    console.log(resp)
+})
 
 /**
  * 设置歌曲信息
@@ -386,6 +389,23 @@ async function setSongInfo(songId) {
                 }
             }
         });
+
+        // 该歌曲用户是否在喜欢列表中
+        getPlaylistsDetail(640067993).then(resp => {
+            let songs = resp.playlist.tracks;
+            for (let i = 0; i < songs.length; i++) {
+                if (songs[i].id == songId) {
+                    console.log('true');
+                    disLike.style.display = 'block';
+                    joinLikes.style.display = 'none';
+                    return
+                } else {
+                    console.log(false)
+                    disLike.style.display = 'none';
+                    joinLikes.style.display = 'block';
+                }
+            }
+        })
 
         // 获取歌曲URL
         await getSongUrl(songId).then(resp => {
