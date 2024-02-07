@@ -390,95 +390,91 @@ async function setSongInfo(songId) {
         // 该歌曲用户是否在喜欢列表中
         let user = JSON.parse(localStorage.getItem('user'));
         console.log(user.account)
-        if(user.account){
-            likeMusicList(user.account.userId).then(resp => {
-                console.log(resp)
-                if(resp.code == 200){
-                    let arr = resp.ids;
-                    for (let i = 0; i < arr.length; i++) {
-                        if (arr[i].id == songId) {
-                            console.log('true')
-                            disLike.style.display = 'block';
-                            joinLikes.style.display = 'none';
-                            return
-                        } else {
-                            console.log('false')
-                            disLike.style.display = 'none';
-                            joinLikes.style.display = 'block';
-                        }
+        getUserPlaylists(user.account.id).then(async resp => {
+            const playlist = resp.playlist;
+            const id = playlist[0].id;
+            getPlaylistsDetail(id).then(async resp => {
+                const list = resp.playlist.tracks;
+                for (let i = 0; i < list.length; i++) {
+                    if (list[i].id == songId) {
+                        console.log('true')
+                        disLike.style.display = 'block';
+                        joinLikes.style.display = 'none';
+                        return
+                    } else {
+                        console.log('false')
+                        disLike.style.display = 'none';
+                        joinLikes.style.display = 'block';
                     }
-                }else{
-                    console.log(resp.msg);
                 }
-            })    
-        }else{
-            console.log('您似乎没有登录哦！')
+            })
+        })
+    };
+
+    // 获取歌曲URL
+    await getSongUrl(songId).then(resp => {
+        if (resp.data) {
+            audio.src = resp.data[0].url;
+            audio.dataset.songId = songId;
+        } else {
+            console.log(resp.message);
         }
-        
-        // 获取歌曲URL
-        await getSongUrl(songId).then(resp => {
-            if (resp.data) {
-                audio.src = resp.data[0].url;
-                audio.dataset.songId = songId;
-            } else {
-                console.log(resp.message);
-            }
+    });
+
+    await getsongLyric(songId).then(resp => {
+        lyric.innerText = '';
+        let lrc = resp.lrc.lyric;
+        lrcData = lrc
+            .split('\n')
+            .filter((s) => s)
+            .map((s) => {
+                const parts = s.split(']');
+                const timeParts = parts[0].replace('[', '').split(':');
+                return {
+                    time: +timeParts[0] * 60 + +timeParts[1],
+                    words: parts[1],
+                };
+            });
+        lyric.innerHTML = lrcData.map((lrc) => `<li>${lrc.words}</li>`).join('');
+        audio.addEventListener("timeupdate", () => {
+            setStatus(audio.currentTime);
         });
 
-        await getsongLyric(songId).then(resp => {
-            lyric.innerText = '';
-            let lrc = resp.lrc.lyric;
-            lrcData = lrc
-                .split('\n')
-                .filter((s) => s)
-                .map((s) => {
-                    const parts = s.split(']');
-                    const timeParts = parts[0].replace('[', '').split(':');
-                    return {
-                        time: +timeParts[0] * 60 + +timeParts[1],
-                        words: parts[1],
+        function setStatus(time) {
+            time += 0.5;
+
+            const activeLi = document.querySelector('.active');
+            activeLi && activeLi.classList.remove('active');
+
+            const index = lrcData.findIndex((lrc) => lrc.time > time) - 1;
+            if (index < 0) {
+                return;
+            }
+            lyric.children[index].classList.add('active');
+
+            if (lyricWrap.style.display == "block") {
+                // 滚动
+                if (activeLi && activeLi.innerHTML !== '') {
+                    const size = {
+                        liHeight: activeLi.offsetHeight,
+                        containerHeight: lyricWrap.offsetHeight
                     };
-                });
-            lyric.innerHTML = lrcData.map((lrc) => `<li>${lrc.words}</li>`).join('');
-            audio.addEventListener("timeupdate", () => {
-                setStatus(audio.currentTime);
-            });
-
-            function setStatus(time) {
-                time += 0.5;
-
-                const activeLi = document.querySelector('.active');
-                activeLi && activeLi.classList.remove('active');
-
-                const index = lrcData.findIndex((lrc) => lrc.time > time) - 1;
-                if (index < 0) {
-                    return;
-                }
-                lyric.children[index].classList.add('active');
-
-                if (lyricWrap.style.display == "block") {
-                    // 滚动
-                    if (activeLi && activeLi.innerHTML !== '') {
-                        const size = {
-                            liHeight: activeLi.offsetHeight,
-                            containerHeight: lyricWrap.offsetHeight
-                        };
-                        if (size.containerHeight !== Infinity) {
-                            let top = size.liHeight * index + size.liHeight / 2 - size.containerHeight / 2;
-                            top = -top;
-                            if (top > 0) {
-                                top = 0;
-                            }
-                            lyric.style.transform = `translate3d(0, ${top}px, 0)`;
-                            lyric.style.transition = `2s`;
+                    if (size.containerHeight !== Infinity) {
+                        let top = size.liHeight * index + size.liHeight / 2 - size.containerHeight / 2;
+                        top = -top;
+                        if (top > 0) {
+                            top = 0;
                         }
+                        lyric.style.transform = `translate3d(0, ${top}px, 0)`;
+                        lyric.style.transition = `2s`;
                     }
                 }
             }
-        });
-    } else {
-        console.log('没有获取到歌曲Id')
-    }
+        }
+    });
+} else {
+    console.log('没有获取到歌曲Id')
+}
 }
 
 /**
