@@ -5,7 +5,6 @@ const suspend = document.querySelector("#suspend");
 const nextSongs = document.querySelector("#nextSongs");
 const audio = document.querySelector("#audio");
 const lyric = document.querySelector(".lyric");
-const title = document.querySelector('title');
 
 audio.addEventListener("timeupdate", () => {
     localStorage.setItem('playTime', audio.currentTime);
@@ -117,7 +116,6 @@ MusicPlaylist.addEventListener('click', (event) => {
 });
 
 let playiingList = JSON.parse(localStorage.getItem('playingList'));
-console.log(playiingList)
 if (playiingList) {
     playingList()
 }

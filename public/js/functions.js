@@ -387,28 +387,34 @@ async function setSongInfo(songId) {
             }
         });
 
-        // 该歌曲用户是否在喜欢列表中
+        // 该歌曲是否在喜欢列表中
         let user = JSON.parse(localStorage.getItem('user'));
-        console.log(user.account)
-        getUserPlaylists(user.account.id).then(async resp => {
-            const playlist = resp.playlist;
-            const id = playlist[0].id;
-            getPlaylistsDetail(id).then(async resp => {
-                const list = resp.playlist.tracks;
-                for (let i = 0; i < list.length; i++) {
-                    if (list[i].id == songId) {
-                        console.log('true')
-                        disLike.style.display = 'block';
-                        joinLikes.style.display = 'none';
-                        return
-                    } else {
-                        console.log('false')
-                        disLike.style.display = 'none';
-                        joinLikes.style.display = 'block';
+        if(user.account !== null){
+            getUserPlaylists(user.account.id).then(async resp => {
+                const playlist = resp.playlist;
+                const id = playlist[0].id;
+                getPlaylistsDetail(id).then(async resp => {
+                    const list = resp.playlist.tracks;
+                    for (let i = 0; i < list.length; i++) {
+                        if (list[i].id == songId) {
+                            console.log('true')
+                            disLike.style.display = 'block';
+                            joinLikes.style.display = 'none';
+                            return
+                        } else {
+                            console.log('false')
+                            disLike.style.display = 'none';
+                            joinLikes.style.display = 'block';
+                        }
                     }
-                }
+                })
             })
-        })
+        }else{
+            console.log('没有登录哦！')
+            joinLikes.style.display = 'none';
+            disLike.style.display = 'none';
+        }
+        
         // 获取歌曲URL
         await getSongUrl(songId).then(resp => {
             if (resp.data) {

@@ -26,7 +26,6 @@ getSingerDetails(singerId).then(resp => {
 // 歌手热门50首歌曲
 getPopularSongsFromSingers(singerId).then(async resp => {
   const ul = document.querySelector('#list');
-  console.log(resp);
   let songs = resp.songs;
 
   creatList(songs, ul);
