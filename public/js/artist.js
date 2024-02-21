@@ -10,7 +10,7 @@ getSingerDetails(singerId).then(resp => {
 
   singerPic.src = resp.data.artist.avatar;
   singerName.textContent = resp.data.artist.name;
-  bgImgTitle.src = resp.data.artist.avatar;
+  bgImgTitle.style.backgroundImage = `url(${resp.data.artist.avatar})`;
 
   if (resp.data.artist.identifyTag == null) {
     identity.textContent = '认证艺人';
