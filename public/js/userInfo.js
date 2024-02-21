@@ -15,8 +15,10 @@ headSculpture.addEventListener('click', function () {
         userInfo.style.display = 'block';
     } else {
         userInfoWrap.id = '';
-        userInfo.style.display = 'none';
-        playingListWrap.style.display = 'none';
+        setTimeout(function(){
+            userInfo.style.display = 'none';
+            playingListWrap.style.display = 'none';
+        } ,200);
     }
 });
 

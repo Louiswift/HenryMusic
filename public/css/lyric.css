@@ -1,22 +1,131 @@
-#lyric-wrap::-webkit-scrollbar {
-  display: none;
-}
-#lyric-wrap {
+.Lyrics-page{
+  position: absolute;
   width: 100%;
-  height: calc(100vh - 150px);
+  height: 100vh;
+  transition: opacity 0.5s, ease 0.5s;
+  z-index: 5;
+  -webkit-transition: opacity 0.5s, ease 0.5s;
+  -moz-transition: opacity 0.5s, ease 0.5s;
+  -ms-transition: opacity 0.5s, ease 0.5s;
+  -o-transition: opacity 0.5s, ease 0.5s;
+}
+
+/* 顶部返回主页 */
+.Lyrics-page #returnToPageWrap{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 30px;
+  background-color: #000;
+}
+
+.Lyrics-page #returnToPageWrap #returnToPage{
+  width: 50px;
+  border: 0;
+  background-color: transparent;
+}
+
+.Lyrics-page #returnToPageWrap #returnToPage:hover{
+  cursor: pointer;
+}
+
+/* 左边歌曲信息 */
+.Lyrics-page .lyricInfoWrap{
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 30px);
+}
+
+.Lyrics-page .lyricInfoWrap .musicInfoWrap{
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  background-color: #8D8885;
+}
+
+.Lyrics-page .lyricInfoWrap .musicInfoWrap .musicInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 70%;
+}
+
+.Lyrics-page .lyricInfoWrap .musicInfoWrap .musicInfo .picWrap{
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.Lyrics-page .lyricInfoWrap .musicInfoWrap .musicInfo .picWrap #pic{
+  width: 70%;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  box-shadow: 0 20px 70px #656563;
+}
+
+.Lyrics-page .lyricInfoWrap .musicInfoWrap .musicInfo #songName{
+  width: 70%;
+  font-size: 28px;
+  font-weight: bold;
+  color: #FDFAF7;
+  padding: 5px 0;
+}
+
+.Lyrics-page .lyricInfoWrap .musicInfoWrap .musicInfo #playbarsinger{
+  width: 70%;
+  font-size: 22px;
+  color: #C5C0BD;
+}
+
+.Lyrics-page .lyricInfoWrap .musicInfoWrap .musicInfo #playbarsinger a:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.Lyrics-page .lyricInfoWrap .console{
+  height: 30%;
+  background-color: red;
+}
+
+
+/* 右边歌词 */
+.Lyrics-page .lyricInfoWrap #lyric-wrap{
+  flex: 3;
+  background-color: gray;
+  display: flex;
+  justify-content: center;
+  width: 60%;
+  height: calc(100vh - 30px);
   overflow-y: scroll;
   text-align: center;
-  background-color: #10875f;
+}
+
+.Lyrics-page .lyricInfoWrap #lyric-wrap::-webkit-scrollbar {
   display: none;
 }
-#lyric-wrap .lyric {
-  margin: auto;
-  font-size: 3vw;
-  font-weight: bolder;
+
+.Lyrics-page .lyricInfoWrap #lyric-wrap .lyric {
+  font-size: 3em;
+  font-weight: 600;
+  padding-right: 50px;
 }
-#lyric-wrap .lyric li {
-  color: #000;
+
+.Lyrics-page .lyricInfoWrap #lyric-wrap .lyric li {
+  color: #9F98A0;
+  padding: 20px 0;
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
 }
+
 .active{
   color: #fff !important;
   transition: 2s;
@@ -24,8 +133,10 @@
   -moz-transition: 2s;
   -ms-transition: 2s;
   -o-transition: 2s;
-}
-.fade-transition {
-  transition: opacity 0.5s ease;
+  filter: blur(0px) !important;
+  -webkit-filter: blur(0px) !important;
 }
 
+#lyricshow{
+  transform: translateY(-100vh);
+}

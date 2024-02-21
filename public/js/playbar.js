@@ -105,15 +105,29 @@ MusicPlaylist.addEventListener('click', (event) => {
         openPlaylist.style.display = 'none';
         closePlaylist.style.display = 'block';
         playingListWrap.style.display = 'block';
-        // playingList();
     } else if (button == closePlaylist) {
         userInfoWrap.id = '';
         closePlaylist.style.display = 'none';
-        userInfo.style.display = 'block';
         openPlaylist.style.display = 'block';
-        playingListWrap.style.display = 'none';
+        setTimeout(function() {
+            userInfo.style.display = 'block';
+            playingListWrap.style.display = 'none';
+        }, 200);
+        
     }
 });
+
+const container = document.querySelector('.container');
+const lyricsPage = document.querySelector('.Lyrics-page');
+const returnToPage = document.querySelector('#returnToPage');
+const picWrap = document.querySelector('.pic');
+
+picWrap.addEventListener('click', async () => {
+    lyricsPage.id = 'lyricshow';
+})
+returnToPage.addEventListener('click', () => {
+    lyricsPage.id = '';
+})
 
 let playiingList = JSON.parse(localStorage.getItem('playingList'));
 if (playiingList) {
@@ -140,12 +154,13 @@ async function playingList() {
 
 // 进度条
 const progressBar = document.querySelector('.progress-bar');
-const progress = document.getElementById('progress');
-const currentTimeSpan = document.getElementById('currentTime');
-const durationSpan = document.getElementById('duration');
+const progress = document.querySelector('#progress');
+const currentTimeSpan = document.querySelector('#currentTime');
+let durationSpan = document.querySelector('#duration');
 let isDragging = false;
 
 function updateProgressBar() {
+    ;
     const progressPercentage = (audio.currentTime / audio.duration) * 100;
     progress.style.width = `${progressPercentage}%`;
 

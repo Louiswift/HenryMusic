@@ -385,6 +385,9 @@ function addZero(time) {
 
 /**
  * 设置歌曲信息
+ * @param {*} songName 歌曲名
+ * @param {*} pic 歌曲pic
+ * @param {*} playbarsinger 歌手名字
  * @param {*} songId 歌曲Id
  */
 async function setSongInfo(songId) {
@@ -392,32 +395,60 @@ async function setSongInfo(songId) {
     const pic = document.querySelector("#pic");
     const playbarsinger = document.querySelector('#playbarsinger');
 
+    const lyricSongName = document.querySelector(".musicInfo #songName");
+    const lyricPic = document.querySelector(".picWrap #pic");
+    const lyricSinger = document.querySelector('.musicInfo #playbarsinger');
+
+    clickArname(lyricSinger);
+
     if (songId) {
         // 获取歌曲信息
         await getSongDetails(songId).then(song => {
             pic.src = song.songs[0].al.picUrl;
-            songName.innerText = song.songs[0].name;
+            songName.textContent = song.songs[0].name;
             title.innerText = song.songs[0].name;
 
+            lyricPic.src = song.songs[0].al.picUrl;
+            lyricSongName.textContent = song.songs[0].name;
+
             playbarsinger.innerHTML = '';
+            lyricSinger.innerHTML = '';
+
             for (let i = 0; i < song.songs[0].ar.length; i++) {
                 let a = document.createElement('a');
                 a.id = 'singerName';
                 playbarsinger.appendChild(a);
+
                 a.textContent = song.songs[0].ar[i].name;
                 a.setAttribute('data-singer-id', song.songs[0].ar[i].id);
 
                 if (i < song.songs[0].ar.length - 1) {
                     let span = document.createElement('span');
                     span.textContent = ' / ';
-                    playbarsinger.appendChild(span)
+                    playbarsinger.appendChild(span);
                 }
             }
+            for (let i = 0; i < song.songs[0].ar.length; i++) {
+                let a = document.createElement('a');
+                a.id = 'singerName';
+                lyricSinger.appendChild(a);
+                a.textContent = song.songs[0].ar[i].name;
+                a.setAttribute('data-singer-id', song.songs[0].ar[i].id);
+
+                if (i < song.songs[0].ar.length - 1) {
+                    let span = document.createElement('span');
+                    span.textContent = ' / ';
+                    lyricSinger.appendChild(span);
+                }
+            }
+            let durationSpan = document.querySelector('#duration');
+            const { h, m, s } = duration(song.songs[0].dt);
+            durationSpan.textContent = h ? `${h}:${m}:${s}` : `${m}:${s}`
         });
 
         // 该歌曲是否在喜欢列表中
         let user = JSON.parse(localStorage.getItem('user'));
-        if(user.account !== null){
+        if (user.account !== null) {
             getUserPlaylists(user.account.id).then(async resp => {
                 const playlist = resp.playlist;
                 const id = playlist[0].id;
@@ -437,12 +468,12 @@ async function setSongInfo(songId) {
                     }
                 })
             })
-        }else{
+        } else {
             console.log('没有登录哦！')
             joinLikes.style.display = 'none';
             disLike.style.display = 'none';
         }
-        
+
         // 获取歌曲URL
         await getSongUrl(songId).then(resp => {
             if (resp.data) {
@@ -453,6 +484,7 @@ async function setSongInfo(songId) {
             }
         });
 
+        // 获取歌词
         await getsongLyric(songId).then(resp => {
             lyric.innerText = '';
             let lrc = resp.lrc.lyric;
@@ -484,27 +516,25 @@ async function setSongInfo(songId) {
                 }
                 lyric.children[index].classList.add('active');
 
-                if (lyricWrap.style.display == "block") {
-                    // 滚动
-                    if (activeLi && activeLi.innerHTML !== '') {
-                        const size = {
-                            liHeight: activeLi.offsetHeight,
-                            containerHeight: lyricWrap.offsetHeight
-                        };
-                        if (size.containerHeight !== Infinity) {
-                            let top = size.liHeight * index + size.liHeight / 2 - size.containerHeight / 2;
-                            top = -top;
-                            if (top > 0) {
-                                top = 0;
-                            }
-                            lyric.style.transform = `translate3d(0, ${top}px, 0)`;
-                            lyric.style.transition = `2s`;
+                // 滚动
+                if (activeLi && activeLi.innerHTML !== '') {
+                    const size = {
+                        liHeight: activeLi.offsetHeight,
+                        containerHeight: lyricWrap.offsetHeight
+                    };
+                    if (size.containerHeight !== Infinity) {
+                        let top = size.liHeight * index + size.liHeight / 2 - size.containerHeight / 2;
+                        top = -top;
+                        if (top > 0) {
+                            top = 0;
                         }
+                        lyric.style.transform = `translate3d(0, ${top}px, 0)`;
+                        lyric.style.transition = `2s`;
                     }
                 }
             }
         });
-    }else{
+    } else {
         console.log('没有获取到歌曲id');
     }
 };
@@ -531,15 +561,9 @@ async function playMain() {
 
     if (playPromise !== undefined) {
         playPromise.then(_ => {
-            // Automatic playback started!
-            // Show playing UI.
-            // We can now safely pause video...
             video.pause();
         })
-            .catch(error => {
-                // Auto-play was prevented
-                // Show paused UI.
-            });
+            .catch(error => { });
     }
 }
 

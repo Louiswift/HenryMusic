@@ -30,6 +30,7 @@
   -moz-border-radius: 20px 20px 0 0;
   -ms-border-radius: 20px 20px 0 0;
   -o-border-radius: 20px 20px 0 0;
+  z-index: 4;
 }
 
 .container .homepage-wrapper .homepage-right .nav-wrap .headSculpture{
@@ -69,19 +70,14 @@
   border-radius: 30px;
   padding: 20px;
   background-color: #191919;
-  transition: transform 1s ease;
   -webkit-transform: translateX(445px);
   -moz-transform: translateX(445px);
   -ms-transform: translateX(445px);
   -o-transform: translateX(445px);
-  -webkit-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   -ms-border-radius: 30px;
   -o-border-radius: 30px;
-  -moz-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  -ms-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  -o-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .container .homepage-right #show{

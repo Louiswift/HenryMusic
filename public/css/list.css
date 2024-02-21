@@ -3,6 +3,7 @@
     width: calc(100vw - 360px);
     padding: 20px;
     height: 240px;
+    overflow: hidden;
     /* background: linear-gradient(to bottom, #888fa4, #888fa4, #585c69, #4e525e); */
 }
 .container .homepage-right .songlist .songTitle .songlist-pic{

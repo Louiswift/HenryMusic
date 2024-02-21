@@ -90,10 +90,7 @@
                         <div class="title" id="titleDailyRecommendations" style="display: none;">每日推荐</div>
                         <ul id="DailyRecommendations"></ul>
                     </div>
-                    <ul id="lyric-wrap">
-                        <div class="lyric"></div>
-                    </ul>
-
+                   
                     <!-- 用户详细信息 -->
                     <div class="userInfoWrap">
                         <div class="userInfo" style="display: none;">
@@ -188,7 +185,7 @@
         <div class="playbar">
             <div class="Music-Information">
                 <div class="cover">
-                    <img src="http://s4.music.126.net/style/web2/img/default/default_album.jpg" alt="" id="pic">
+                    <img src="http://s4.music.126.net/style/web2/img/default/default_album.jpg" alt="" id="pic" class="pic">
                 </div>
                 <div class="song-title-singer">
                     <div class="song-title" id="songname">
@@ -304,14 +301,52 @@
                 </button>
             </div>
         </div>
+    </div>
 
-        <script src="js/publicVariable.js"></script>
-        <script src="js/request.js"></script>
-        <script src="js/functions.js"></script>
-        <script src="js/createPlaylists.js"></script>
-        <script src="js/userInfo.js"></script>
-        <script src="js/playbar.js"></script>
-        <script src="js/public.js"></script>
+   <!-- 歌词 -->
+   <div class="Lyrics-page">
+    <div id="returnToPageWrap">
+        <button id="returnToPage">
+            <svg t="1708413672051" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                xmlns="http://www.w3.org/2000/svg" p-id="3322" width="50" height="30">
+                <path
+                    d="M256 512m-74.666667 0a74.666667 74.666667 0 1 0 149.333334 0 74.666667 74.666667 0 1 0-149.333334 0Z"
+                    fill="#C9C9C9" p-id="3323"></path>
+                <path
+                    d="M512 512m-74.666667 0a74.666667 74.666667 0 1 0 149.333334 0 74.666667 74.666667 0 1 0-149.333334 0Z"
+                    fill="#C9C9C9" p-id="3324"></path>
+                <path
+                    d="M768 512m-74.666667 0a74.666667 74.666667 0 1 0 149.333334 0 74.666667 74.666667 0 1 0-149.333334 0Z"
+                    fill="#C9C9C9" p-id="3325"></path>
+            </svg>
+        </button>
+    </div>
+    <div class="lyricInfoWrap">
+        <div class="musicInfoWrap">
+            <div class="musicInfo">
+                <div class="picWrap">
+                    <img src="https://p2.music.126.net/lfVUAvxEJxj1PzR2YdLTvw==/109951166914407892.jpg" alt=""
+                        id="pic">
+                </div>
+                <div id="songName">永远都要在一起</div>
+                <div id="playbarsinger">邓紫棋</div>
+            </div>
+            <div class="console"></div>
+        </div>
+
+        <ul id="lyric-wrap">
+            <div class="lyric">暂无歌词哦！</div>
+        </ul>
+    </div>
+</div>
+
+    <script src="js/publicVariable.js"></script>
+    <script src="js/request.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/createPlaylists.js"></script>
+    <script src="js/userInfo.js"></script>
+    <script src="js/playbar.js"></script>
+    <script src="js/public.js"></script>
 </body>
 
 </html>

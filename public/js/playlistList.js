@@ -10,7 +10,7 @@ getPlaylistsDetail(dataId).then(async resp => {
     const { playlist } = resp;
     const { coverImgUrl, name } = playlist || {};
     listImg.src = coverImgUrl;
-    bgImgTitle.src = coverImgUrl;
+    bgImgTitle.style.backgroundImage = `url(${coverImgUrl})`;
     listName.innerText = name;
     title.innerText = name;
 
