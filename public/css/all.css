@@ -14,6 +14,9 @@
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
 }
+body{
+  overflow: hidden;
+}
 .container {
   display: flex;
   width: 100%;
