@@ -24,8 +24,9 @@ body{
   background-color: #000;
 }
 .img-icon {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
+  fill: #fff;
 }
 .default-color {
   color: rgba(255, 255, 255, 0.6);

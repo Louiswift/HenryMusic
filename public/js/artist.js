@@ -11,10 +11,12 @@ getSingerDetails(singerId).then(resp => {
   singerPic.src = resp.data.artist.avatar;
   singerName.textContent = resp.data.artist.name;
   bgImgTitle.style.backgroundImage = `url(${resp.data.artist.avatar})`;
+  bgImgTitle.style.backgroundSize = '100% 100%';
+  bgImgTitle.style.backgroundRepeat = 'no-repeat';
 
   if (resp.data.artist.identifyTag == null) {
     identity.textContent = '认证艺人';
-  } else if (resp.data.artist.identifyTag[0] == '网易音乐人'){
+  } else if (resp.data.artist.identifyTag[0] == '网易音乐人') {
     identity.textContent = 'HenryMusic音乐人';
   } else {
     identity.textContent = resp.data.artist.identifyTag[0];
@@ -39,7 +41,7 @@ similarSingers(singerId).then(resp => {
   console.log(`相似歌手该功能，${resp.msg}`)
   const artist = resp.artists;
   const ul = document.querySelector('#SimilarsingersUl');
-  if(artist){
+  if (artist) {
     creatSimilarSingers(artist, ul)
     clickArnamelist(ul);
   }

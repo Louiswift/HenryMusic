@@ -21,7 +21,7 @@
     <link rel="preload" href="js/playbar.js" as="script">
 </head>
 
-<body style="min-width: 1000px;">
+<body>
     <div class="container">
         <div class="homepage-wrapper">
             <!-- 俩栏布局 左侧 -->
@@ -30,7 +30,12 @@
                     <div class="text-homepage-search">
                         <a href="//henrymusic.xyz/" class="homepage-text-font-style">
                             <div class="icon">
-                                <img src="img/主页.svg" alt="homepage-icon" class="img-icon">
+                                <svg class = 'img-icon' data-encore-id="icon" role="img" aria-hidden="true"
+                                    class="Svg-sc-ytk21e-0 bneLcE home-active-icon" viewBox="0 0 24 24">
+                                    <path
+                                        d="M13.5 1.515a3 3 0 0 0-3 0L3 5.845a2 2 0 0 0-1 1.732V21a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6h4v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V7.577a2 2 0 0 0-1-1.732l-7.5-4.33z">
+                                    </path>
+                                </svg>
                             </div>
                             <div class="text" style="color: #fff;">主页</div>
                         </a>
@@ -38,7 +43,15 @@
                     <div class="text-homepage-search">
                         <a href="search.html" class="homepage-text-font-style">
                             <div class="icon">
-                                <img src="img/搜索.svg" alt="homepage-icon" class="img-icon">
+                                <svg class = 'img-icon' data-encore-id="icon" role="img" aria-hidden="true"
+                                    class="Svg-sc-ytk21e-0 bneLcE search-icon" viewBox="0 0 24 24">
+                                    <svg class = 'img-icon' width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path class="fillColor"
+                                            d="M10.533 1.27893C5.35215 1.27893 1.12598 5.41887 1.12598 10.5579C1.12598 15.697 5.35215 19.8369 10.533 19.8369C12.767 19.8369 14.8235 19.0671 16.4402 17.7794L20.7929 22.132C21.1834 22.5226 21.8166 22.5226 22.2071 22.132C22.5976 21.7415 22.5976 21.1083 22.2071 20.7178L17.8634 16.3741C19.1616 14.7849 19.94 12.7634 19.94 10.5579C19.94 5.41887 15.7138 1.27893 10.533 1.27893ZM3.12598 10.5579C3.12598 6.55226 6.42768 3.27893 10.533 3.27893C14.6383 3.27893 17.94 6.55226 17.94 10.5579C17.94 14.5636 14.6383 17.8369 10.533 17.8369C6.42768 17.8369 3.12598 14.5636 3.12598 10.5579Z"
+                                            fill='#B3B3B3'>
+                                        </path>
+                                    </svg>
+                                </svg>
                             </div>
                             <div class="text default-color">搜索</div>
                         </a>
@@ -49,7 +62,12 @@
                     <div class="wrap-MusicLibrary">
                         <div class="MusicLibrary">
                             <div class="icon">
-                                <img src="img/库存.svg" alt="homepage-icon" class="img-icon">
+                                <svg class = 'img-icon' data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 24 24"
+                                    class="Svg-sc-ytk21e-0 bneLcE">
+                                    <path
+                                        d="M3 22a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1zM15.5 2.134A1 1 0 0 0 14 3v18a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V6.464a1 1 0 0 0-.5-.866l-6-3.464zM9 2a1 1 0 0 0-1 1v18a1 1 0 1 0 2 0V3a1 1 0 0 0-1-1z" fill = '#B3B3B3'>
+                                    </path>
+                                </svg>
                             </div>
                             <div class="text homepage-text-font-style">音乐库</div>
                             <div class="creatPlaylist">
@@ -90,7 +108,7 @@
                         <div class="title" id="titleDailyRecommendations" style="display: none;">每日推荐</div>
                         <ul id="DailyRecommendations"></ul>
                     </div>
-                   
+
                     <!-- 用户详细信息 -->
                     <div class="userInfoWrap">
                         <div class="userInfo" style="display: none;">
@@ -185,7 +203,8 @@
         <div class="playbar">
             <div class="Music-Information">
                 <div class="cover">
-                    <img src="http://s4.music.126.net/style/web2/img/default/default_album.jpg" alt="" id="pic" class="pic">
+                    <img src="http://s4.music.126.net/style/web2/img/default/default_album.jpg" alt="" id="pic"
+                        class="pic">
                 </div>
                 <div class="song-title-singer">
                     <div class="song-title" id="songname">
@@ -303,42 +322,42 @@
         </div>
     </div>
 
-   <!-- 歌词 -->
-   <div class="Lyrics-page">
-    <div id="returnToPageWrap">
-        <button id="returnToPage">
-            <svg t="1708413672051" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                xmlns="http://www.w3.org/2000/svg" p-id="3322" width="50" height="30">
-                <path
-                    d="M256 512m-74.666667 0a74.666667 74.666667 0 1 0 149.333334 0 74.666667 74.666667 0 1 0-149.333334 0Z"
-                    fill="#C9C9C9" p-id="3323"></path>
-                <path
-                    d="M512 512m-74.666667 0a74.666667 74.666667 0 1 0 149.333334 0 74.666667 74.666667 0 1 0-149.333334 0Z"
-                    fill="#C9C9C9" p-id="3324"></path>
-                <path
-                    d="M768 512m-74.666667 0a74.666667 74.666667 0 1 0 149.333334 0 74.666667 74.666667 0 1 0-149.333334 0Z"
-                    fill="#C9C9C9" p-id="3325"></path>
-            </svg>
-        </button>
-    </div>
-    <div class="lyricInfoWrap">
-        <div class="musicInfoWrap">
-            <div class="musicInfo">
-                <div class="picWrap">
-                    <img src="https://p2.music.126.net/lfVUAvxEJxj1PzR2YdLTvw==/109951166914407892.jpg" alt=""
-                        id="pic">
-                </div>
-                <div id="songName">永远都要在一起</div>
-                <div id="playbarsinger">邓紫棋</div>
-            </div>
-            <div class="console"></div>
+    <!-- 歌词 -->
+    <div class="Lyrics-page">
+        <div id="returnToPageWrap">
+            <button id="returnToPage">
+                <svg t="1708413672051" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" p-id="3322" width="50" height="30">
+                    <path
+                        d="M256 512m-74.666667 0a74.666667 74.666667 0 1 0 149.333334 0 74.666667 74.666667 0 1 0-149.333334 0Z"
+                        fill="#C9C9C9" p-id="3323"></path>
+                    <path
+                        d="M512 512m-74.666667 0a74.666667 74.666667 0 1 0 149.333334 0 74.666667 74.666667 0 1 0-149.333334 0Z"
+                        fill="#C9C9C9" p-id="3324"></path>
+                    <path
+                        d="M768 512m-74.666667 0a74.666667 74.666667 0 1 0 149.333334 0 74.666667 74.666667 0 1 0-149.333334 0Z"
+                        fill="#C9C9C9" p-id="3325"></path>
+                </svg>
+            </button>
         </div>
+        <div class="lyricInfoWrap">
+            <div class="musicInfoWrap">
+                <div class="musicInfo">
+                    <div class="picWrap">
+                        <img src="https://p2.music.126.net/lfVUAvxEJxj1PzR2YdLTvw==/109951166914407892.jpg" alt=""
+                            id="pic">
+                    </div>
+                    <div id="songName">永远都要在一起</div>
+                    <div id="playbarsinger">邓紫棋</div>
+                </div>
+                <div class="console"></div>
+            </div>
 
-        <ul id="lyric-wrap">
-            <div class="lyric">暂无歌词哦！</div>
-        </ul>
+            <ul id="lyric-wrap">
+                <div class="lyric">暂无歌词哦！</div>
+            </ul>
+        </div>
     </div>
-</div>
 
     <script src="js/publicVariable.js"></script>
     <script src="js/request.js"></script>

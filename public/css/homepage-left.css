@@ -56,13 +56,27 @@
   margin-left: 20px;
   width: 100%;
 }
+.container .homepage-wrapper .homepage-left .left-above a .fillColor,
+.container .homepage-wrapper .homepage-left .left-above a .text{
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
 .container .homepage-wrapper .homepage-left .left-above a:hover,
-.container .homepage-wrapper .homepage-left .left-above a:hover .text{
-  transition: 0.3s;
+.container .homepage-wrapper .homepage-left .left-above a:hover .text,
+.container .homepage-wrapper .homepage-left .left-above a:hover .fillColor{
+  transition: 0.5s;
   color: #fff;
+  fill: #fff;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
 }
 .container .homepage-wrapper .homepage-left .left-below .text{
-  color: #fff;
+  color: #B3B3B3;
 }
 
 /* 音乐库 添加歌单按钮*/
