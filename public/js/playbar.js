@@ -27,51 +27,9 @@ audio.addEventListener('ended', async () => {
         console.log('播放列表已经播放完毕');
     }
 });
-audio.addEventListener("play", updateButton);
-audio.addEventListener("pause", updateButton);
-updateButton();
 
-control.addEventListener("click", (event) => {
-    const button = event.target.closest("button");
-    let currentPlaySongOrder = Number(localStorage.getItem('currentPlaySongOrder'));
-    const playListLen = JSON.parse(localStorage.getItem('playingList') || []).length
-
-    if (!button) return;
-    if (!control.contains(button)) return;
-
-    if (button == play) {
-        play.style.display = "none";
-        suspend.style.display = "block";
-        playMain();
-    } else if (button == suspend) {
-        suspend.style.display = "none";
-        play.style.display = "block";
-        localStorage.setItem('play', '0');
-        let playTime = localStorage.getItem('playTime');
-        audio.currentTime = playTime;
-        audio.pause();
-    } else if (button == PreviousSong) {
-        if (currentPlaySongOrder >= 0) {
-            localStorage.setItem('currentPlaySongOrder', currentPlaySongOrder - 1);
-
-            let len = JSON.parse(localStorage.getItem('playingList')).length - 1;
-            if (currentPlaySongOrder == 0) {
-                localStorage.setItem('currentPlaySongOrder', len);
-            }
-            playMain();
-        }
-    } else if (button == nextSongs) {
-        if (currentPlaySongOrder <= playListLen - 1) {
-            localStorage.setItem('currentPlaySongOrder', currentPlaySongOrder + 1);
-
-            let len = JSON.parse(localStorage.getItem('playingList')).length - 1;
-            if (currentPlaySongOrder == len) {
-                localStorage.setItem('currentPlaySongOrder', 0);
-            }
-            playMain();
-        }
-    }
-});
+// 控制台操作
+songConsole(control, play, suspend, PreviousSong, nextSongs)
 
 const rightTop = document.querySelector(".rightTop");
 const lyricWrap = document.querySelector("#lyric-wrap");
@@ -109,11 +67,11 @@ MusicPlaylist.addEventListener('click', (event) => {
         userInfoWrap.id = '';
         closePlaylist.style.display = 'none';
         openPlaylist.style.display = 'block';
-        setTimeout(function() {
+        setTimeout(function () {
             userInfo.style.display = 'block';
             playingListWrap.style.display = 'none';
         }, 200);
-        
+
     }
 });
 
@@ -156,44 +114,13 @@ async function playingList() {
 const progressBar = document.querySelector('.progress-bar');
 const progress = document.querySelector('#progress');
 const currentTimeSpan = document.querySelector('#currentTime');
-let durationSpan = document.querySelector('#duration');
+const durationSpan = document.querySelector('#duration');
+const progressBall = document.querySelector('#progressBall');
 let isDragging = false;
-
-function updateProgressBar() {
-    ;
-    const progressPercentage = (audio.currentTime / audio.duration) * 100;
-    progress.style.width = `${progressPercentage}%`;
-
-    const currentTime = formatTime(audio.currentTime);
-    currentTimeSpan.textContent = currentTime;
-
-    const duration = formatTime(audio.duration);
-    durationSpan.textContent = duration;
-}
-
-function formatTime(time) {
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${padZero(minutes)}:${padZero(seconds)}`;
-}
-
-function padZero(number) {
-    return number.toString().padStart(2, '0');
-}
-
-function setProgress(event) {
-    const progressBarWidth = progressBar.clientWidth;
-    const clickX = event.offsetX;
-    const progressPercentage = (clickX / progressBarWidth) * 100;
-    progress.style.width = `${progressPercentage}%`;
-    const newTime = (progressPercentage / 100) * audio.duration;
-    audio.currentTime = newTime;
-}
 
 progressBar.addEventListener('click', (event) => {
     setProgress(event);
 });
-
 
 progressBar.addEventListener('mousedown', () => {
     isDragging = true;
@@ -202,18 +129,6 @@ progressBar.addEventListener('mousedown', () => {
 progressBar.addEventListener('mouseup', () => {
     isDragging = false;
 });
-
-audio.addEventListener('timeupdate', () => {
-    updateProgressBar();
-});
-
-const progressBall = document.getElementById('progressBall');
-
-function updateProgressBall() {
-    const progressPercentage = (audio.currentTime / audio.duration) * 100;
-    const progressBallPosition = (progressPercentage / 100) * progressBar.clientWidth;
-    progressBall.style.transform = `translateX(${progressBallPosition}px)`;
-}
 
 audio.addEventListener('timeupdate', () => {
     updateProgressBar();

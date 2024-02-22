@@ -398,6 +398,7 @@ async function setSongInfo(songId) {
     const lyricSongName = document.querySelector(".musicInfo #songName");
     const lyricPic = document.querySelector(".picWrap #pic");
     const lyricSinger = document.querySelector('.musicInfo #playbarsinger');
+    const lyricBgImage = document.querySelector('.lyricBgImage');
 
     clickArname(lyricSinger);
 
@@ -409,6 +410,7 @@ async function setSongInfo(songId) {
             title.innerText = song.songs[0].name;
 
             lyricPic.src = song.songs[0].al.picUrl;
+            lyricBgImage.style.backgroundImage = `url(${song.songs[0].al.picUrl})`;
             lyricSongName.textContent = song.songs[0].name;
 
             playbarsinger.innerHTML = '';
@@ -448,26 +450,28 @@ async function setSongInfo(songId) {
 
         // 该歌曲是否在喜欢列表中
         let user = JSON.parse(localStorage.getItem('user'));
-        if (user.account !== null) {
-            getUserPlaylists(user.account.id).then(async resp => {
-                const playlist = resp.playlist;
-                const id = playlist[0].id;
-                getPlaylistsDetail(id).then(async resp => {
-                    const list = resp.playlist.tracks;
-                    for (let i = 0; i < list.length; i++) {
-                        if (list[i].id == songId) {
-                            console.log('true')
-                            disLike.style.display = 'block';
-                            joinLikes.style.display = 'none';
-                            return
-                        } else {
-                            console.log('false')
-                            disLike.style.display = 'none';
-                            joinLikes.style.display = 'block';
+        if (user) {
+            if (user.account !== null) {
+                getUserPlaylists(user.account.id).then(async resp => {
+                    const playlist = resp.playlist;
+                    const id = playlist[0].id;
+                    getPlaylistsDetail(id).then(async resp => {
+                        const list = resp.playlist.tracks;
+                        for (let i = 0; i < list.length; i++) {
+                            if (list[i].id == songId) {
+                                console.log('true')
+                                disLike.style.display = 'block';
+                                joinLikes.style.display = 'none';
+                                return
+                            } else {
+                                console.log('false')
+                                disLike.style.display = 'none';
+                                joinLikes.style.display = 'block';
+                            }
                         }
-                    }
+                    })
                 })
-            })
+            }
         } else {
             console.log('没有登录哦！')
             joinLikes.style.display = 'none';
@@ -517,7 +521,7 @@ async function setSongInfo(songId) {
                 lyric.children[index].classList.add('active');
 
                 // 滚动
-                if (activeLi && activeLi.innerHTML !== '') {
+                if (activeLi && activeLi.textContent !== '') {
                     const size = {
                         liHeight: activeLi.offsetHeight,
                         containerHeight: lyricWrap.offsetHeight
@@ -528,7 +532,7 @@ async function setSongInfo(songId) {
                         if (top > 0) {
                             top = 0;
                         }
-                        lyric.style.transform = `translate3d(0, ${top}px, 0)`;
+                        lyric.style.transform = `translate3d(0, ${top + 40}px, 0)`;
                         lyric.style.transition = `2s`;
                     }
                 }
@@ -571,13 +575,74 @@ async function playMain() {
  * 设置控制台播放按钮ico
  */
 function updateButton() {
+    const play = document.querySelector("#play");
+    const suspend = document.querySelector("#suspend");
+    const lyricplay = document.querySelector(".console #play");
+    const lyricsuspend = document.querySelector(".console #suspend");
     if (audio.paused) {
         play.style.display = "block";
         suspend.style.display = "none";
+
+        lyricplay.style.display = "block";
+        lyricsuspend.style.display = "none";
     } else {
         play.style.display = "none";
         suspend.style.display = "block";
+
+        lyricplay.style.display = "none";
+        lyricsuspend.style.display = "block";
     }
+}
+/**
+ * 播放暂停上下一首控制台
+ * @param {*} control 点击按钮的父元素
+ * @param {*} play 播放按钮
+ * @param {*} suspend 暂停按钮
+ * @param {*} PreviousSong 上一首
+ * @param {*} nextSongs 下一首
+ */
+function songConsole(control, play, suspend, PreviousSong, nextSongs) {
+    control.addEventListener("click", (event) => {
+        const button = event.target.closest("button");
+        let currentPlaySongOrder = Number(localStorage.getItem('currentPlaySongOrder'));
+        const playListLen = JSON.parse(localStorage.getItem('playingList') || []).length
+
+        if (!button) return;
+        if (!control.contains(button)) return;
+
+        if (button == play) {
+            play.style.display = "none";
+            suspend.style.display = "block";
+            playMain();
+        } else if (button == suspend) {
+            suspend.style.display = "none";
+            play.style.display = "block";
+            localStorage.setItem('play', '0');
+            let playTime = localStorage.getItem('playTime');
+            audio.currentTime = playTime;
+            audio.pause();
+        } else if (button == PreviousSong) {
+            if (currentPlaySongOrder >= 0) {
+                localStorage.setItem('currentPlaySongOrder', currentPlaySongOrder - 1);
+
+                let len = JSON.parse(localStorage.getItem('playingList')).length - 1;
+                if (currentPlaySongOrder == 0) {
+                    localStorage.setItem('currentPlaySongOrder', len);
+                }
+                playMain();
+            }
+        } else if (button == nextSongs) {
+            if (currentPlaySongOrder <= playListLen - 1) {
+                localStorage.setItem('currentPlaySongOrder', currentPlaySongOrder + 1);
+
+                let len = JSON.parse(localStorage.getItem('playingList')).length - 1;
+                if (currentPlaySongOrder == len) {
+                    localStorage.setItem('currentPlaySongOrder', 0);
+                }
+                playMain();
+            }
+        }
+    });
 }
 
 /**
@@ -602,3 +667,61 @@ async function getUserInfo() {
         console.log('已经设置用户信息')
     })
 };
+
+/**
+ * 更新播放进度条的显示
+ */
+function updateProgressBar() {
+    const progressPercentage = (audio.currentTime / audio.duration) * 100;
+    progress.style.width = `${progressPercentage}%`;
+    lyricprogress.style.width = `${progressPercentage}%`;
+
+    currentTimeSpan.textContent = formatTime(audio.currentTime);
+    lyriccurrentTimeSpan.textContent = formatTime(audio.currentTime);
+    durationSpan.textContent = formatTime(audio.duration);
+    lyricdurationSpan.textContent = formatTime(audio.duration);
+}
+
+/**
+ * 时间转换
+ * @param {*} time 时间
+ * @returns 
+ */
+function formatTime(time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${addZero(minutes)}:${addZero(seconds)}`;
+}
+
+/**
+ * 根据用户点击的位置设置播放进度条的位置
+ * @param {*} event 点击的位置
+ */
+function setProgress(event) {
+    const progressBarWidth = progressBar.clientWidth;
+    const lyricprogressBarWidth = lyricprogressBar.clientWidth;
+    const clickX = event.offsetX;
+    const progressPercentage = (clickX / progressBarWidth) * 100;
+    const lyricprogressPercentage = (clickX / lyricprogressBarWidth) * 100;
+    progress.style.width = `${progressPercentage}%`;
+    lyricprogress.style.width = `${lyricprogressPercentage}%`;
+    const { progressOrder } = event.target.dataset;
+    if (progressOrder == 1) {
+        audio.currentTime = (progressPercentage / 100) * audio.duration;
+    } else if (progressOrder == 2) {
+        audio.currentTime = (lyricprogressPercentage / 100) * audio.duration;
+    }
+}
+
+/**
+ * 更新进度条上的球的位置，保持与播放进度条的位置一致
+ */
+function updateProgressBall() {
+    const progressPercentage = (audio.currentTime / audio.duration) * 100;
+    const progressBallPosition = (progressPercentage / 100) * progressBar.clientWidth;
+    progressBall.style.transform = `translateX(${progressBallPosition}px)`;
+
+    const lyricprogressPercentage = (audio.currentTime / audio.duration) * 100;
+    const lyricprogressBallPosition = (lyricprogressPercentage / 100) * lyricprogressBar.clientWidth;
+    lyricprogressBall.style.transform = `translateX(${lyricprogressBallPosition}px)`;
+}

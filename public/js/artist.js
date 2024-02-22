@@ -6,8 +6,6 @@ getSingerDetails(singerId).then(resp => {
   const Engartisname = document.querySelector('#Engartisname');
   const bgImgTitle = document.querySelector('.bgImgTitle');
 
-  console.log(resp.data.artist)
-
   singerPic.src = resp.data.artist.avatar;
   singerName.textContent = resp.data.artist.name;
   bgImgTitle.style.backgroundImage = `url(${resp.data.artist.avatar})`;
