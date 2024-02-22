@@ -14,18 +14,49 @@ audio.addEventListener("timeupdate", () => {
 const playbarsinger = document.querySelector('#playbarsinger');
 clickArname(playbarsinger);
 
-// 自动播放下一首歌曲
+// 播放模式
 audio.addEventListener('ended', async () => {
     audio.currentTime = 0;
     const playList = JSON.parse(localStorage.getItem('playingList'));
     let currentPlaySongOrder = Number(localStorage.getItem('currentPlaySongOrder'));
-    localStorage.setItem('currentPlaySongOrder', currentPlaySongOrder + 1);
-    if (currentPlaySongOrder + 1 < playList.length) {
-        await setSongInfo(playList[currentPlaySongOrder + 1].id);
-        playMain();
-    } else {
-        console.log('播放列表已经播放完毕');
+    let mode = localStorage.getItem('playmode');
+    if (mode == null) {
+        localStorage.setItem('playmode', 4);
+        mode = localStorage.getItem('playmode');
     }
+    if (mode == 1) {
+        // 随机播放
+        let len = playList.length - 1;
+        let num = Math.random() * len - 0;
+        num = parseInt(num);
+        localStorage.setItem('currentPlaySongOrder', num);
+        await setSongInfo(playList[currentPlaySongOrder].id);
+    } else if (mode == 2) {
+        // 单曲循环
+        localStorage.setItem('currentPlaySongOrder', currentPlaySongOrder);
+        await setSongInfo(playList[currentPlaySongOrder].id);
+    } else if (mode == 3) {
+        // 列表循环
+        let len = playList.length - 1;
+        if (currentPlaySongOrder <= len) {
+            localStorage.setItem('currentPlaySongOrder', currentPlaySongOrder + 1);
+            if (currentPlaySongOrder == len) {
+                localStorage.setItem('currentPlaySongOrder', 0);
+            }
+        }
+        await setSongInfo(playList[currentPlaySongOrder].id);
+    } else if (mode == 4) {
+        // 顺序播放
+        let len = playList.length - 1;
+        if (currentPlaySongOrder < len) {
+            localStorage.setItem('currentPlaySongOrder', currentPlaySongOrder + 1);
+            await setSongInfo(playList[currentPlaySongOrder].id);
+        } else {
+            console.log('歌曲已经全部播放完毕！');
+            return;
+        }
+    }
+    playMain();
 });
 
 // 控制台操作

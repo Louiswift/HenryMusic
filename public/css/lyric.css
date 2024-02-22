@@ -2,7 +2,6 @@
   position: absolute;
   width: 100%;
   height: 100vh;
-  /* top: 2400px; */
   transition: opacity 0.5s, ease 0.5s;
   z-index: 5;
   -webkit-transition: opacity 0.5s, ease 0.5s;
@@ -128,7 +127,6 @@
   height: 30%;
 }
 
-/* 按钮 */
 .console .Music-control{
   position: relative;
   display: flex;
@@ -198,23 +196,17 @@
 .console .Music-control .audio-player .time{
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .console .Music-control .audio-player .time #currentTime{
-  /* position: relative;
-  left: -43px;
-  top: -17px; */
   color: #fff;
-  font-size: 14px;
 }
 
 .console .Music-control .audio-player .time #duration{
-  /* position: relative;
-  left: 96%;
-  top: -17px; */
   color: #fff;
-  font-size: 14px;
 }
 
 .console .Music-control audio{
@@ -238,7 +230,17 @@ audio::-webkit-media-controls-start-playback-button {
   height: 50px;
   margin-top: 50px;
 }
-.console .Music-control .playerbtn button{
+
+/* 按钮区域 */
+
+.console .Music-control #playMode{
+  display: flex;
+  margin-top: 50px;
+}
+.console .Music-control #lyricvolume{
+  margin-top: 50px;
+}
+.console .Music-control button{
   border: 0;
   background-color: transparent;
 }
@@ -249,17 +251,21 @@ audio::-webkit-media-controls-start-playback-button {
   width: 40px;
   height: 40px;
 }
-.console .Music-control .playerbtn button path{
+.console .Music-control #playMode .icon{
+  width: 25px;
+  height: 25px;
+}
+.console .Music-control button path{
   transition: 0.2s;
   -webkit-transition: 0.2s;
   -moz-transition: 0.2s;
   -ms-transition: 0.2s;
   -o-transition: 0.2s;
 }
-.console .Music-control .playerbtn button:hover path{
+.console .Music-control button:hover path{
   fill: #fff;
 }
-.console .Music-control .playerbtn button:active path{
+.console .Music-control button:active path{
   fill: #b3b3b3;
 }
 
