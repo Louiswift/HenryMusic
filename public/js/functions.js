@@ -399,6 +399,7 @@ async function setSongInfo(songId) {
     const lyricPic = document.querySelector(".picWrap #pic");
     const lyricSinger = document.querySelector('.musicInfo #playbarsinger');
     const lyricBgImage = document.querySelector('.lyricBgImage');
+    const lyricWrap = document.querySelector("#lyric-wrap");
 
     clickArname(lyricSinger);
 
@@ -521,7 +522,7 @@ async function setSongInfo(songId) {
                 lyric.children[index].classList.add('active');
 
                 // 滚动
-                if (activeLi && activeLi.textContent !== '') {
+                if (activeLi) {
                     const size = {
                         liHeight: activeLi.offsetHeight,
                         containerHeight: lyricWrap.offsetHeight
@@ -724,4 +725,88 @@ function updateProgressBall() {
     const lyricprogressPercentage = (audio.currentTime / audio.duration) * 100;
     const lyricprogressBallPosition = (lyricprogressPercentage / 100) * lyricprogressBar.clientWidth;
     lyricprogressBall.style.transform = `translateX(${lyricprogressBallPosition}px)`;
+}
+
+/**
+ * 播放模式icon切换
+ * @param {*} lyricsequentialPlayback 顺序播放
+ * @param {*} lyricshuffle 随机播放
+ * @param {*} lyricsingleLoop 单曲循环
+ * @param {*} lyriclistLoop 列表循环
+ */
+function playModeIcon(lyricsequentialPlayback, lyricshuffle, lyricsingleLoop, lyriclistLoop) {
+    let mode = localStorage.getItem('playmode');
+    if (mode == 1) {
+        // 随机播放
+        lyricsequentialPlayback.style.display = "none";
+        lyricshuffle.style.display = "block";
+        lyricsingleLoop.style.display = "none";
+        lyriclistLoop.style.display = "none";
+    } else if (mode == 2) {
+        // 单曲循环
+        lyricsequentialPlayback.style.display = "none";
+        lyricshuffle.style.display = "none";
+        lyricsingleLoop.style.display = "block";
+        lyriclistLoop.style.display = "none";
+    } else if (mode == 3) {
+        // 列表循环
+        lyricsequentialPlayback.style.display = "none";
+        lyricshuffle.style.display = "none";
+        lyricsingleLoop.style.display = "none";
+        lyriclistLoop.style.display = "block";
+    } else if (mode == 4) {
+        // 顺序播放
+        lyricsequentialPlayback.style.display = "block";
+        lyricshuffle.style.display = "none";
+        lyricsingleLoop.style.display = "none";
+        lyriclistLoop.style.display = "none";
+    }
+}
+
+/**
+ * 播放模式切换
+ * @param {*} playMode 点击目标的父元素
+ * @param {*} lyricsequentialPlayback 顺序播放
+ * @param {*} lyricshuffle 随机播放
+ * @param {*} lyricsingleLoop 单曲循环
+ * @param {*} lyriclistLoop 列表循环
+ * @param {*} playbarsequentialPlayback 顺序播放
+ * @param {*} playbarshuffle 随机播放
+ * @param {*} playbarsingleLoop 单曲循环
+ * @param {*} playbarlistLoop 列表循环
+ */
+function clickPlayMode(playMode, lyricsequentialPlayback, lyricshuffle, lyricsingleLoop, lyriclistLoop, playbarsequentialPlayback, playbarshuffle, playbarsingleLoop, playbarlistLoop) {
+    playMode.addEventListener('click', (event) => {
+        const button = event.target.closest("button");
+        if (!button) return;
+        if (!playMode.contains(button)) return;
+
+        if (button == lyricsequentialPlayback) {
+            localStorage.setItem('playmode', 1);
+            lyricsequentialPlayback.style.display = "none";
+            lyricshuffle.style.display = "block";
+            lyricsingleLoop.style.display = "none";
+            lyriclistLoop.style.display = "none";
+        } else if (button == lyricshuffle) {
+            localStorage.setItem('playmode', 2);
+            lyricsequentialPlayback.style.display = "none";
+            lyricshuffle.style.display = "none";
+            lyricsingleLoop.style.display = "block";
+            lyriclistLoop.style.display = "none";
+        } else if (button == lyricsingleLoop) {
+            localStorage.setItem('playmode', 3);
+            lyricsequentialPlayback.style.display = "none";
+            lyricshuffle.style.display = "none";
+            lyricsingleLoop.style.display = "none";
+            lyriclistLoop.style.display = "block";
+        } else if (button == lyriclistLoop) {
+            localStorage.setItem('playmode', 4);
+            lyricsequentialPlayback.style.display = "block";
+            lyricshuffle.style.display = "none";
+            lyricsingleLoop.style.display = "none";
+            lyriclistLoop.style.display = "none";
+        }
+        playModeIcon(lyricsequentialPlayback, lyricshuffle, lyricsingleLoop, lyriclistLoop)
+        playModeIcon(playbarsequentialPlayback, playbarshuffle, playbarsingleLoop, playbarlistLoop)
+    })
 }
