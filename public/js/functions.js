@@ -483,11 +483,11 @@ async function setSongInfo(songId) {
 
         // 获取歌曲URL
         await getSongUrl(songId).then(resp => {
-            if (resp.data) {
+            if (resp.data[0].url) {
                 audio.src = resp.data[0].url;
                 audio.dataset.songId = songId;
             } else {
-                console.log(resp.message);
+                console.log('没有该资源哦！')
             }
         });
 
