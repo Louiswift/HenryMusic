@@ -411,7 +411,9 @@ async function setSongInfo(songId) {
             title.innerText = song.songs[0].name;
 
             lyricPic.src = song.songs[0].al.picUrl;
-            lyricBgImage.style.backgroundImage = `url(${song.songs[0].al.picUrl})`;
+            let pirurl = song.songs[0].al.picUrl;
+            checkWhitePercentage(pirurl, 50, 'https://p1.music.126.net/0WHLmSNY4bNaiy6oVWGJ3w==/109951169300999067.jpg');
+            // lyricBgImage.style.backgroundImage = `url(${song.songs[0].al.picUrl})`;
             lyricSongName.textContent = song.songs[0].name;
 
             playbarsinger.innerHTML = '';
@@ -809,4 +811,44 @@ function clickPlayMode(playMode, lyricsequentialPlayback, lyricshuffle, lyricsin
         playModeIcon(lyricsequentialPlayback, lyricshuffle, lyricsingleLoop, lyriclistLoop)
         playModeIcon(playbarsequentialPlayback, playbarshuffle, playbarsingleLoop, playbarlistLoop)
     })
+}
+
+/**
+ * 歌词背景图片白色像素占比监听
+ * @param {*} imageUrl false Url
+ * @param {*} threshold 占比
+ * @param {*} userImageUrl true Url
+ */
+function checkWhitePercentage(imageUrl, threshold, userImageUrl) {
+    let lyricBgImage = document.querySelector('.lyricBgImage');
+    let img = new Image();
+    img.crossOrigin = "Anonymous"; // 解决跨域问题
+    img.src = imageUrl;
+    img.onload = function () {
+        let canvas = document.createElement('canvas');
+        let ctx = canvas.getContext('2d');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+
+        let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        let data = imageData.data;
+        let whitePixels = 0;
+
+        for (let i = 0; i < data.length; i += 4) {
+            let red = data[i];
+            let green = data[i + 1];
+            let blue = data[i + 2];
+            if (red === 255 && green === 255 && blue === 255) {
+                whitePixels++;
+            }
+        }
+
+        let whitePercentage = (whitePixels / (canvas.width * canvas.height)) * 100;
+        if (whitePercentage > threshold) {
+            lyricBgImage.style.backgroundImage = `url(${userImageUrl})`;
+        } else {
+            lyricBgImage.style.backgroundImage = `url(${imageUrl})`;
+        }
+    }
 }
