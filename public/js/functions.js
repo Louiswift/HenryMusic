@@ -100,8 +100,8 @@ async function settingUpViewing(list) {
         playMain();
     } else {
         if (playingList.length > 0) {
-            const songId = playingList[localStorage.getItem('currentPlaySongOrder')].id;
-            await setSongInfo(songId);
+            // const songId = playingList[localStorage.getItem('currentPlaySongOrder')].id;
+            // await setSongInfo(songId);
         } else {
             console.log('没有正在看的歌曲哦')
         }
