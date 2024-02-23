@@ -16,6 +16,7 @@
   flex-direction: column;
   width: 300px;
   height: calc(100vh - 80px);
+  overflow: hidden;
 }
 /* 上面区域 */
 
@@ -27,7 +28,7 @@
 
 /* 下面区域 */
 .container .homepage-wrapper .homepage-left .left-below {
-  height: calc(100vh - 19px);
+  height: calc(100vh - 72px - 140px);
   padding: 5px;
   margin-bottom: 0;
   padding-bottom: 0;
@@ -96,9 +97,12 @@
 
 /* 歌单 */
 .container .homepage-wrapper .homepage-left .left-below .wrap-songsheet .songsheet{
-  display: flex;
-  flex-direction: column;
   width: 100%;
+  overflow-y: scroll;
+  height: calc(100vh - 72px - 122px - 70px);
+}
+.container .homepage-wrapper .homepage-left .left-below .wrap-songsheet .songsheet::-webkit-scrollbar{
+  display: none;
 }
 .container .homepage-wrapper .homepage-left .left-below .wrap-songsheet .songsheet li{
   width: 100%;

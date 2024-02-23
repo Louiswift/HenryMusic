@@ -69,6 +69,7 @@
   height: calc(100vh - 190px);
   border-radius: 30px;
   padding: 20px;
+  overflow: hidden;
   background-color: #191919;
   -webkit-transform: translateX(445px);
   -moz-transform: translateX(445px);

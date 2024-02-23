@@ -11,10 +11,11 @@ loginStatus().then(async resp => {
   localStorage.setItem('user', JSON.stringify(resp.data));
   if (resp.data.account) {
     let titleDailyRecommendations = document.querySelector('#titleDailyRecommendations');
+    const ul = document.querySelector("#DailyRecommendations");
+    ul.style.display = 'block';
     titleDailyRecommendations.style.display = 'block';
 
     getTheDailyRecommendedSongList().then(async resp => {
-      const ul = document.querySelector("#DailyRecommendations");
       clickOnPlaylist(ul);
       let arr = resp.recommend;
       generatePlaylists(arr, ul);
