@@ -204,6 +204,31 @@ audio::-webkit-media-controls-start-playback-button {
   width: 200px;
   height: 50px;
 }
+.container .playbar .Music-control #playMode{
+  display: flex;
+}
+.container .playbar .Music-control button{
+  border: 0;
+  background-color: transparent;
+}
+.container .playbar .Music-control .playerbtn #suspend{
+  display: none;
+}
+.container .playbar .Music-control .playerbtn .icon{
+  width: 40px;
+  height: 40px;
+}
+.container .playbar .Music-control #playMode .icon{
+  width: 20px;
+  height: 20px;
+}
+.container .playbar .Music-control button path{
+  transition: 0.2s;
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -ms-transition: 0.2s;
+  -o-transition: 0.2s;
+}
 .container .playbar .Music-control .playerbtn button{
   border: 0;
   background-color: transparent;
@@ -222,10 +247,10 @@ audio::-webkit-media-controls-start-playback-button {
   -ms-transition: 0.2s;
   -o-transition: 0.2s;
 }
-.container .playbar .Music-control .playerbtn button:hover path{
+.container .playbar .Music-control button:hover path{
   fill: #fff;
 }
-.container .playbar .Music-control .playerbtn button:active path{
+.container .playbar .Music-control button:active path{
   fill: #b3b3b3;
 }
 
@@ -252,4 +277,20 @@ audio::-webkit-media-controls-start-playback-button {
 .container .playbar .Music-playlist button svg{
   width: 20px;
   height: 20px;
+}
+
+.container .playbar .Music-playlist button path{
+  transition: 0.2s;
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -ms-transition: 0.2s;
+  -o-transition: 0.2s;
+}
+
+.container .playbar .Music-playlist button:hover path{
+  fill: #fff;
+}
+
+.container .playbar .Music-playlist button:active path{
+  fill: #b3b3b3;
 }

@@ -20,7 +20,7 @@
   animation: spin 70s linear infinite;
   width: 2500px;
   height: 2500px;
-  background-image:url(https://p2.music.126.net/D_hiKMwrdQlqD36LoKLO2w==/109951163187408030.jpg);
+  background-image:url(https://s4.music.126.net/style/web2/img/default/default_album.jpg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   -webkit-filter: blur(70px) !important;
@@ -84,6 +84,7 @@
 .Lyrics-page .lyricInfoWrap .musicInfoWrap .musicInfo .picWrap{
   display: flex;
   justify-content: center;
+  width: 100%;
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;

@@ -62,8 +62,6 @@ audio.addEventListener('ended', async () => {
 // 控制台操作
 songConsole(control, play, suspend, PreviousSong, nextSongs)
 
-const rightTop = document.querySelector(".rightTop");
-const lyricWrap = document.querySelector("#lyric-wrap");
 const MusicPlaylist = document.querySelector('.Music-playlist');
 const openLyrics = document.querySelector('#openLyrics');
 const closeLyrics = document.querySelector('#closeLyrics');
@@ -77,17 +75,9 @@ MusicPlaylist.addEventListener('click', (event) => {
     if (!button) return;
     if (!MusicPlaylist.contains(button)) return;
     if (button == openLyrics) {
-        console.log('打开歌词');
-        rightTop.style.display = "none";
-        lyricWrap.style.display = "block";
-        openLyrics.style.display = 'none';
-        closeLyrics.style.display = 'block';
+        console.log('打开评论');
     } else if (button == closeLyrics) {
-        console.log('关闭歌词');
-        rightTop.style.display = "block";
-        lyricWrap.style.display = "none";
-        closeLyrics.style.display = 'none';
-        openLyrics.style.display = 'block';
+        console.log('关闭评论');
     } else if (button == openPlaylist) {
         userInfoWrap.id = 'show';
         userInfo.style.display = 'none';
@@ -106,10 +96,9 @@ MusicPlaylist.addEventListener('click', (event) => {
     }
 });
 
-const container = document.querySelector('.container');
 const lyricsPage = document.querySelector('.Lyrics-page');
 const returnToPage = document.querySelector('#returnToPage');
-const picWrap = document.querySelector('.pic');
+const picWrap = document.querySelector('.playbar .pic');
 
 picWrap.addEventListener('click', async () => {
     lyricsPage.id = 'lyricshow';
