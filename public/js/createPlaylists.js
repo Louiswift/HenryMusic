@@ -12,7 +12,7 @@ loginStatus().then(async resp => {
   if (resp.data.account) {
     let titleDailyRecommendations = document.querySelector('#titleDailyRecommendations');
     const ul = document.querySelector("#DailyRecommendations");
-    ul.style.display = 'grid';
+    ul.style.display = 'grid4';
     titleDailyRecommendations.style.display = 'block';
 
     getTheDailyRecommendedSongList().then(async resp => {
