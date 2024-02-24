@@ -177,3 +177,45 @@ likeWrap.addEventListener('click', (event) => {
         joinLikes.style.display = 'block';
     }
 });
+
+// 音量调节
+const playbarvolume = document.querySelector('.playbar #lyricvolume');
+const lyricvolume = document.querySelector('.console #lyricvolume');
+playbarvolume.addEventListener('click', () => {
+    if (playbarvolumeControl.style.display === 'block') {
+        playbarvolumeControl.style.display = 'none';
+    } else {
+        playbarvolumeControl.style.display = 'block';
+    }
+    let volume = localStorage.getItem('volume');
+    console.log(volume)
+    if (volume) {
+        audio.volume = volume;
+        lyricvolumeControl.value = volume;
+    }
+})
+lyricvolume.addEventListener('click', () => {
+    if (lyricvolumeControl.style.display === 'block') {
+        lyricvolumeControl.style.display = 'none';
+    } else {
+        lyricvolumeControl.style.display = 'block';
+    }
+    let volume = localStorage.getItem('volume');
+    console.log(volume)
+    if (volume) {
+        audio.volume = volume;
+        playbarvolumeControl.value = volume;
+    }
+})
+
+const playbarvolumeControl = document.querySelector('.playbar #volumeControl');
+const lyricvolumeControl = document.querySelector('.console #volumeControl');
+
+function playbarchangeVolume() {
+    audio.volume = playbarvolumeControl.value;
+    localStorage.setItem('volume', playbarvolumeControl.value);
+}
+function lyricchangeVolume() {
+    audio.volume = lyricvolumeControl.value;
+    localStorage.setItem('volume', lyricvolumeControl.value);
+}

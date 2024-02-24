@@ -5,12 +5,18 @@ window.onload = () => {
     } else {
         const order = localStorage.getItem('currentPlaySongOrder');
         const playList = JSON.parse(localStorage.getItem('playingList'));
-        if(playList && order){
+        if (playList && order) {
             setSongInfo(playList[order].id);
-        }else{
+        } else {
             console.log('未发现歌曲哦！播放不了呢！');
         }
     }
     let playTime = localStorage.getItem('playTime');
     audio.currentTime = playTime;
+    let volume = localStorage.getItem('volume');
+    if (volume) {
+        audio.volume = volume;
+        playbarvolumeControl.value = volume;
+        lyricvolumeControl.value = volume;
+    }
 }
