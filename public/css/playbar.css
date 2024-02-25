@@ -250,12 +250,12 @@ audio::-webkit-media-controls-start-playback-button {
   fill: #b3b3b3;
 }
 
-.container .playbar .Music-control #lyricvolume{
+.container .playbar .Music-control #playbarVolume{
   display: flex;
   align-items: center;
 }
 
-.container .playbar .Music-control #volumeControl{
+.container .playbar .Music-control #playbarVolumeControl{
   -webkit-appearance: none;
   position: absolute;
   top: -90px;

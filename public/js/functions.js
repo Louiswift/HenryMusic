@@ -852,3 +852,57 @@ function checkWhitePercentage(imageUrl, threshold, userImageUrl) {
         }
     }
 }
+
+/**
+ * 调节音量按钮显示
+ * @param {*} MusicControl 
+ */
+function volume(MusicControl) {
+    MusicControl.addEventListener('click', (event) => {
+        const button = event.target.closest("button");
+        if (!button) return;
+        if (!MusicControl.contains(button)) return;
+
+        if (button.id === 'playbarVolume') {
+            if (playbarVolumeControl.style.display === 'block') {
+                playbarVolumeControl.style.display = 'none';
+            } else {
+                playbarVolumeControl.style.display = 'block';
+            }
+            let volume = localStorage.getItem('volume');
+            console.log(volume)
+            if (volume) {
+                audio.volume = volume;
+                lyricVolumeControl.value = volume;
+            }
+        } else if (button.id === 'lyricVolume') {
+            if (lyricVolumeControl.style.display === 'block') {
+                lyricVolumeControl.style.display = 'none';
+            } else {
+                lyricVolumeControl.style.display = 'block';
+            }
+            let volume = localStorage.getItem('volume');
+            console.log(volume)
+            if (volume) {
+                audio.volume = volume;
+                playbarVolumeControl.value = volume;
+            }
+        }
+    })
+}
+
+/**
+ * 播放栏莹亮调节
+ */
+function playbarchangeVolume() {
+    audio.volume = playbarVolumeControl.value;
+    localStorage.setItem('volume', playbarVolumeControl.value);
+}
+
+/**
+ * 歌词播放栏莹亮调节
+ */
+function lyricchangeVolume() {
+    audio.volume = lyricVolumeControl.value;
+    localStorage.setItem('volume', lyricVolumeControl.value);
+}

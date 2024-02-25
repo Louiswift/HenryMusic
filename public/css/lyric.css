@@ -238,7 +238,7 @@ audio::-webkit-media-controls-start-playback-button {
   display: flex;
   margin-top: 50px;
 }
-.console .Music-control #lyricvolume{
+.console .Music-control #lyricVolume{
   margin-top: 50px;
 }
 .console .Music-control button{
@@ -256,7 +256,7 @@ audio::-webkit-media-controls-start-playback-button {
   width: 1vw;
   height: 1vw;
 }
-.console .Music-control #lyricvolume .icon{
+.console .Music-control #lyricVolume .icon{
   width: 1vw;
   height: 1vw;
 }
@@ -273,12 +273,12 @@ audio::-webkit-media-controls-start-playback-button {
 .console .Music-control button:active path{
   fill: #b3b3b3;
 }
-.console .Music-control #lyricvolume{
+.console .Music-control #lyricVolume{
   display: flex;
   align-items: center;
 }
 
-.console .Music-control #volumeControl{
+.console .Music-control #lyricVolumeControl{
   -webkit-appearance: none;
   position: absolute;
   top: -90px;

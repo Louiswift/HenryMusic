@@ -16,7 +16,7 @@ window.onload = () => {
     let volume = localStorage.getItem('volume');
     if (volume) {
         audio.volume = volume;
-        playbarvolumeControl.value = volume;
-        lyricvolumeControl.value = volume;
+        playbarVolumeControl.value = volume;
+        lyricVolumeControl.value = volume;
     }
 }
