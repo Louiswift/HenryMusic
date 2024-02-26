@@ -120,8 +120,10 @@ function clickOnPlaylist(ul) {
         if (target.id == 'playAll' || target.tagName === 'svg' || target.tagName === 'path') {
             console.log('播放歌单所有歌曲');
             let li = event.target.closest("li");
-            const { songId, singerId } = li.dataset;
+            const { songId } = li.dataset;
             playAllSongs(songId);
+        } else if (target.id == 'delPlaylistBtn') {
+            console.log('删除')
         } else {
             let li = event.target.closest("li");
             const { songId, singerId } = li.dataset;

@@ -105,6 +105,9 @@
   display: none;
 }
 .container .homepage-wrapper .homepage-left .left-below .wrap-songsheet .songsheet li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 51px;
   margin-top: 10px;
@@ -116,9 +119,24 @@
   -o-transition: 0.4s;
   font-size: 15px;
 }
+.container .homepage-wrapper .homepage-left .left-below .wrap-songsheet .songsheet li #delPlaylistBtn{
+  height: 20px;
+  margin-right: 20px;
+  border: 0;
+  background-color: transparent;
+}
+.container .homepage-wrapper .homepage-left .left-below .wrap-songsheet .songsheet li #delPlaylistBtn:hover{
+  cursor: pointer;
+}
+.container .homepage-wrapper .homepage-left .left-below .wrap-songsheet .songsheet li #delPlaylistBtn:active svg path{
+  fill: #fff;
+}
+.container .homepage-wrapper .homepage-left .left-below .wrap-songsheet .songsheet li #delPlaylistBtn svg{
+  width: 15px;
+  height: 15px;
+}
 .container .homepage-wrapper .homepage-left .left-below .wrap-songsheet .songsheet li a{
   display: flex;
-  align-items: center;
   height: 100%;
   margin-left: 5px;
   font-family: "微软雅黑";
