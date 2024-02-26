@@ -89,7 +89,7 @@
   height: 100%;
   margin: auto;
 }
-.container .homepage-wrapper .homepage-left .left-below .MusicLibrary .creatPlaylist #addButton{
+.container .homepage-wrapper .homepage-left .left-below .MusicLibrary .creatPlaylist #creatNewPlaylistbtn{
   background-color: transparent;
   border-color: transparent;
   cursor: pointer;

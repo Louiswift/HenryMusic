@@ -327,3 +327,13 @@ async function likeMusicList(uid){
   const resp = await fetch(`https://henrymusic.xyz/likelist?uid=${uid}`);
   return await resp.json();
 }
+
+/**
+ * 新建歌单
+ * @param {*} name 歌单名
+ * @returns 
+ */
+async function CreateANewPlaylist(name){
+  const resp = await fetch(`https://henrymusic.xyz/playlist/create?name=&type=NORMAL`);
+  return await resp.json();
+}
