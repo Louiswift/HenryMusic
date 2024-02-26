@@ -338,6 +338,11 @@ async function CreateANewPlaylist(name){
   return await resp.json();
 }
 
+/**
+ * 删除歌单
+ * @param {*} id 歌单id
+ * @returns 
+ */
 async function delPlaylist(id){
   const resp = await fetch(`https://henrymusic.xyz/playlist/delete?id=${id}`);
   return await resp.json();
