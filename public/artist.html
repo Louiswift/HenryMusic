@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/list.css">
     <link rel="stylesheet" href="css/artist.css">
     <link rel="stylesheet" href="css/lyric.css">
+    <link rel="stylesheet" href="css/setCreatPlaylistName.css">
 
     <link rel="preload" href="css/playbar.css" as="style">
     <link rel="preload" href="js/functions.js" as="script">
@@ -526,8 +527,24 @@
         </div>
         <div class="lyricBgImage"></div>
     </div>
+    <div id="setCreatNewPlaylistNameWrap" style="display: none;">
+        <div class="setCreatNewPlaylistNameWrap">
+            <div class="text">歌单名称</div>
+            <input type="text" id="setCreatNewPlaylistName">
+            <button id="yplaylistNameBtn">确定</button>
+            <button id="close">
+                <svg t="1708944796767" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" p-id="2302" width="200" height="200">
+                    <path
+                        d="M512 451.669333l165.973333-165.973333a21.333333 21.333333 0 0 1 30.122667 0l30.165333 30.208a21.333333 21.333333 0 0 1 0 30.165333L572.330667 512l165.973333 165.973333a21.333333 21.333333 0 0 1 0 30.122667l-30.208 30.165333a21.333333 21.333333 0 0 1-30.165333 0L512 572.330667l-165.973333 165.973333a21.333333 21.333333 0 0 1-30.122667 0l-30.165333-30.208a21.333333 21.333333 0 0 1 0-30.165333L451.669333 512l-165.973333-165.973333a21.333333 21.333333 0 0 1 0-30.122667l30.208-30.165333a21.333333 21.333333 0 0 1 30.165333 0L512 451.669333z"
+                        fill="#BEBEBE" p-id="2303"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
 
     <script src="js/publicVariable.js"></script>
+    <script src="js/creatNewPlaylist.js"></script>
     <script src="js/request.js"></script>
     <script src="js/functions.js"></script>
     <script src="js/artist.js"></script>

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/font.css">
     <link rel="stylesheet" href="css/Recommended-playlists.css">
     <link rel="stylesheet" href="css/lyric.css">
+    <link rel="stylesheet" href="css/setCreatPlaylistName.css">
 
     <link rel="preload" href="css/playbar.css" as="style">
     <link rel="preload" href="js/functions.js" as="script">
@@ -237,8 +238,8 @@
                 <div style="display: flex; justify-content: space-around; width: 60%;">
                     <div id="playMode">
                         <button id="sequentialPlayback" data-mode='1' style="color: #000;">
-                            <svg class="icon" data-encore-id="icon" role="img" aria-hidden="true"
-                                viewBox="0 0 16 16" class="Svg-sc-ytk21e-0 dYnaPI">
+                            <svg class="icon" data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16"
+                                class="Svg-sc-ytk21e-0 dYnaPI">
                                 <path
                                     d="M0 4.75A3.75 3.75 0 0 1 3.75 1h8.5A3.75 3.75 0 0 1 16 4.75v5a3.75 3.75 0 0 1-3.75 3.75H9.81l1.018 1.018a.75.75 0 1 1-1.06 1.06L6.939 12.75l2.829-2.828a.75.75 0 1 1 1.06 1.06L9.811 12h2.439a2.25 2.25 0 0 0 2.25-2.25v-5a2.25 2.25 0 0 0-2.25-2.25h-8.5A2.25 2.25 0 0 0 1.5 4.75v5A2.25 2.25 0 0 0 3.75 12H5v1.5H3.75A3.75 3.75 0 0 1 0 9.75v-5z"
                                     fill='#B3B3B3'>
@@ -294,11 +295,9 @@
                         <button id="suspend" style="color: #000;">
                             <svg t="1703761767488" class="icon" viewBox="0 0 1024 1024" version="1.1"
                                 xmlns="http://www.w3.org/2000/svg" p-id="5265" width="200" height="200">
-                                <path
-                                    d="M191.397656 128.194684l191.080943 0 0 768.472256-191.080943 0 0-768.472256Z"
+                                <path d="M191.397656 128.194684l191.080943 0 0 768.472256-191.080943 0 0-768.472256Z"
                                     fill="#B3B3B3" p-id="5266"></path>
-                                <path
-                                    d="M575.874261 128.194684l192.901405 0 0 768.472256-192.901405 0 0-768.472256Z"
+                                <path d="M575.874261 128.194684l192.901405 0 0 768.472256-192.901405 0 0-768.472256Z"
                                     fill="#B3B3B3" p-id="5267"></path>
                             </svg>
                         </button>
@@ -312,11 +311,16 @@
                         </button>
                     </div>
                     <button id="playbarVolume" style="color: #000;" class="button-container">
-                        <svg style="width: 20px; height: 20px;" id="volume-icon" class="icon" role="presentation" aria-label="Volume high" aria-hidden="true" viewBox="0 0 16 16">
-                            <path d="M9.741.85a.75.75 0 0 1 .375.65v13a.75.75 0 0 1-1.125.65l-6.925-4a3.642 3.642 0 0 1-1.33-4.967 3.639 3.639 0 0 1 1.33-1.332l6.925-4a.75.75 0 0 1 .75 0zm-6.924 5.3a2.139 2.139 0 0 0 0 3.7l5.8 3.35V2.8l-5.8 3.35zm8.683 4.29V5.56a2.75 2.75 0 0 1 0 4.88" fill='#B3B3B3'></path>
-                            <path d="M11.5 13.614a5.752 5.752 0 0 0 0-11.228v1.55a4.252 4.252 0 0 1 0 8.127v1.55z" fill='#B3B3B3'></path>
+                        <svg style="width: 20px; height: 20px;" id="volume-icon" class="icon" role="presentation"
+                            aria-label="Volume high" aria-hidden="true" viewBox="0 0 16 16">
+                            <path
+                                d="M9.741.85a.75.75 0 0 1 .375.65v13a.75.75 0 0 1-1.125.65l-6.925-4a3.642 3.642 0 0 1-1.33-4.967 3.639 3.639 0 0 1 1.33-1.332l6.925-4a.75.75 0 0 1 .75 0zm-6.924 5.3a2.139 2.139 0 0 0 0 3.7l5.8 3.35V2.8l-5.8 3.35zm8.683 4.29V5.56a2.75 2.75 0 0 1 0 4.88"
+                                fill='#B3B3B3'></path>
+                            <path d="M11.5 13.614a5.752 5.752 0 0 0 0-11.228v1.55a4.252 4.252 0 0 1 0 8.127v1.55z"
+                                fill='#B3B3B3'></path>
                         </svg>
-                        <input style="display: none;" type="range" id="playbarVolumeControl" min="0" max="1" step="0.1" value="1" onchange="playbarchangeVolume()">
+                        <input style="display: none;" type="range" id="playbarVolumeControl" min="0" max="1" step="0.1"
+                            value="1" onchange="playbarchangeVolume()">
                     </button>
                 </div>
                 <div class="audio-player">
@@ -488,11 +492,17 @@
                                 </button>
                             </div>
                             <button id="lyricVolume" style="color: #000;" class="button-container">
-                                <svg id="volume-icon" class="icon" role="presentation" aria-label="Volume high" aria-hidden="true" viewBox="0 0 16 16">
-                                    <path d="M9.741.85a.75.75 0 0 1 .375.65v13a.75.75 0 0 1-1.125.65l-6.925-4a3.642 3.642 0 0 1-1.33-4.967 3.639 3.639 0 0 1 1.33-1.332l6.925-4a.75.75 0 0 1 .75 0zm-6.924 5.3a2.139 2.139 0 0 0 0 3.7l5.8 3.35V2.8l-5.8 3.35zm8.683 4.29V5.56a2.75 2.75 0 0 1 0 4.88" fill='#fff'></path>
-                                    <path d="M11.5 13.614a5.752 5.752 0 0 0 0-11.228v1.55a4.252 4.252 0 0 1 0 8.127v1.55z" fill='#fff'></path>
+                                <svg id="volume-icon" class="icon" role="presentation" aria-label="Volume high"
+                                    aria-hidden="true" viewBox="0 0 16 16">
+                                    <path
+                                        d="M9.741.85a.75.75 0 0 1 .375.65v13a.75.75 0 0 1-1.125.65l-6.925-4a3.642 3.642 0 0 1-1.33-4.967 3.639 3.639 0 0 1 1.33-1.332l6.925-4a.75.75 0 0 1 .75 0zm-6.924 5.3a2.139 2.139 0 0 0 0 3.7l5.8 3.35V2.8l-5.8 3.35zm8.683 4.29V5.56a2.75 2.75 0 0 1 0 4.88"
+                                        fill='#fff'></path>
+                                    <path
+                                        d="M11.5 13.614a5.752 5.752 0 0 0 0-11.228v1.55a4.252 4.252 0 0 1 0 8.127v1.55z"
+                                        fill='#fff'></path>
                                 </svg>
-                                <input style="display: none;" type="range" id="lyricVolumeControl" min="0" max="1" step="0.1" value="1" onchange="lyricchangeVolume()">
+                                <input style="display: none;" type="range" id="lyricVolumeControl" min="0" max="1"
+                                    step="0.1" value="1" onchange="lyricchangeVolume()">
                             </button>
                         </div>
                     </div>
@@ -504,6 +514,21 @@
             </ul>
         </div>
         <div class="lyricBgImage"></div>
+    </div>
+    <div id="setCreatNewPlaylistNameWrap" style="display: none;">
+        <div class="setCreatNewPlaylistNameWrap">
+            <div class="text">歌单名称</div>
+            <input type="text" id="setCreatNewPlaylistName">
+            <button id="yplaylistNameBtn">确定</button>
+            <button id="close">
+                <svg t="1708944796767" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" p-id="2302" width="200" height="200">
+                    <path
+                        d="M512 451.669333l165.973333-165.973333a21.333333 21.333333 0 0 1 30.122667 0l30.165333 30.208a21.333333 21.333333 0 0 1 0 30.165333L572.330667 512l165.973333 165.973333a21.333333 21.333333 0 0 1 0 30.122667l-30.208 30.165333a21.333333 21.333333 0 0 1-30.165333 0L512 572.330667l-165.973333 165.973333a21.333333 21.333333 0 0 1-30.122667 0l-30.165333-30.208a21.333333 21.333333 0 0 1 0-30.165333L451.669333 512l-165.973333-165.973333a21.333333 21.333333 0 0 1 0-30.122667l30.208-30.165333a21.333333 21.333333 0 0 1 30.165333 0L512 451.669333z"
+                        fill="#BEBEBE" p-id="2303"></path>
+                </svg>
+            </button>
+        </div>
     </div>
 
     <script src="js/publicVariable.js"></script>

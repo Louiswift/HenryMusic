@@ -334,6 +334,6 @@ async function likeMusicList(uid){
  * @returns 
  */
 async function CreateANewPlaylist(name){
-  const resp = await fetch(`https://henrymusic.xyz/playlist/create?name=test&type=NORMAL`);
+  const resp = await fetch(`https://henrymusic.xyz/playlist/create?name=${name}&type=NORMAL`);
   return await resp.json();
 }
