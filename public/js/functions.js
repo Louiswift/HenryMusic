@@ -379,7 +379,7 @@ function CreateLibraryPlaylists(playlist, ul) {
                 fill="#B3B3B3" p-id="3418"></path>
         </svg>
     </button>`
-
+    ul.appendChild(li);
     }
 }
 
