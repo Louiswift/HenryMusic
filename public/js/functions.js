@@ -115,17 +115,19 @@ async function settingUpViewing(list) {
 function clickOnPlaylist(ul) {
     ul.addEventListener('click', handlePlaylistClick);
     function handlePlaylistClick(event) {
-        const target = event.target;
+        const li = event.target.closest("li");
+        const btn = event.target.closest("button");
+        
+        if (!li) return;
 
-        if (target.id == 'playAll' && target.tagName === 'BUTTON') {
+        if (btn && btn.id === 'playAll') {
             console.log('播放歌单所有歌曲');
             let li = event.target.closest("li");
             const { songId } = li.dataset;
             playAllSongs(songId);
-        } else if (target.id == 'delPlaylistBtn' && target.tagName === 'BUTTON') {
+        } else if (btn && btn.id === 'delPlaylistBtn') {
             console.log('删除歌单')
         } else {
-            let li = event.target.closest("li");
             const { songId, singerId } = li.dataset;
             window.location.href = "list.html?id=" + (songId || singerId);
         }

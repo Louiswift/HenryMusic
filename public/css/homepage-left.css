@@ -120,6 +120,7 @@
   font-size: 15px;
 }
 .container .homepage-wrapper .homepage-left .left-below .wrap-songsheet .songsheet li #delPlaylistBtn{
+  width: 20px;
   height: 20px;
   margin-right: 20px;
   border: 0;
