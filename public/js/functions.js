@@ -462,12 +462,10 @@ async function setSongInfo(songId) {
                         const list = resp.playlist.tracks;
                         for (let i = 0; i < list.length; i++) {
                             if (list[i].id == songId) {
-                                console.log('true')
                                 disLike.style.display = 'block';
                                 joinLikes.style.display = 'none';
                                 return
                             } else {
-                                console.log('false')
                                 disLike.style.display = 'none';
                                 joinLikes.style.display = 'block';
                             }

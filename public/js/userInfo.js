@@ -28,7 +28,6 @@ const user = JSON.parse(localStorage.getItem('user'));
 // 如果登录则添加用户信息以及歌单等 否则右上角显示登录按钮
 if (user && user.account !== null) {
     getUserDetails(user.account.id).then(resp => {
-        console.log(resp)
         headSculpture.src = resp.profile.avatarUrl;
         userInfoHeadSculpture.src = resp.profile.avatarUrl;
         username.textContent = resp.profile.nickname;
@@ -54,7 +53,6 @@ if (user && user.account !== null) {
         clickOnPlaylist(ul);
     })
     getUserInfoAndPlaylist().then(resp => {
-        console.log(resp)
     });
 
 
