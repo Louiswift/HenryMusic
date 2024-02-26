@@ -117,13 +117,13 @@ function clickOnPlaylist(ul) {
     function handlePlaylistClick(event) {
         const target = event.target;
 
-        if (target.id == 'playAll' || target.tagName === 'svg' || target.tagName === 'path') {
+        if (target.id == 'playAll' && target.tagName === 'BUTTON') {
             console.log('播放歌单所有歌曲');
             let li = event.target.closest("li");
             const { songId } = li.dataset;
             playAllSongs(songId);
-        } else if (target.id == 'delPlaylistBtn') {
-            console.log('删除')
+        } else if (target.id == 'delPlaylistBtn' && target.tagName === 'BUTTON') {
+            console.log('删除歌单')
         } else {
             let li = event.target.closest("li");
             const { songId, singerId } = li.dataset;
@@ -342,24 +342,8 @@ function createYourPlaylist(playlist, ul, ul2) {
 function CreateLibraryPlaylists(playlist, ul) {
     for (let i = 0; i < playlist.length; i++) {
         const li = document.createElement('li');
-        // const iconWrap = document.createElement('div');
-        // const img = document.createElement('img');
-        // const text = document.createElement('div');
-        // const a = document.createElement('a');
-        // const btn = document.createElement('button');
 
-        // iconWrap.classList = 'icon';
-        // text.classList = 'text-songsheet f-thide';
         li.setAttribute("data-song-id", playlist[i].id);
-
-        // img.src = playlist[i].coverImgUrl;
-        // text.textContent = playlist[i].name;
-
-        // li.appendChild(a);
-        // iconWrap.appendChild(img);
-        // a.appendChild(iconWrap);
-        // a.appendChild(text);
-        // ul.appendChild(li);
 
         li.innerHTML = `<a href="#">
         <div class="icon">
@@ -379,7 +363,7 @@ function CreateLibraryPlaylists(playlist, ul) {
                 fill="#B3B3B3" p-id="3418"></path>
         </svg>
     </button>`
-    ul.appendChild(li);
+        ul.appendChild(li);
     }
 }
 
