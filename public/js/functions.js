@@ -127,6 +127,10 @@ function clickOnPlaylist(ul) {
             playAllSongs(songId);
         } else if (btn && btn.id === 'delPlaylistBtn') {
             console.log('删除歌单')
+            const { songId } = li.dataset;
+            delPlaylist(songId).then(resp => {
+                console.log(resp)
+            })
         } else {
             const { songId, singerId } = li.dataset;
             window.location.href = "list.html?id=" + (songId || singerId);

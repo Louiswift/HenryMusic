@@ -337,3 +337,8 @@ async function CreateANewPlaylist(name){
   const resp = await fetch(`https://henrymusic.xyz/playlist/create?name=${name}&type=NORMAL`);
   return await resp.json();
 }
+
+async function delPlaylist(id){
+  const resp = await fetch(`https://henrymusic.xyz/playlist/delete?id=${id}`);
+  return await resp.json();
+}
