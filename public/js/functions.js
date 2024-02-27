@@ -117,7 +117,7 @@ function clickOnPlaylist(ul) {
     function handlePlaylistClick(event) {
         const li = event.target.closest("li");
         const btn = event.target.closest("button");
-        
+
         if (!li) return;
 
         if (btn && btn.id === 'playAll') {
@@ -279,33 +279,14 @@ function creatSimilarSingers(artist, ul) {
  */
 function generatePlaylists(arr, ul) {
     for (let i = 0; i < arr.length; i++) {
-        const newLi = document.createElement("li");
-        const newA = document.createElement("a");
-        const newDivImg = document.createElement("div");
-        const newImg = document.createElement("img");
-        const newDivText = document.createElement("div");
-        const button = document.createElement('button');
-
-        newDivImg.classList.add("pic");
-        newImg.classList.add("pic-img");
-        newDivText.classList.add("text-list");
-        button.id = 'playAll';
+        const li = document.createElement("li");
 
         let songListId = arr[i].id;
-        newLi.setAttribute("data-song-id", songListId);
+        li.setAttribute("data-song-id", songListId);
 
-        newImg.src = arr[i].picUrl;
-        newDivText.textContent = arr[i].name;
-        button.innerHTML = `<svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 24 24"
-        class="Svg-sc-ytk21e-0 bneLcE"><path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path>
-    </svg>`;
-
-        newLi.appendChild(newA);
-        newA.appendChild(newDivImg);
-        newDivImg.appendChild(newImg);
-        newDivImg.appendChild(button);
-        newA.appendChild(newDivText);
-        ul.appendChild(newLi);
+        li.innerHTML = `<a><div class="pic"><img class="pic-img" src="${arr[i].picUrl}"><button id="playAll"><svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 24 24" class="Svg-sc-ytk21e-0 bneLcE"><path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path>
+        </svg></button></div><div class="text-list">${arr[i].name}</div></a>`;
+        ul.appendChild(li);
     }
 }
 
@@ -318,20 +299,10 @@ function createYourPlaylist(playlist, ul, ul2) {
     for (let i = 0; i < playlist.length; i++) {
         // 创建dom
         const li = document.createElement('li');
-        const a = document.createElement('a');
-        const img = document.createElement('img');
-        const div = document.createElement('div');
 
-        // 给dom赋值class & 值
-        div.classList = 'txtplaylistName f-thide';
-        img.src = playlist[i].coverImgUrl;
-        div.textContent = playlist[i].name;
         li.setAttribute("data-song-id", playlist[i].id);
 
-        // 将dom拼装
-        a.appendChild(img);
-        a.appendChild(div);
-        li.appendChild(a);
+        li.innerHTML = `<a><img src="${playlist[i].coverImgUrl}"><div class="txtplaylistName f-thide">${playlist[i].name}</div></a>`;
         if (playlist[i].subscribed == true) {
             ul.appendChild(li);
         } else {
