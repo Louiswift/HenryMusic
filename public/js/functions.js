@@ -179,7 +179,8 @@ async function improveSongInformation(list, songs) {
  * @param {*} list 包含歌曲的数组
  */
 function creatList(list, ul) {
-    ul.dataset.firstId = list[0].id
+    ul.dataset.firstId = list[0].id;
+    let fragment = document.createDocumentFragment();
     if (list) {
         for (let i = 0; i < list.length; i++) {
             const li = document.createElement("li");
@@ -243,8 +244,9 @@ function creatList(list, ul) {
             div1.appendChild(xx);
             li.appendChild(zj);
             li.appendChild(playTime);
-            ul.appendChild(li);
+            fragment.appendChild(li);
         }
+        ul.appendChild(fragment);
     } else {
         console.log('未发现歌曲')
     }
@@ -256,6 +258,7 @@ function creatList(list, ul) {
  * @param {*} ul 生成至该元素
  */
 function creatSimilarSingers(artist, ul) {
+    let fragement = document.createDocumentFragment();
     for (let i = 0; i < artist.length; i++) {
         let li = document.createElement('li');
         let imgWrap = document.createElement('div');
@@ -270,7 +273,7 @@ function creatSimilarSingers(artist, ul) {
         li.appendChild(imgWrap)
         li.appendChild(singerName)
         imgWrap.appendChild(img);
-        ul.appendChild(li);
+        fragement.appendChild(li);
 
         if (artist[i].img1v1Url) {
             img.src = artist[i].img1v1Url;
@@ -279,6 +282,7 @@ function creatSimilarSingers(artist, ul) {
         }
         singerName.textContent = artist[i].name;
     }
+    ul.appendChild(fragement);
 }
 
 /**
@@ -287,6 +291,7 @@ function creatSimilarSingers(artist, ul) {
  * @param {*} ul 生成至该元素
  */
 function generatePlaylists(arr, ul) {
+    let fragment = document.createDocumentFragment();
     for (let i = 0; i < arr.length; i++) {
         const li = document.createElement("li");
 
@@ -295,8 +300,9 @@ function generatePlaylists(arr, ul) {
 
         li.innerHTML = `<a><div class="pic"><img class="pic-img" src="${arr[i].picUrl}"><button id="playAll"><svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 24 24" class="Svg-sc-ytk21e-0 bneLcE"><path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path>
         </svg></button></div><div class="text-list">${arr[i].name}</div></a>`;
-        ul.appendChild(li);
+        fragment.appendChild(li);
     }
+    ul.appendChild(fragment);
 }
 
 /**
@@ -305,6 +311,8 @@ function generatePlaylists(arr, ul) {
  * @param {*} ul 生成至该元素
  */
 function createYourPlaylist(playlist, ul, ul2) {
+    let fragement1 = document.createDocumentFragment();
+    let fragement2 = document.createDocumentFragment();
     for (let i = 0; i < playlist.length; i++) {
         // 创建dom
         const li = document.createElement('li');
@@ -313,11 +321,13 @@ function createYourPlaylist(playlist, ul, ul2) {
 
         li.innerHTML = `<a><img src="${playlist[i].coverImgUrl}"><div class="txtplaylistName f-thide">${playlist[i].name}</div></a>`;
         if (playlist[i].subscribed == true) {
-            ul.appendChild(li);
+            fragement1.appendChild(li);
         } else {
-            ul2.appendChild(li);
+            fragement2.appendChild(li);
         }
     }
+    ul.appendChild(fragement1);
+    ul2.appendChild(fragement2);
 }
 
 /**
@@ -326,6 +336,7 @@ function createYourPlaylist(playlist, ul, ul2) {
  * @param {*} ul 生成至该元素
  */
 function CreateLibraryPlaylists(playlist, ul) {
+    let fragement = document.createDocumentFragment();
     for (let i = 0; i < playlist.length; i++) {
         const li = document.createElement('li');
 
@@ -349,8 +360,9 @@ function CreateLibraryPlaylists(playlist, ul) {
                 fill="#B3B3B3" p-id="3418"></path>
         </svg>
     </button>`
-        ul.appendChild(li);
+        fragement.appendChild(li);
     }
+    ul.appendChild(fragement);
 }
 
 /**
