@@ -28,9 +28,7 @@ const chooseUserAgent = (ua = false) => {
 }
 const createRequest = (method, url, data = {}, options) => {
   return new Promise((resolve, reject) => {
-    let headers = { 'User-Agent': chooseUserAgent(options.ua),
-    'User-Agent': chooseUserAgent(options.ua),
-  }
+    let headers = { 'User-Agent': chooseUserAgent(options.ua) }
     options.headers = options.headers || {}
     headers = {
       ...headers,
@@ -46,7 +44,7 @@ const createRequest = (method, url, data = {}, options) => {
       headers['X-Real-IP'] = ip
       headers['X-Forwarded-For'] = ip
     }
-    headers['X-Real-IP'] = '118.88.88.88'
+    // headers['X-Real-IP'] = '118.88.88.88'
     if (typeof options.cookie === 'object') {
       options.cookie = {
         ...options.cookie,
