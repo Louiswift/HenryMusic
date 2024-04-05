@@ -14,6 +14,15 @@ function getParameterByName(name) {
 }
 
 /**
+ * 去除用户输入多个空格替换为单个空格
+ * @param {*} input 
+ * @returns 
+ */
+function removeExtraSpaces(input) {
+    return input.replace(/\s+/g, ' ');
+}
+
+/**
  * 单击播放栏歌手名，进入歌手主页
  * @param {*} singer 传入歌手文本父元素
  */
@@ -382,7 +391,6 @@ async function setSongInfo(songId) {
     const lyricSongName = document.querySelector(".musicInfo #songName");
     const lyricPic = document.querySelector(".picWrap #pic");
     const lyricSinger = document.querySelector('.musicInfo #playbarsinger');
-    const lyricBgImage = document.querySelector('.lyricBgImage');
     const lyricWrap = document.querySelector("#lyric-wrap");
 
     clickArname(lyricSinger);
@@ -397,7 +405,6 @@ async function setSongInfo(songId) {
             lyricPic.src = song.songs[0].al.picUrl;
             let pirurl = song.songs[0].al.picUrl;
             checkWhitePercentage(pirurl, 50, 'https://p1.music.126.net/0WHLmSNY4bNaiy6oVWGJ3w==/109951169300999067.jpg');
-            // lyricBgImage.style.backgroundImage = `url(${song.songs[0].al.picUrl})`;
             lyricSongName.textContent = song.songs[0].name;
 
             playbarsinger.innerHTML = '';
@@ -831,6 +838,7 @@ function checkWhitePercentage(imageUrl, threshold, userImageUrl) {
             lyricBgImage.style.backgroundImage = `url(${userImageUrl})`;
         } else {
             lyricBgImage.style.backgroundImage = `url(${imageUrl})`;
+            lyricBgImage.style.transition = `2s`;
         }
     }
 }

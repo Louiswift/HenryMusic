@@ -17,17 +17,22 @@ if (!searchValue) {
 
 input.addEventListener('keydown', (event) => {
     if (event.key == "Enter") {
-        if (input.value !== ' ') {
+        input.value.trim();
+        if(input.value !== '' && removeExtraSpaces(input.value) !== ' '){
             let searchHistory = JSON.parse(localStorage.getItem('SearchHistory')) || [];
             searchHistory.push({ searchWord: input.value });
             localStorage.setItem('SearchHistory', JSON.stringify({}));
             localStorage.setItem('SearchHistory', JSON.stringify(searchHistory));
             window.location.href = `search.html?search=${input.value}`;
+        }else{
+            console.log('请输入搜索内容')
+            input.value = '';
         }
     }
 });
 
-if (searchValue !== null) {
+// 搜索成功后创建歌曲列表
+if (searchValue !== '') {
     search(searchValue).then(async resp => {
         let list = [];
         const songs = resp.result.songs;

@@ -96,6 +96,7 @@
 
 .Lyrics-page .lyricInfoWrap .musicInfoWrap .musicInfo .picWrap #pic{
   width: 70%;
+  aspect-ratio: 1 / 1;
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
