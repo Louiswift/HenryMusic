@@ -464,7 +464,7 @@ async function setSongInfo(songId) {
                     getPlaylistsDetail(id).then(async resp => {
                         const list = resp.playlist.tracks;
                         for (let i = 0; i < list.length; i++) {
-                            if (list[i].includes(songId)) {
+                            if (list[i].id == songId) {
                                 disLike.style.display = 'block';
                                 joinLikes.style.display = 'none';
                                 return
