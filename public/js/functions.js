@@ -421,33 +421,34 @@ async function setSongInfo(songId) {
             playbarsinger.innerHTML = '';
             lyricSinger.innerHTML = '';
 
-            for (let i = 0; i < song.songs[0].ar.length; i++) {
+            song.songs[0].ar.forEach(function (item,index,arr){
                 let a = document.createElement('a');
                 a.id = 'singerName';
                 playbarsinger.appendChild(a);
 
-                a.textContent = song.songs[0].ar[i].name;
-                a.setAttribute('data-singer-id', song.songs[0].ar[i].id);
+                a.textContent = item.name;
+                a.setAttribute('data-singer-id', item.id);
 
-                if (i < song.songs[0].ar.length - 1) {
+                if (index < arr.length - 1) {
                     let span = document.createElement('span');
                     span.textContent = ' / ';
                     playbarsinger.appendChild(span);
                 }
-            }
-            for (let i = 0; i < song.songs[0].ar.length; i++) {
+            })
+            
+            song.songs[0].ar.forEach(function (item,index,arr){
                 let a = document.createElement('a');
                 a.id = 'singerName';
                 lyricSinger.appendChild(a);
-                a.textContent = song.songs[0].ar[i].name;
-                a.setAttribute('data-singer-id', song.songs[0].ar[i].id);
+                a.textContent = item.name;
+                a.setAttribute('data-singer-id', item.id);
 
-                if (i < song.songs[0].ar.length - 1) {
+                if (index < arr.length - 1) {
                     let span = document.createElement('span');
                     span.textContent = ' / ';
                     lyricSinger.appendChild(span);
                 }
-            }
+            })
             let durationSpan = document.querySelector('#duration');
             const { h, m, s } = duration(song.songs[0].dt);
             durationSpan.textContent = h ? `${h}:${m}:${s}` : `${m}:${s}`
@@ -462,8 +463,8 @@ async function setSongInfo(songId) {
                     const id = playlist[0].id;
                     getPlaylistsDetail(id).then(async resp => {
                         const list = resp.playlist.tracks;
-                        for (let i = 0; i < list.length; i++) {
-                            if (list[i].id == songId) {
+                        list.forEach(function (item) {
+                            if (item.id == songId) {
                                 disLike.style.display = 'block';
                                 joinLikes.style.display = 'none';
                                 return
@@ -471,7 +472,7 @@ async function setSongInfo(songId) {
                                 disLike.style.display = 'none';
                                 joinLikes.style.display = 'block';
                             }
-                        }
+                        })
                     })
                 })
             }
@@ -654,11 +655,13 @@ function songConsole(control, play, suspend, PreviousSong, nextSongs) {
  * @param {*} hotHistoryWrap 遍历完添加至该元素
  */
 function generateSearcHistory(arr, hotHistoryWrap) {
-    for (let i = 0; i < arr.length; i++) {
+    let frag = document.createDocumentFragment();
+    arr.forEach(function(item) {
         let li = document.createElement("li");
-        li.innerText = arr[i].searchWord;
-        hotHistoryWrap.appendChild(li);
-    }
+        li.innerText = item.searchWord;
+        frag.appendChild(li);
+    })
+    hotHistoryWrap.appendChild(frag);
 }
 
 /**
