@@ -182,7 +182,7 @@ function creatList(list, ul) {
     ul.dataset.firstId = list[0].id;
     let fragment = document.createDocumentFragment();
     if (list) {
-        for (let i = 0; i < list.length; i++) {
+        list.forEach(function (item, index) {
             const li = document.createElement("li");
             const div1 = document.createElement("div");
             const picDiv = document.createElement("div");
@@ -208,31 +208,31 @@ function creatList(list, ul) {
             playbarsinger.classList = "singer f-thide";
             playbarsinger.id = 'playlistSinger';
 
-            nameDiv.innerText = list[i].name;
-            img.src = list[i].al.picUrl;
-            zj.innerText = list[i].al.name;
-            order.textContent = i + 1;
+            nameDiv.innerText = item.name;
+            img.src = item.al.picUrl;
+            zj.innerText = item.al.name;
+            order.textContent = index + 1;
 
             playbarsinger.innerHTML = '';
-            for (let j = 0; j < list[i].ar.length; j++) {
+            for (let j = 0; j < item.ar.length; j++) {
                 let a = document.createElement('a');
                 a.id = 'singerName';
                 playbarsinger.appendChild(a);
-                a.textContent = list[i].ar[j].name;
-                a.setAttribute('data-singer-id', list[i].ar[j].id);
+                a.textContent = item.ar[j].name;
+                a.setAttribute('data-singer-id', item.ar[j].id);
 
-                if (j < list[i].ar.length - 1) {
+                if (j < item.ar.length - 1) {
                     let span = document.createElement('span');
                     span.textContent = ' / ';
                     playbarsinger.appendChild(span)
                 }
             }
 
-            const { h, m, s } = duration(list[i].dt);
+            const { h, m, s } = duration(item.dt);
             playTime.innerText = h ? `${h}:${m}:${s}` : `${m}:${s}`
 
-            li.dataset.songId = list[i].id
-            li.dataset.songOrder = i
+            li.dataset.songId = item.id
+            li.dataset.songOrder = index
 
             li.appendChild(div1);
             div1.appendChild(orderWrap);
@@ -245,7 +245,7 @@ function creatList(list, ul) {
             li.appendChild(zj);
             li.appendChild(playTime);
             fragment.appendChild(li);
-        }
+        })
         ul.appendChild(fragment);
     } else {
         console.log('未发现歌曲')
@@ -259,7 +259,7 @@ function creatList(list, ul) {
  */
 function creatSimilarSingers(artist, ul) {
     let fragement = document.createDocumentFragment();
-    for (let i = 0; i < artist.length; i++) {
+    artist.forEach(function(item) {
         let li = document.createElement('li');
         let imgWrap = document.createElement('div');
         let img = document.createElement('img');
@@ -268,20 +268,20 @@ function creatSimilarSingers(artist, ul) {
         imgWrap.classList = 'imgWrap';
         singerName.id = 'singer';
         li.id = 'singerName';
-        li.setAttribute('data-singer-id', artist[i].id);
+        li.setAttribute('data-singer-id', item.id);
 
         li.appendChild(imgWrap)
         li.appendChild(singerName)
         imgWrap.appendChild(img);
         fragement.appendChild(li);
 
-        if (artist[i].img1v1Url) {
-            img.src = artist[i].img1v1Url;
+        if (item.img1v1Url) {
+            img.src = item.img1v1Url;
         } else {
-            img.src = artist[i].coverImgUrl;
+            img.src = item.coverImgUrl;
         }
-        singerName.textContent = artist[i].name;
-    }
+        singerName.textContent = item.name;
+    })
     ul.appendChild(fragement);
 }
 
@@ -292,16 +292,16 @@ function creatSimilarSingers(artist, ul) {
  */
 function generatePlaylists(arr, ul) {
     let fragment = document.createDocumentFragment();
-    for (let i = 0; i < arr.length; i++) {
+    arr.forEach(function(item) {
         const li = document.createElement("li");
 
-        let songListId = arr[i].id;
+        let songListId = item.id;
         li.setAttribute("data-song-id", songListId);
 
-        li.innerHTML = `<a><div class="pic"><img class="pic-img" src="${arr[i].picUrl}"><button id="playAll"><svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 24 24" class="Svg-sc-ytk21e-0 bneLcE"><path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path>
-        </svg></button></div><div class="text-list">${arr[i].name}</div></a>`;
+        li.innerHTML = `<a><div class="pic"><img class="pic-img" src="${item.picUrl}"><button id="playAll"><svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 24 24" class="Svg-sc-ytk21e-0 bneLcE"><path d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"></path>
+        </svg></button></div><div class="text-list">${item.name}</div></a>`;
         fragment.appendChild(li);
-    }
+    })
     ul.appendChild(fragment);
 }
 
@@ -313,19 +313,18 @@ function generatePlaylists(arr, ul) {
 function createYourPlaylist(playlist, ul, ul2) {
     let fragement1 = document.createDocumentFragment();
     let fragement2 = document.createDocumentFragment();
-    for (let i = 0; i < playlist.length; i++) {
-        // 创建dom
+    playlist.forEach(function (item) {
         const li = document.createElement('li');
 
-        li.setAttribute("data-song-id", playlist[i].id);
+        li.setAttribute("data-song-id", item.id);
 
-        li.innerHTML = `<a><img src="${playlist[i].coverImgUrl}"><div class="txtplaylistName f-thide">${playlist[i].name}</div></a>`;
-        if (playlist[i].subscribed == true) {
+        li.innerHTML = `<a><img src="${item.coverImgUrl}"><div class="txtplaylistName f-thide">${item.name}</div></a>`;
+        if (item.subscribed == true) {
             fragement1.appendChild(li);
         } else {
             fragement2.appendChild(li);
         }
-    }
+    })
     ul.appendChild(fragement1);
     ul2.appendChild(fragement2);
 }
@@ -337,18 +336,18 @@ function createYourPlaylist(playlist, ul, ul2) {
  */
 function CreateLibraryPlaylists(playlist, ul) {
     let fragement = document.createDocumentFragment();
-    for (let i = 0; i < playlist.length; i++) {
+    playlist.forEach(function (item) {
         const li = document.createElement('li');
 
-        li.setAttribute("data-song-id", playlist[i].id);
+        li.setAttribute("data-song-id", item.id);
 
         li.innerHTML = `<a href="#">
         <div class="icon">
             <img
-                src="${playlist[i].coverImgUrl}">
+                src="${item.coverImgUrl}">
         </div>
         <div class="text-songsheet f-thide">
-            ${playlist[i].name}
+            ${item.name}
         </div>
     </a>
     <button id="delPlaylistBtn">
@@ -361,7 +360,7 @@ function CreateLibraryPlaylists(playlist, ul) {
         </svg>
     </button>`
         fragement.appendChild(li);
-    }
+    })
     ul.appendChild(fragement);
 }
 
