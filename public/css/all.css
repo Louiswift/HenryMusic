@@ -47,7 +47,7 @@ body{
   position: absolute;
   z-index: 1;
   filter: blur(70px);
-  width: 100%;
+  width: calc(100% - 40px);
   height: 300px;
   -webkit-filter: blur(70px);
 }

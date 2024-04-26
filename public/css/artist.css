@@ -5,6 +5,7 @@
     right: 0;
     bottom: 0;
     flex: 1;
+    width: calc(100vw - 300px);
     height: calc(100vh - 90px);
     background: linear-gradient(to bottom, #212121, #212121, #121212, #121212, #121212, #121212);
   }
