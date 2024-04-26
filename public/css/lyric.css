@@ -78,7 +78,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 80%;
+  height: 80%; 
+  max-width: 600px;
+  min-height: 450px;
 }
 
 .Lyrics-page .lyricInfoWrap .musicInfoWrap .musicInfo .picWrap{
@@ -126,6 +128,7 @@
 
 /* 控制台 */
 .Lyrics-page .lyricInfoWrap .console{
+  display: flex;
   height: 30%;
 }
 
@@ -138,7 +141,7 @@
 }
 
 .console .Music-control .audio-player {
-  position: absolute;
+  position: relative;
   width: 70%;
   margin: 10px;
 }
@@ -218,6 +221,15 @@
   height: 30px;
   display: none;
 }
+
+.console .Music-control .lyricBtns {
+  width: 60%;
+  height: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 audio::-webkit-media-controls-start-playback-button {
   display: none;
 }
@@ -230,17 +242,14 @@ audio::-webkit-media-controls-start-playback-button {
   justify-content: space-around;
   width: 200px;
   height: 50px;
-  margin-top: 50px;
 }
 
 /* 按钮区域 */
 
 .console .Music-control #playMode{
   display: flex;
-  margin-top: 50px;
 }
 .console .Music-control #lyricVolume{
-  margin-top: 50px;
 }
 .console .Music-control button{
   border: 0;
@@ -308,7 +317,7 @@ audio::-webkit-media-controls-start-playback-button {
 }
 
 .Lyrics-page .lyricInfoWrap #lyric-wrap .lyric {
-  font-size: 2.5vw;
+  font-size: 5vh;
   font-weight: 600;
   padding-right: 50px;
 }
