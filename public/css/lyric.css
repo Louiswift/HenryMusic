@@ -80,7 +80,7 @@
   align-items: center;
   height: 80%; 
   max-width: 600px;
-  min-height: 450px;
+  min-height: 550px;
 }
 
 .Lyrics-page .lyricInfoWrap .musicInfoWrap .musicInfo .picWrap{
@@ -249,8 +249,7 @@ audio::-webkit-media-controls-start-playback-button {
 .console .Music-control #playMode{
   display: flex;
 }
-.console .Music-control #lyricVolume{
-}
+
 .console .Music-control button{
   border: 0;
   background-color: transparent;
