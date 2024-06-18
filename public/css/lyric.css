@@ -30,7 +30,11 @@
 @keyframes spin {
   from {
       transform: translate(-50%, -50%) rotate(0deg);
-  }
+      -webkit-transform: translate(-50%, -50%) rotate(0deg);
+      -moz-transform: translate(-50%, -50%) rotate(0deg);
+      -ms-transform: translate(-50%, -50%) rotate(0deg);
+      -o-transform: translate(-50%, -50%) rotate(0deg);
+}
   to {
       transform: translate(-50%, -50%) rotate(360deg);
   }
@@ -109,15 +113,19 @@
 
 .Lyrics-page .lyricInfoWrap .musicInfoWrap .musicInfo #songName{
   width: 70%;
-  font-size: 1.5vw;
+  font-size: 3vmin;
   font-weight: bold;
   color: #FDFAF7;
   padding: 5px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
 }
 
 .Lyrics-page .lyricInfoWrap .musicInfoWrap .musicInfo #playbarsinger{
   width: 70%;
-  font-size: 1.2vw;
+  font-size: 1.1vmax;
   color: #C5C0BD;
 }
 
@@ -316,7 +324,7 @@ audio::-webkit-media-controls-start-playback-button {
 }
 
 .Lyrics-page .lyricInfoWrap #lyric-wrap .lyric {
-  font-size: 5vh;
+  font-size: 2.2vmax;
   font-weight: 600;
   padding-right: 50px;
 }

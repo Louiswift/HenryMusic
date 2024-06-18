@@ -46,10 +46,19 @@
   height: 100%;
 }
 .container .playbar .Music-Information .song-title p{
+  width: 160px;
+  height: 20px;
   font-size: 14px;
   color: #fff;
   font-weight: bold;
   padding-bottom: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+.container .playbar .Music-Information .singer{
+  width: 160px;
 }
 .container .playbar .Music-Information .singer #singerName{
   font-size: 11px;
