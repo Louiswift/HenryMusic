@@ -34,10 +34,8 @@ input.addEventListener('keydown', (event) => {
 // 搜索成功后创建歌曲列表
 if (searchValue !== '') {
     search(searchValue).then(async resp => {
-        let list = [];
         const songs = resp.result.songs;
-        await improveSongInformation(list, songs)
-        creatList(list, ul);
+        creatList(songs, ul);
         await addDblClickEventListener(ul)
         await settingUpViewing(list);
         clickArnamelist(ul)
