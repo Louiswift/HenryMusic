@@ -70,7 +70,7 @@ if (method == 'phoneLogin') {
                 console.log(resp.profile)
                 localStorage.setItem("loginMethod", "手机登录")
                 getUserInfo();
-                window.location.href = 'https://henrymusic.xyz/';
+                window.location.href = 'https://henrymusic.cn/';
             } else {
                 alert(resp.msg);
             }
@@ -90,7 +90,7 @@ if (method == 'phoneLogin') {
                 console.log(resp.profile)
                 localStorage.setItem("loginMethod", "手机登录")
                 getUserInfo();
-                window.location.href = 'https://henrymusic.xyz/';
+                window.location.href = 'https://henrymusic.cn/';
             } else {
                 alert(resp.msg);
             }
@@ -143,7 +143,7 @@ loginBtn.addEventListener('click', async () => {
         setTimeout(function() {
             getUserInfo();
           }, 2000);
-        window.location.href = 'https://henrymusic.xyz/';
+        window.location.href = 'https://henrymusic.cn/';
     } else {
         alert(resp.msg);
     }

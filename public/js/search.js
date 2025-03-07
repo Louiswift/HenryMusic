@@ -40,7 +40,7 @@ if (searchValue !== '') {
         await settingUpViewing(list);
         clickArnamelist(ul)
     });
-}
+}   
 
 // 鼠标聚焦搜索框
 input.addEventListener('click', function () {
